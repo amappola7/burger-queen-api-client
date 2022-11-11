@@ -6,13 +6,60 @@ $secondary-font: 'Poppins', sans-serif;;
 
 html {
   font-size: 62.5%;
+  height:100vh;  
+}
+
+body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  height:100vh;  
+  background-color: #FDAD4E;
 }
 
 div {
+  position: relative;
+  width: 100%;  
+  height:100%;  
+  // background-image: url('src/assets/background.jpg');
+  // background-position: top; 
+  // background-size: 100%;
+
+ 
+
+  .background{
+    position: absolute;
+    z-index:1;
+    width: 100%;
+    top: 0;
+  }
+
+  .vector{
+    position: absolute;
+    z-index:2;
+    width: 100vw;
+    height: 80vh;
+    bottom: 0;
+  }
+
   div{
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     font-family: $main-font;
     font-weight: 900;
     color: $dark-color;
+    // background-image: url('src/assets/form.png');
+    // background-position: 50% 300%; 
+    // background-size: 130%;
+    // background-repeat: no-repeat;
+    padding: 2rem 0 2.5rem 0;
+    .logo{
+      width: 40%;
+    }
     h1 {
       font-family: $secondary-font;
       color: $dark-color;
@@ -24,7 +71,10 @@ div {
       flex-direction: column;
       width: 90%;
       label {
+        display: flex;
+        flex-direction: column;
         font-size: 1.8rem;
+        margin-bottom: 1.5rem;
       }
       input {
         background-color: #EEEEEE;
@@ -40,6 +90,7 @@ div {
         border: none;
         border-radius: 2rem;
         height: 4.4rem;
+        margin-top:1.5rem;
       }
     }
   }

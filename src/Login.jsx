@@ -3,10 +3,19 @@ import './login.scss';
 
 function Login() {
   return (
-    <div>
-      <img src='' alt='Fondo' />
-      <div>
-        <img src='src/assets/logo.png' alt='Logo' />
+    <div className='login'>
+      <img
+        className='login__background'
+        src='src/assets/background.jpg'
+        alt='background'
+      />
+      <img className='login__vector' src='src/assets/form.png' alt='vector' />
+      <div className='login__container-form'>
+        <img
+          className='login__container-formlogo'
+          src='src/assets/logo.png'
+          alt='Logo'
+        />
         <form action=''>
           <h1>Bienvenido</h1>
           <label htmlFor='login-correo'>
