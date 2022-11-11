@@ -1,0 +1,49 @@
+$main-color: #FDAD4E;
+$secondary-color: #FF7272;
+$dark-color: #302727;
+$main-font: 'Quicksand', sans-serif;;
+$secondary-font: 'Poppins', sans-serif;;
+
+html {
+  font-size: 62.5%;
+}
+
+div {
+  div{
+    font-family: $main-font;
+    font-weight: 900;
+    color: $dark-color;
+    h1 {
+      font-family: $secondary-font;
+      color: $dark-color;
+      font-size: 3.2rem;
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      label {
+        font-size: 1.8rem;
+      }
+      input {
+        background-color: #EEEEEE;
+        border: none;
+        border-radius: 2rem;
+        height: 4.4rem;
+      }
+      button {
+        font-family: $main-font;
+        font-size: 2rem;
+        font-weight: 700;
+        background-color: $main-color;
+        border: none;
+        border-radius: 2rem;
+        height: 4.4rem;
+      }
+    }
+  }
+}
+
+
+
