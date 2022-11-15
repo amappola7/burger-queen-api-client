@@ -1,18 +1,12 @@
 import React from 'react';
-import './login.scss';
+import './styles/Login.scss';
 
 function Login() {
   return (
     <div className='login'>
-      <img
-        className='login__background'
-        src='src/assets/background.jpg'
-        alt='background'
-      />
-      <img className='login__vector' src='src/assets/form.png' alt='vector' />
       <div className='login__container-form'>
         <img
-          className='login__container-formlogo'
+          className='login__container-form-logo'
           src='src/assets/logo.png'
           alt='Logo'
         />

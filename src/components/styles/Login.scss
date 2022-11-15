@@ -1,0 +1,68 @@
+@use 'globals';
+
+.login {
+  min-height: 100vh;
+  background-image: url('src/assets/background.jpg');
+  background-position: top; 
+  background-size: 100%;
+  background-repeat: no-repeat;
+  
+  &__container-form{
+    padding: 2rem 0 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: globals.$main-font;
+    font-weight: 900;
+    color: globals.$dark-color;
+
+    &-logo{
+      width: 40%;
+    }
+    
+    form{
+      width: 100%;
+      @include globals.center-flex;
+      flex-direction: column;
+      background-color: white;
+      
+      h1 {
+        width: 80%;
+        font-family: globals.$secondary-font;
+        color: globals.$dark-color;
+        font-size: 3.2rem;
+      }
+
+      label {
+        margin-bottom: 1.5rem;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.8rem;
+      }
+
+      input {
+        height: 4.4rem;
+        background-color: #EEEEEE;
+        border: none;
+        border-radius: 2rem;
+      }
+
+      button {
+        margin-top:1.5rem;
+        width: 80%;
+        height: 4.4rem;
+        font-family: globals.$main-font;
+        font-size: 2rem;
+        font-weight: 700;
+        background-color: globals.$main-color;
+        border: none;
+        border-radius: 2rem;
+      }
+    }
+  }
+}
+
+
+

@@ -1,0 +1,22 @@
+$main-color: #FDAD4E;
+$secondary-color: #FF7272;
+$dark-color: #302727;
+$main-font: 'Quicksand', sans-serif;
+$secondary-font: 'Poppins', sans-serif;
+
+@mixin center-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  min-height:100vh;  
+}
