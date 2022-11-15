@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './styles/Login.scss';
-import { Outlet } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const sendForm = (ev) => {
     ev.preventDefault();
@@ -17,7 +18,7 @@ function Login() {
       })
       .then((result) => {
         setError('');
-        console.log(result);
+        navigate('/admin-users');
       })
       .catch((err) => {
         switch (err.response.data) {
