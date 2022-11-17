@@ -75,10 +75,10 @@ function Login() {
             id='login-contraseña'
             onChange={(ev) => setPassword(ev.target.value)}
             required
-            placeholder='********'
+            placeholder='••••••••'
           />
         </label>
-        <p>{error && `${error}`}</p>
+        <p className='login__message-error'>{error && `${error}`}</p>
         <button type='submit'>Ingresa</button>
       </form>
     </div>

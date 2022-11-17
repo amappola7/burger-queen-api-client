@@ -4,7 +4,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   font-family: globals.$main-font;
   color: globals.$dark-color;
@@ -61,7 +61,6 @@
       font-size: 1.9rem;
       font-family: globals.$main-font;
       font-weight: 800;
-      
     }
 
     input {
@@ -74,14 +73,20 @@
       font-size: 1.7rem;
       font-weight: 600;
       outline: none;
-    }
-    
-    input:focus {
-      outline: globals.$main-color 0.1rem solid;
+
+      &:focus {
+        outline: globals.$main-color 0.1rem solid;
+      }
+
+      &::placeholder {
+        color: #acabab;
+      }
     }
 
-    input::placeholder {
-      color: #acabab;
+    .login__message-error{
+      font-size: 1.6rem;
+      font-weight: 600;
+      color:globals.$secondary-color;
     }
 
     button {
@@ -91,9 +96,42 @@
       font-family: globals.$main-font;
       font-size: 2.1rem;
       font-weight: 700;
-      background-color: globals.$main-color;
       border: none;
       border-radius: 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: globals.$main-color;
+        border-radius: 10rem;
+        z-index: -2;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: globals.$secondary-color;
+        transition: all 0.3s;
+        border-radius: 10rem;
+        z-index: -1;
+      }
+      &:hover {
+        color: #fff;
+        &:before {
+          width: 100%;
+        }
+      }
     }
   }
 }
