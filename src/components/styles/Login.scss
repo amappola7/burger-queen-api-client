@@ -9,11 +9,12 @@
   font-family: globals.$main-font;
   color: globals.$dark-color;
   font-weight: 900;
+  overflow: hidden;
 
   &__image {
     position: relative;
     .login__background {
-      width: 100%;
+      width:120%;
       clip-path: polygon(
         100% 0%,
         0% 0%,
@@ -44,8 +45,9 @@
     width: 100%;
     @include globals.center-flex;
     flex-direction: column;
+    flex: 1;
     background-color: white;
-
+    
     h1 {
       width: 80%;
       font-family: globals.$secondary-font;
@@ -84,6 +86,12 @@
     }
 
     .login__message-error{
+      @include globals.center-flex;
+      i {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+        color: globals.$secondary-color;
+      }
       font-size: 1.6rem;
       font-weight: 600;
       color:globals.$secondary-color;

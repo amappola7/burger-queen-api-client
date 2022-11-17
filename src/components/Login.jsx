@@ -57,7 +57,7 @@ function Login() {
           sendForm(ev);
         }}
       >
-        <h1>Bienvenido </h1>
+        <h1>Bienvenido</h1>
         <label htmlFor='login-correo'>
           Correo
           <input
@@ -78,7 +78,14 @@ function Login() {
             placeholder='••••••••'
           />
         </label>
-        <p className='login__message-error'>{error && `${error}`}</p>
+
+        {error && (
+          <span className='login__message-error'>
+            <i className='fa-solid fa-triangle-exclamation' />
+            {error}
+          </span>
+        )}
+
         <button type='submit'>Ingresa</button>
       </form>
     </div>
