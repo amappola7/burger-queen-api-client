@@ -2,65 +2,98 @@
 
 .login {
   min-height: 100vh;
-  background-image: url('src/assets/background.jpg');
-  background-position: top; 
-  background-size: 100%;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   font-family: globals.$main-font;
   color: globals.$dark-color;
   font-weight: 900;
-  
-    &__container-form-logo{
-      width: 40%;
-    }
-    
-    form{
-      padding: 2rem 0;
+
+  &__image {
+    position: relative;
+    .login__background {
       width: 100%;
-      @include globals.center-flex;
-      flex-direction: column;
-      background-color: white;
-      
-      h1 {
-        width: 80%;
-        font-family: globals.$secondary-font;
-        color: globals.$dark-color;
-        font-size: 3.2rem;
-      }
-
-      label {
-        margin-bottom: 1.5rem;
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        font-size: 1.8rem;
-      }
-
-      input {
-        height: 4.4rem;
-        background-color: #EEEEEE;
-        border: none;
-        border-radius: 2rem;
-      }
-
-      button {
-        margin-top:1.5rem;
-        width: 80%;
-        height: 4.6rem;
-        font-family: globals.$main-font;
-        font-size: 2rem;
-        font-weight: 700;
-        background-color: globals.$main-color;
-        border: none;
-        border-radius: 2rem;
-      }
+      clip-path: polygon(
+        100% 0%,
+        0% 0%,
+        0% 86%,
+        9% 87%,
+        24% 91%,
+        33% 91%,
+        52% 86%,
+        62% 86%,
+        80% 90%,
+        90% 89%,
+        100% 83%
+      );
+    }
+    .login__container-form-logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 3rem;
+      margin: auto;
+      width: 40%;
     }
   }
 
+  form {
+    padding-bottom: 2rem;
+    width: 100%;
+    @include globals.center-flex;
+    flex-direction: column;
+    background-color: white;
 
+    h1 {
+      width: 80%;
+      font-family: globals.$secondary-font;
+      color: globals.$dark-color;
+      font-size: 3.2rem;
+    }
 
+    label {
+      margin-bottom: 1.5rem;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.9rem;
+      font-family: globals.$main-font;
+      font-weight: 800;
+      
+    }
 
+    input {
+      padding: 0 2rem;
+      height: 4.4rem;
+      background-color: #eeeeee;
+      border: none;
+      border-radius: 2rem;
+      font-family: globals.$main-font;
+      font-size: 1.7rem;
+      font-weight: 600;
+      outline: none;
+    }
+    
+    input:focus {
+      outline: globals.$main-color 0.1rem solid;
+    }
+
+    input::placeholder {
+      color: #acabab;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 80%;
+      height: 4.6rem;
+      font-family: globals.$main-font;
+      font-size: 2.1rem;
+      font-weight: 700;
+      background-color: globals.$main-color;
+      border: none;
+      border-radius: 2rem;
+    }
+  }
+}

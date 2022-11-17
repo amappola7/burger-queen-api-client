@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AdminUser from './components/AdminUser';
 import Login from './components/Login';
+import './components/styles/_globals.scss';
 
 function App() {
   return (

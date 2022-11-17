@@ -39,11 +39,18 @@ function Login() {
 
   return (
     <div className='login'>
-      <img
-        className='login__container-form-logo'
-        src='src/assets/logo.png'
-        alt='Logo'
-      />
+      <div className='login__image'>
+        <img
+          className='login__background'
+          src='src/assets/background.jpg'
+          alt='backgorund'
+        />
+        <img
+          className='login__container-form-logo'
+          src='src/assets/logo.png'
+          alt='Logo'
+        />
+      </div>
       <form
         action=''
         onSubmit={(ev) => {
@@ -52,22 +59,23 @@ function Login() {
       >
         <h1>Bienvenido </h1>
         <label htmlFor='login-correo'>
-          Correo {email}
+          Correo
           <input
-            type='text'
+            type='email'
             id='login-correo'
             onChange={(ev) => setEmail(ev.target.value)}
             required
+            placeholder='user@system.xyz'
           />
         </label>
         <label htmlFor='login-contraseña'>
           Contraseña
-          {password}
           <input
             type='password'
             id='login-contraseña'
             onChange={(ev) => setPassword(ev.target.value)}
             required
+            placeholder='********'
           />
         </label>
         <p>{error && `${error}`}</p>
