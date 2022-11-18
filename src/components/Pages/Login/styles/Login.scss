@@ -148,6 +148,14 @@
   }
 }
 
+@media (min-width: 600px) {
+  .login {
+    .login__image {
+      width: 10%;
+    }
+  }
+}
+
 @media (min-width: 1000px) {
   .login {
     width: 100vw;
@@ -175,7 +183,7 @@
 
     form {
       width: 40%;
-      margin-left: 5rem;
+      margin-left: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -184,11 +192,10 @@
       background-color: transparent;
 
       .login__container-form-logo--desktop {
-        width: 16.5rem;
+        width: 15rem;
         margin-bottom: 3rem;
         display: block;
       }
-
     }
   }
 }
