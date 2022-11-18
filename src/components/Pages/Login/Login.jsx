@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import requestHTTP from '../../API/requestHTTP';
 import './styles/Login.scss';
 
 function Login() {
+  // Create states
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
+  const navigate = useNavigate(); // Router
+
+  // get credentials and make request
   const sendForm = (ev) => {
     ev.preventDefault();
-    axios
-      .post('http://localhost:8080/login', {
-        email,
-        password,
-      })
-      .then((result) => {
+    requestHTTP('http://localhost:8080/login', email, password)
+      .then((/* result */) => {
         setError('');
         navigate('/admin-users');
       })
