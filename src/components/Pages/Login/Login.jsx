@@ -56,6 +56,11 @@ function Login() {
           sendForm(ev);
         }}
       >
+        <img
+          className='login__container-form-logo--desktop'
+          src='src/assets/logo.png'
+          alt='Logo'
+        />
         <h1>Bienvenido</h1>
         <label htmlFor='login-correo'>
           Correo
