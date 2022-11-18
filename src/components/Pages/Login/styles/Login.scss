@@ -4,7 +4,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-family: globals.$main-font;
   color: globals.$dark-color;
@@ -14,7 +14,7 @@
   &__image {
     position: relative;
     .login__background {
-      width:120%;
+      width: 120%;
       clip-path: polygon(
         100% 0%,
         0% 0%,
@@ -47,7 +47,7 @@
     flex-direction: column;
     flex: 1;
     background-color: white;
-    
+
     h1 {
       width: 80%;
       font-family: globals.$secondary-font;
@@ -85,7 +85,7 @@
       }
     }
 
-    .login__message-error{
+    .login__message-error {
       @include globals.center-flex;
       i {
         margin-right: 1rem;
@@ -94,7 +94,7 @@
       }
       font-size: 1.6rem;
       font-weight: 600;
-      color:globals.$secondary-color;
+      color: globals.$secondary-color;
     }
 
     button {
@@ -141,5 +141,36 @@
         }
       }
     }
+  }
+}
+
+@media (min-width: 630px) {
+  .login__background {
+    width: 100%;
+  }
+  .login__container-form-logo {
+    width: 38%;
+  }
+  form {
+    width: 95%;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    h1 {
+      font-size: 4.8rem;
+    }
+    label {
+      font-size: 2.9rem;
+    }
+    input {
+      height: 6rem;
+    }
+    button {
+      height: 8rem;
+      font-weight: 800;
+      font-size: 3.2rem;
+    }
+  }
+  .login__message-error {
+    font-size: 2.4rem;
   }
 }
