@@ -47,7 +47,7 @@
     flex-direction: column;
     flex: 1;
     background-color: white;
-    
+
     h1 {
       width: 80%;
       font-family: globals.$secondary-font;
@@ -140,6 +140,40 @@
           width: 100%;
         }
       }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .login {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-image: url('src/assets/background-horizontal.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .login__image {
+      width: 10rem;
+    }
+
+    .login__background {
+      display: none;
+    }
+
+    form {
+      width: 40%;
+      margin-left: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: transparent;
     }
   }
 }

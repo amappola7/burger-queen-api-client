@@ -85,7 +85,9 @@ function Login() {
           </span>
         )}
 
-        <button type='submit'>Ingresa</button>
+        <button className='login__button' type='submit'>
+          Ingresa
+        </button>
       </form>
     </div>
   );
