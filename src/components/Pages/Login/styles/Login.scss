@@ -148,6 +148,14 @@
   }
 }
 
+@media (min-width: 600px) {
+  .login {
+    .login__image {
+      width: 10%;
+    }
+  }
+}
+
 @media (min-width: 1000px) {
   .login {
     width: 100vw;
