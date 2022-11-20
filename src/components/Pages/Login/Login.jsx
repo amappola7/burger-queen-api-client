@@ -41,12 +41,12 @@ function Login() {
       <div className='login__image'>
         <img
           className='login__background'
-          src='src/assets/background.jpg'
+          src='src/assets/background.png'
           alt='backgorund'
         />
         <img
           className='login__container-form-logo'
-          src='src/assets/logo.png'
+          src='src/assets/logo.webp'
           alt='Logo'
         />
       </div>
@@ -58,7 +58,7 @@ function Login() {
       >
         <img
           className='login__container-form-logo--desktop'
-          src='src/assets/logo.png'
+          src='src/assets/logo.webp'
           alt='Logo'
         />
         <h1>Bienvenido</h1>

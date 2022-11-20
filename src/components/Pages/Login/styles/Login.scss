@@ -15,19 +15,6 @@
     position: relative;
     .login__background {
       width: 120%;
-      clip-path: polygon(
-        100% 0%,
-        0% 0%,
-        0% 86%,
-        9% 87%,
-        24% 91%,
-        33% 91%,
-        52% 86%,
-        62% 86%,
-        80% 90%,
-        90% 89%,
-        100% 83%
-      );
     }
     .login__container-form-logo {
       position: absolute;
@@ -53,6 +40,7 @@
     }
 
     h1 {
+      margin-top: 0rem;
       width: 80%;
       font-family: globals.$secondary-font;
       color: globals.$dark-color;
@@ -148,80 +136,118 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 500px) {
   .login {
-    width: 100vw;
-    max-width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-    background-image: url('src/assets/background-horizontal.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-
     .login__image {
-      width: 10rem;
-    }
-
-    .login__background {
-      display: none;
-    }
-
-    .login__container-form-logo {
-      display: none;
-    }
-
-    form {
-      width: 40%;
-      margin-left: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      background-color: transparent;
-
-      .login__container-form-logo--desktop {
-        width: 15rem;
-        margin-bottom: 3rem;
-        display: block;
-      }
+      width: 100%;
     }
   }
 }
 
-@media (min-width: 600px) and (max-width:800) {
+@media (min-width: 600px) {
   .login {
-
-    .login__background {
+    .login__image {
       width: 100%;
+      height: 49rem;
+    }
+    .login__background {
+      width: 110%;
+      height: 100%;
     }
     .login__container-form-logo {
-      width: 38%;
+      width: 30%;
+      padding-bottom: 2rem;
     }
     form {
-      width: 95%;
-      gap: 3rem;
-      margin-bottom: 2rem;
+      flex: 1;
+      background-color: transparent;
+      width: 94%;
+      gap: 2rem;
       h1 {
-        font-size: 4.8rem;
+        font-size: 4.7rem;
+        margin: 0;
       }
       label {
-        font-size: 2.9rem;
+        font-size: 2.8rem;
+        margin: 0;
       }
       input {
-        height: 6rem;
+        height: 6.7rem;
+        padding-left: 4rem;
+        font-size: 2.3rem;
+        border-radius: 4rem;
       }
       button {
-        height: 8rem;
+        height: 7rem;
         font-weight: 800;
-        font-size: 3.2rem;
+        font-size: 3rem;
       }
     }
     .login__message-error {
       font-size: 2.4rem;
+    }
+  }
+}
+
+@media (min-width: 750px) and (max-width: 999px) {
+  .login {
+    .login__image {
+      
+      width: 100%;
+      height: 55rem;
+      .login__container-form-logo {
+        width: 25%;
+        padding-bottom: 2rem;
+      }
+    }
+    form {
+      width: 95%;
+      max-width: 90rem;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .login {
+    flex-direction: row-reverse;
+    .login__image {
+      display: flex;
+      align-items: flex-end;
+      rotate: (90deg);
+      height: 100vh;
+      .login__background {
+          width: 100%;
+          height: 80rem;
+      }
+    }
+
+
+    .login__container-form-logo {
+      display: none;
+    }
+
+    form {
+      width: 50rem;
+      margin-left: 2rem;
+      .login__container-form-logo--desktop {
+        width: 15rem;
+        margin-bottom: 3rem;
+        display: block;
+        
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      label {
+        font-size: 2rem;
+        input {
+          height: 4rem;
+        }
+      }
+      button {
+        height: 4rem;
+        font-size: 2.3rem;
+      }
     }
   }
 }
