@@ -17,7 +17,7 @@ function Login() {
     requestHTTP('http://localhost:8080/login', email, password)
       .then((/* result */) => {
         setError('');
-        navigate('/admin-users');
+        navigate('/admin-index');
       })
       .catch((err) => {
         switch (err.response.data) {
@@ -37,7 +37,7 @@ function Login() {
   };
 
   return (
-    <div className='login'>
+    <section className='login'>
       <div className='login__image'>
         <img
           className='login__background'
@@ -94,7 +94,7 @@ function Login() {
           Ingresa
         </button>
       </form>
-    </div>
+    </section>
   );
 }
 
