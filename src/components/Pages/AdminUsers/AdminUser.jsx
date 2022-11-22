@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import NavBar from '../../NavBar/NavBar';
 import requestHTTP from '../../API/requestHTTP';
 
 function AdminUser() {
   // const AuthToken = useContext(AuthTokenContext);
+  const token = localStorage.getItem('token');
 
-  requestHTTP('get', 'users', token).then((response) =>
-    console.log('PETICIÓN', response)
-  );
+  requestHTTP('get', 'users', {
+    headers: { authorization: `Bearer ${token}` }
+  }).then((response) => console.log('PETICIÓN', response));
 
   return (
     <section>
