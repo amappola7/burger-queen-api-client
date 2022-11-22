@@ -13,15 +13,15 @@ function AdminIndex({ username }) {
       </div>
       <div>
         <img src='src/assets/icons/users.png' alt='Icono Usuarios' />
-        <NavLink exact to='/admin-users'>
+        <NavLink exact='true' to='/admin-users'>
           Usuarios
         </NavLink>
         <img src='src/assets/icons/products.png' alt='Icono Productos' />
-        <NavLink exact to='/admin-products'>
+        <NavLink exact='true' to='/admin-products'>
           Productos
         </NavLink>
         <img src='src/assets/icons/orders.png' alt='Icono Pedidos' />
-        <NavLink exact to='/admin-orders'>
+        <NavLink exact='true' to='/admin-orders'>
           Pedidos
         </NavLink>
       </div>

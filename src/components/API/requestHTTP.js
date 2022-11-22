@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-function requestHTTP(url, email, password) {
-  return axios.post(url, {
-    email,
-    password,
-  });
+function requestHTTP(peticion, endpoint, propss) {
+  return axios[peticion](`http://localhost:8080/${endpoint}`, propss);
 }
 
 export default requestHTTP;

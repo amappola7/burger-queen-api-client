@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import requestHTTP from '../../API/requestHTTP';
 import './styles/Login.scss';
+
+const AuthTokenContext = createContext();
 
 function Login() {
   // Create states
@@ -14,8 +16,8 @@ function Login() {
   // get credentials and make request
   const sendForm = (ev) => {
     ev.preventDefault();
-    requestHTTP('http://localhost:8080/login', email, password)
-      .then((/* result */) => {
+    requestHTTP('post', 'login', { email, password })
+      .then(() => {
         setError('');
         navigate('/admin-index');
       })
@@ -98,4 +100,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default { Login, AuthTokenContext };
