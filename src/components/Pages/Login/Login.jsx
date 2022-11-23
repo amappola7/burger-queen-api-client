@@ -71,6 +71,7 @@ function Login() {
             onChange={(ev) => setEmail(ev.target.value)}
             required
             placeholder='user@system.xyz'
+            autoComplete='email'
           />
         </label>
         <label htmlFor='login-contraseña'>
@@ -81,6 +82,7 @@ function Login() {
             onChange={(ev) => setPassword(ev.target.value)}
             required
             placeholder='••••••••'
+            autoComplete='current-password'
           />
         </label>
 

@@ -7,7 +7,7 @@ function AdminUser() {
   const token = localStorage.getItem('token');
 
   requestHTTP('get', 'users', {
-    headers: { authorization: `Bearer ${token}` }
+    headers: { authorization: `Bearer ${token}` },
   }).then((response) => console.log('PETICIÓN', response));
 
   return (
