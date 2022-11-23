@@ -1,21 +1,24 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 function ItemTable({ username, role }) {
   return (
-    <tbody>
-      <tr>
-        <td>
-          <div>
-            <p>{username}</p>
-            <p>{role}</p>
-          </div>
-          <div>
+    <tr>
+      <td>
+        <div>
+          <p>{username}</p>
+          <p>{role}</p>
+        </div>
+        <div>
+          <button type='button' className='icon-button'>
             <i className='fa-solid fa-trash' />
+          </button>
+          <button type='button' className='icon-button'>
             <i className='fa-solid fa-user-pen' />
-          </div>
-        </td>
-      </tr>
-    </tbody>
+          </button>
+        </div>
+      </td>
+    </tr>
   );
 }
 

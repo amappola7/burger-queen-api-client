@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import requestHTTP from '../../API/requestHTTP';
+import { authLoginRequest } from '../../API/requestHTTP';
 import './styles/Login.scss';
 
 function Login() {
@@ -14,7 +14,7 @@ function Login() {
   // get credentials and make request
   const sendForm = (ev) => {
     ev.preventDefault();
-    requestHTTP('post', 'login', { email, password })
+    authLoginRequest(email, password)
       .then((response) => {
         localStorage.setItem('token', response.data.accessToken);
         setError('');

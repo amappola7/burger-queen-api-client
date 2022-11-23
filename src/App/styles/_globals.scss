@@ -1,22 +1,43 @@
-$main-color: #FDAD4E;
-$secondary-color: #FF7272;
+$main-color: #fdad4e;
+$secondary-color: #ff7272;
 $dark-color: #302727;
 $main-font: 'Red Hat Display', sans-serif;
 $secondary-font: 'Poppins', sans-serif;
 
-@mixin center-flex{
+@mixin flex ($justify, $align, $direction) {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 html {
   font-size: 62.5%;
 }
 
-body{
-  margin:0;
-  padding:0;
+body {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  min-height:100vh;  
+  min-height: 100vh;
+}
+
+@mixin generic-button($width) {
+  margin-top: 1.5rem;
+  width: $width;
+  height: 4.6rem;
+  font-family: $main-font;
+  font-size: 2.1rem;
+  font-weight: 700;
+  background-color: $main-color;
+  color: $dark-color;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+@mixin hover-button {
+  color: white;
+  background-color: $secondary-color;
+  transition: all 0.3s;
 }

@@ -2,10 +2,7 @@
 
 .login {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  @include globals.flex(flex-start, center, column);
   font-family: globals.$main-font;
   color: globals.$dark-color;
   font-weight: 900;
@@ -30,8 +27,7 @@
   form {
     padding-bottom: 2rem;
     width: 100%;
-    @include globals.center-flex;
-    flex-direction: column;
+    @include globals.flex(center, center, column);
     flex: 1;
     background-color: white;
 
@@ -78,7 +74,7 @@
     }
 
     .login__message-error {
-      @include globals.center-flex;
+      @include globals.flex(center, center, row);
       i {
         margin-right: 1rem;
         font-size: 1.5rem;

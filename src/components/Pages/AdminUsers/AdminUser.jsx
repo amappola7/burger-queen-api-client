@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../../NavBar/NavBar';
-import requestHTTP from '../../API/requestHTTP';
+import ItemTable from '../../ItemTable/ItemTable';
+import { usersListRequest } from '../../API/requestHTTP';
+import FormAdminUsers from '../../FormAdminUsers/FormAdminUsers';
 
 function AdminUser() {
   // const AuthToken = useContext(AuthTokenContext);
-  const token = localStorage.getItem('token');
 
-  requestHTTP('get', 'users', {
-    headers: { authorization: `Bearer ${token}` },
-  }).then((response) => console.log('PETICIÓN', response));
+  const [usersList, setUsersList] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    usersListRequest(token)
+      .then((response) => {
+        setUsersList(response.data);
+        console.log(response);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <section>
@@ -22,8 +33,13 @@ function AdminUser() {
             <th>Usuarios</th>
           </tr>
         </thead>
-        {/* Table Body */}
+        <tbody>
+          {usersList.map((user) => (
+            <ItemTable key={user.id} username={user.email} role={user.role} />
+          ))}
+        </tbody>
       </table>
+      <FormAdminUsers />
     </section>
   );
 }

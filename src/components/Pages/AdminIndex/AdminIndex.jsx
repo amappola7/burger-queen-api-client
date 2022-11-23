@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './AdminIndex.scss';
 
 function AdminIndex({ username }) {
   return (
-    <section>
-      <div>
+    <section className='admin-index'>
+      <div className='admin-index__header'>
         <img src='src/assets/logo.webp' alt='Logo' className='logo' />
         <p>
           {username}
@@ -13,15 +15,15 @@ function AdminIndex({ username }) {
       </div>
       <div>
         <img src='src/assets/icons/users.png' alt='Icono Usuarios' />
-        <NavLink exact='true' to='/admin-users'>
+        <NavLink className='generic-button' exact='true' to='/admin-users'>
           Usuarios
         </NavLink>
         <img src='src/assets/icons/products.png' alt='Icono Productos' />
-        <NavLink exact='true' to='/admin-products'>
+        <NavLink className='generic-button' exact='true' to='/admin-products'>
           Productos
         </NavLink>
         <img src='src/assets/icons/orders.png' alt='Icono Pedidos' />
-        <NavLink exact='true' to='/admin-orders'>
+        <NavLink className='generic-button' exact='true' to='/admin-orders'>
           Pedidos
         </NavLink>
       </div>
