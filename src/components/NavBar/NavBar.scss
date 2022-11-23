@@ -1,0 +1,35 @@
+@use '../../App/styles/globals';
+
+.navbar {
+  @include globals.flex(space-between, center, unset);
+  padding: 0.5rem 3rem;
+  height: 8rem;
+  background-color: globals.$dark-color;
+  &__logo {
+    height: 80%;
+  }
+  &__options {
+    @include globals.flex(center, center, unset);
+    list-style: none;
+    font-family: globals.$main-font;
+    font-size: 1.6rem;
+    font-weight: 600;
+    .navbar__item {
+      color: white;
+      margin-left: 3rem;
+      text-decoration: none;
+      &:hover{
+        color:globals.$main-color;
+        text-decoration: underline 0.2rem;
+        transition: all 0.4s;
+
+      }
+    }
+    .icon {
+      margin-left: 0.8rem;
+    }
+    .active{
+      text-shadow: 0rem 0rem 1rem globals.$main-color;
+    }
+  }
+}

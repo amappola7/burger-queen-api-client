@@ -63,7 +63,7 @@
       font-size: 1.7rem;
       font-weight: 600;
       outline: none;
-
+      box-shadow: globals.$box-shadow;
       &:focus {
         outline: globals.$main-color 0.1rem solid;
       }
@@ -98,6 +98,7 @@
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
+      box-shadow: globals.$box-shadow;
       z-index: 1;
       &:after {
         content: '';

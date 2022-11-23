@@ -13,8 +13,9 @@ function AdminIndex({ username }) {
           <i className='fa-solid fa-user' />
         </p>
       </div>
-      <div>
-        <img src='src/assets/icons/users.png' alt='Icono Usuarios' />
+      <div className='admin-index__menu'>
+        {/* <img src='src/assets/icons/users.png' alt='Icono Usuarios' /> */}
+        <i className='fa-solid fa-users' />
         <NavLink className='generic-button' exact='true' to='/admin-users'>
           Usuarios
         </NavLink>
@@ -22,7 +23,8 @@ function AdminIndex({ username }) {
         <NavLink className='generic-button' exact='true' to='/admin-products'>
           Productos
         </NavLink>
-        <img src='src/assets/icons/orders.png' alt='Icono Pedidos' />
+        {/* <img src='src/assets/icons/orders.png' alt='Icono Pedidos' /> */}
+        <i className='fa-solid fa-basket-shopping' />
         <NavLink className='generic-button' exact='true' to='/admin-orders'>
           Pedidos
         </NavLink>

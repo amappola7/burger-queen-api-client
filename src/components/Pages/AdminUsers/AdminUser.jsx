@@ -22,7 +22,7 @@ function AdminUser() {
   }, []);
 
   return (
-    <section>
+    <section className='admin-users'>
       <NavBar />
       <button className='generic-button' type='button'>
         Crear Usuario
