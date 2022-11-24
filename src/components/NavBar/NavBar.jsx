@@ -30,7 +30,7 @@ function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/' className='navbar__item'>
+          <NavLink exact='true' to='/' className='navbar__item exit'>
             Cerrar Sesión
             <i className='fa-solid fa-person-walking-arrow-right icon' />
           </NavLink>
