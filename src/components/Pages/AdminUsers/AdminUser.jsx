@@ -15,10 +15,10 @@ function AdminUser() {
     usersListRequest(token)
       .then((response) => {
         setUsersList(response.data);
-        console.log(response);
+        // console.log(response);
       })
       .catch((err) => {
-        console.error(err);
+        console.error('ADMIN USER:', err);
       });
   }, []);
 
@@ -37,7 +37,12 @@ function AdminUser() {
           </thead>
           <tbody>
             {usersList.map((user) => (
-              <ItemTable key={user.id} username={user.email} role={user.role} />
+              <ItemTable
+                key={user.id}
+                username={user.email}
+                role={user.role}
+                id={user.id}
+              />
             ))}
           </tbody>
         </table>
