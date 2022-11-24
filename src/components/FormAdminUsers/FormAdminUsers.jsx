@@ -1,21 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { createUserRequest } from '../API/requestHTTP';
 
 function FormAdminUsers() {
+  const [user, setUser] = useState({});
+
+  const sendForm = (ev) => {
+    ev.preventDefault();
+
+    const token = localStorage.getItem('token');
+    createUserRequest(user.email, user.password, user.role, token)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+
+    ev.target.reset();
+  };
+
   return (
     <section className='form-admin-users'>
       <h3>Crear Usuario</h3>
-      <form action=''>
+      <form onSubmit={(e) => sendForm(e)} action=''>
         <label htmlFor='email'>
           Nombre
-          <input type='email' id='email' />
+          <input
+            onChange={(ev) =>
+              setUser((prevState) => ({
+                ...prevState,
+                email: ev.target.value,
+              }))
+            }
+            type='email'
+            id='email'
+          />
         </label>
         <label htmlFor='password'>
           Contraseña
-          <input type='password' id='password' />
+          <input
+            onChange={(ev) =>
+              setUser((prevState) => ({
+                ...prevState,
+                password: ev.target.value,
+              }))
+            }
+            type='password'
+            id='password'
+          />
         </label>
         <label htmlFor='role'>
           Rol
-          <select name='role' id='role'>
+          <select
+            onChange={(ev) =>
+              setUser((prevState) => ({
+                ...prevState,
+                role: ev.target.value,
+              }))
+            }
+            name='role'
+            id='role'
+          >
+            <option value='role' selected>
+              -- Rol --
+            </option>
             <option value='admin'>Admin</option>
             <option value='chef'>Chef</option>
             <option value='waiter'>Mesero</option>
