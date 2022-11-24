@@ -3,10 +3,13 @@
 .navbar {
   @include globals.flex(space-between, center, unset);
   padding: 0.5rem 3rem;
-  height: 8rem;
-  background-color: globals.$dark-color;
+  height: 10rem;
+  background-image: url('src/assets/header.png');
+  background-size: 100% 100%;
+  background-repeat: none;
+  background-position: top;
   &__logo {
-    height: 80%;
+    height: 60%;
   }
   &__options {
     display: none;
