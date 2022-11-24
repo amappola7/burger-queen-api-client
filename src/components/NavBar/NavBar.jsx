@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import BurguerButton from '../BurguerButton/BurguerButton';
 import './NavBar.scss';
 
 function NavBar() {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
+
   return (
     <nav className='navbar'>
       <img src='src/assets/logo.webp' alt='Logo' className='navbar__logo' />
-      <ul className='navbar__options'>
+      <ul className={`navbar__options${clicked ? '--active' : ''}`}>
         <li>
           <NavLink exact='true' to='/admin-users' className='navbar__item'>
             Usuarios
@@ -29,6 +36,9 @@ function NavBar() {
           </NavLink>
         </li>
       </ul>
+      <div className='burguer-icon'>
+        <BurguerButton clicked={clicked} handleClick={handleClick} />
+      </div>
     </nav>
   );
 }

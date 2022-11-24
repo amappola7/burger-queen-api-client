@@ -9,27 +9,54 @@
     height: 80%;
   }
   &__options {
-    @include globals.flex(center, center, unset);
+    display: none;
     list-style: none;
     font-family: globals.$main-font;
     font-size: 1.6rem;
     font-weight: 600;
+
+    @media (min-width: 1000px) {
+      @include globals.flex(center, center, unset);
+    }
+
     .navbar__item {
       color: white;
       margin-left: 3rem;
       text-decoration: none;
       &:hover{
-        color:globals.$main-color;
-        text-decoration: underline 0.2rem;
+        color: globals.$main-color;
         transition: all 0.4s;
-
       }
     }
     .icon {
       margin-left: 0.8rem;
     }
     .active{
-      text-shadow: 0rem 0rem 1rem globals.$main-color;
+      // text-shadow: 0rem 0rem 1rem globals.$main-color;
+      text-decoration: underline 0.2rem globals.$main-color;
+    }
+  }
+
+  &__options--active {
+    // Estilos menú mobile
+    width: 100%;
+    display: block;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    left:0;
+    right: 0;
+    text-align: center;
+
+    .navbar__item {
+      color: globals.$dark-color;
+    }
+  }
+
+  .burguer-icon {
+    @media (min-width: 1000px) {
+      display: none;
     }
   }
 }
