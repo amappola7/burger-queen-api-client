@@ -1,0 +1,34 @@
+@use '../../App/styles/globals';
+
+.item-table {
+  td {
+    width: 100%;
+    padding: 1rem 1.3rem;
+    @include globals.flex(space-between, flex-start, row);
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 2.3rem;
+      transition: all 0.3s;
+    }
+  }
+
+  .icon-button-delete {
+    color: globals.$secondary-color;
+  }
+
+  .icon-button-edit {
+    margin-left: 1.5rem;
+    color: globals.$main-color;
+  }
+}

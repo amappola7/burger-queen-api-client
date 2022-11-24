@@ -3,6 +3,7 @@ import NavBar from '../../NavBar/NavBar';
 import ItemTable from '../../ItemTable/ItemTable';
 import { usersListRequest } from '../../API/requestHTTP';
 import FormAdminUsers from '../../FormAdminUsers/FormAdminUsers';
+import './AdminUsers.scss';
 
 function AdminUser() {
   // const AuthToken = useContext(AuthTokenContext);
@@ -24,22 +25,26 @@ function AdminUser() {
   return (
     <section className='admin-users'>
       <NavBar />
-      <button className='generic-button' type='button'>
-        Crear Usuario
-      </button>
-      <table>
-        <thead>
-          <tr>
-            <th>Usuarios</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usersList.map((user) => (
-            <ItemTable key={user.id} username={user.email} role={user.role} />
-          ))}
-        </tbody>
-      </table>
-      <FormAdminUsers />
+      <div className='admin-user__container'>
+        <button className='generic-button' type='button'>
+          Crear Usuario
+        </button>
+        <table className='admin-user__users-table'>
+          <thead>
+            <tr>
+              <th>Usuarios</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usersList.map((user) => (
+              <ItemTable key={user.id} username={user.email} role={user.role} />
+            ))}
+          </tbody>
+        </table>
+        <div className='admin-user__form-create-user'>
+          <FormAdminUsers />
+        </div>
+      </div>
     </section>
   );
 }

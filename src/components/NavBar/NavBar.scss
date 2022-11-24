@@ -42,25 +42,34 @@
       margin-left: 0.8rem;
     }
     .active{
-      // text-shadow: 0rem 0rem 1rem globals.$main-color;
       text-decoration: underline 0.2rem globals.$main-color;
     }
   }
 
   &__options--active {
-    // Estilos menú mobile
     width: 100%;
-    display: block;
+    height: 90%;
+    @include globals.flex(center, center, column);
+    gap: 6rem;
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    top: 30%;
+    top: 12rem;
     left:0;
     right: 0;
     text-align: center;
+    list-style: none;
+    background-color: white;
+    padding: 0;
+    margin: 0;
 
     .navbar__item {
+      font-family: globals.$main-font;
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-decoration: none;
       color: globals.$dark-color;
+      text-align: left;
     }
   }
 
