@@ -20,7 +20,7 @@ function AdminUser() {
       .catch((err) => {
         console.error('ADMIN USER:', err);
       });
-  }, []);
+  }, [usersList]);
 
   return (
     <section className='admin-users'>
