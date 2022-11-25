@@ -9,6 +9,7 @@ function AdminUser() {
   // const AuthToken = useContext(AuthTokenContext);
 
   const [usersList, setUsersList] = useState([]);
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -42,12 +43,13 @@ function AdminUser() {
                 username={user.email}
                 role={user.role}
                 id={user.id}
+                setEdit={setEdit}
               />
             ))}
           </tbody>
         </table>
         <div className='admin-user__form-create-user'>
-          <FormAdminUsers />
+          <FormAdminUsers edit={edit} setEdit={setEdit} />
         </div>
       </div>
     </section>

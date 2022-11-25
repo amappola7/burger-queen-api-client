@@ -1,14 +1,33 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { createUserRequest } from '../../API/requestHTTP';
 
-function FormAdminUsers() {
-  const [user, setUser] = useState({});
+function FormAdminUsers({ edit, setEdit }) {
+  // states
+  const [valueForm, setValueForm] = useState({
+    valueEmail: '',
+    valuePassword: '',
+    valueRole: '',
+  });
 
+  // local storage
+  const userEmail = localStorage.getItem('email');
+  const userRole = localStorage.getItem('role');
+
+  // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
 
+    setEdit(false);
+
     const token = localStorage.getItem('token');
-    createUserRequest(user.email, user.password, user.role, token)
+
+    createUserRequest(
+      valueForm.valueEmail,
+      valueForm.valuePassword,
+      valueForm.valueRole,
+      token
+    )
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
 
@@ -22,42 +41,52 @@ function FormAdminUsers() {
         <label htmlFor='email'>
           Email
           <input
-            onChange={(ev) =>
-              setUser((prevState) => ({
+            onChange={(ev) => {
+              setValueForm((prevState) => ({
                 ...prevState,
-                email: ev.target.value,
-              }))
-            }
+                valueEmail: ev.target.value,
+              }));
+            }}
             type='email'
             id='email'
             autoComplete='email'
+            value={
+              edit
+                ? setValueForm({ valueEmail: userEmail })
+                : valueForm.valueEmail
+            }
+            required
           />
         </label>
         <label htmlFor='password'>
           Contraseña
           <input
-            onChange={(ev) =>
-              setUser((prevState) => ({
+            onChange={(ev) => {
+              setValueForm((prevState) => ({
                 ...prevState,
-                password: ev.target.value,
-              }))
-            }
+                valuePassword: ev.target.value,
+              }));
+            }}
             type='password'
             id='password'
             autoComplete='current-password'
+            value={valueForm.valuePassword}
+            required
           />
         </label>
         <label htmlFor='role'>
           Rol
           <select
-            onChange={(ev) =>
-              setUser((prevState) => ({
+            onChange={(ev) => {
+              setValueForm((prevState) => ({
                 ...prevState,
-                role: ev.target.value,
-              }))
-            }
+                valueRole: ev.target.value,
+              }));
+            }}
             name='role'
             id='role'
+            value={valueForm.valueRole}
+            required
           >
             <option value='role'>-- Rol --</option>
             <option value='admin'>Admin</option>
