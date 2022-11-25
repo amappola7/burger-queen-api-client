@@ -20,7 +20,7 @@ function FormAdminUsers() {
       <h3>Crear Usuario</h3>
       <form onSubmit={(e) => sendForm(e)} action=''>
         <label htmlFor='email'>
-          Nombre
+          Email
           <input
             onChange={(ev) =>
               setUser((prevState) => ({
