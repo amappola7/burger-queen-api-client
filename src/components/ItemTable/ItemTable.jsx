@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { editUserRequest, deleteUserRequest } from '../API/requestHTTP';
+import { editUserRequest, deleteUserRequest } from '../../API/requestHTTP';
 import './ItemTable.scss';
 
 function ItemTable({ username, role, id }) {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createUserRequest } from '../API/requestHTTP';
+import { createUserRequest } from '../../API/requestHTTP';
 
 function FormAdminUsers() {
   const [user, setUser] = useState({});
@@ -30,6 +30,7 @@ function FormAdminUsers() {
             }
             type='email'
             id='email'
+            autoComplete='email'
           />
         </label>
         <label htmlFor='password'>
@@ -43,6 +44,7 @@ function FormAdminUsers() {
             }
             type='password'
             id='password'
+            autoComplete='current-password'
           />
         </label>
         <label htmlFor='role'>
@@ -57,9 +59,7 @@ function FormAdminUsers() {
             name='role'
             id='role'
           >
-            <option value='role' selected>
-              -- Rol --
-            </option>
+            <option value='role'>-- Rol --</option>
             <option value='admin'>Admin</option>
             <option value='chef'>Chef</option>
             <option value='waiter'>Mesero</option>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from '../../NavBar/NavBar';
-import ItemTable from '../../ItemTable/ItemTable';
+import NavBar from '../../components/NavBar/NavBar';
+import ItemTable from '../../components/ItemTable/ItemTable';
 import { usersListRequest } from '../../API/requestHTTP';
-import FormAdminUsers from '../../FormAdminUsers/FormAdminUsers';
+import FormAdminUsers from '../../components/FormAdminUsers/FormAdminUsers';
 import './AdminUsers.scss';
 
 function AdminUser() {

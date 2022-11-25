@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AdminIndex from '../components/Pages/AdminIndex/AdminIndex';
-import AdminOrders from '../components/Pages/AdminOrders/AdminOrders';
-import AdminProducts from '../components/Pages/AdminProducts/AdminProducts';
-import AdminUser from '../components/Pages/AdminUsers/AdminUser';
-import Login from '../components/Pages/Login/Login';
+import AdminIndex from '../Pages/AdminIndex/AdminIndex';
+import AdminOrders from '../Pages/AdminOrders/AdminOrders';
+import AdminProducts from '../Pages/AdminProducts/AdminProducts';
+import AdminUser from '../Pages/AdminUsers/AdminUser';
+import Login from '../Pages/Login/Login';
 
 function Router() {
   return (
