@@ -28,7 +28,7 @@
       text-decoration: none;
       &:hover{
         color: globals.$main-color;
-        transition: all 0.8s;
+        transition: all 0.5s;
       }
     }
     .exit{
@@ -42,7 +42,10 @@
       margin-left: 0.8rem;
     }
     .active{
-      text-decoration: underline 0.2rem globals.$main-color;
+      // text-decoration: underline 0.2rem globals.$main-color;
+      line-height: 5rem;
+      border-bottom: 0.28rem solid globals.$main-color;
+      border-radius: 0.1rem;
     }
   }
 
@@ -79,3 +82,13 @@
     }
   }
 }
+
+
+@media(min-width: 600px) {
+  .navbar {
+    height: 12rem;
+    &__logo {
+      height: 75%;
+    }
+  }
+} 

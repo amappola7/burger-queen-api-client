@@ -12,7 +12,6 @@
     }
   }
 
-
   .admin-user__users-table {
     width: 90%;
     border-radius: 2.5rem;
@@ -29,5 +28,26 @@
 
   .admin-user__form-create-user {
     display: block;
+  }
+}
+
+@media (min-width: 600px) {
+  .admin-user__container{
+    .generic-button {
+      width: 60%;
+      height: 6rem;
+      border-radius: 4rem;  
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .admin-user__users-table{
+      width: 80%;
+      font-size: 2.4rem;
+
+      thead th {
+        height: 6rem;
+      }
+    }
   }
 }

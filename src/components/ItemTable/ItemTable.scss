@@ -32,3 +32,18 @@
     color: globals.$main-color;
   }
 }
+
+@media (min-width: 600px) {
+  .item-table {
+    td {
+      padding: 1.8rem 3.2rem;
+    }
+    p {
+      font-size: 2.2rem;
+    }
+    i {
+      font-size: 2.3rem;
+      margin-left: 2.2rem;
+    }
+  }
+}
