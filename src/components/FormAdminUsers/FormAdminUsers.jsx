@@ -1,29 +1,40 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { createUserRequest } from '../../API/requestHTTP';
+import { createUserRequest, editUserRequest } from '../../API/requestHTTP';
 
 function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
-
-    setEdit(false);
-
     const token = localStorage.getItem('token');
 
-    createUserRequest(
-      valueForm.email,
-      valueForm.password,
-      valueForm.role,
-      token
-    )
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+    if (!edit) {
+      createUserRequest(
+        valueForm.email,
+        valueForm.password,
+        valueForm.role,
+        token
+      )
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+    } else {
+      editUserRequest(
+        valueForm.email,
+        valueForm.password,
+        valueForm.role,
+        token,
+        valueForm.userId
+      )
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+    }
 
+    setEdit(false);
     setValueForm({
       email: '',
       password: '',
       role: '',
+      userId: '',
     });
   };
 
@@ -78,7 +89,7 @@ function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
             <option value='waiter'>Mesero</option>
           </select>
         </label>
-        <button type='submit'>Crear</button>
+        <button type='submit'>{edit ? 'Editar' : 'Crear'}</button>
       </form>
     </section>
   );

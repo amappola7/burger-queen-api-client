@@ -3,7 +3,7 @@ import React from 'react';
 import { deleteUserRequest } from '../../API/requestHTTP';
 import './ItemTable.scss';
 
-function ItemTable({ username, userRole, id, setValueForm }) {
+function ItemTable({ username, userRole, id, setValueForm, setEdit }) {
   const onDelete = () => {
     const token = localStorage.getItem('token');
     deleteUserRequest(token, id)
@@ -13,11 +13,12 @@ function ItemTable({ username, userRole, id, setValueForm }) {
 
   // On Edit Function
   const onEdit = () => {
-    // setEdit(true);
+    setEdit(true);
     setValueForm({
       email: username,
       password: '',
       role: userRole,
+      userId: id,
     });
   };
 

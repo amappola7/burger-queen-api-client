@@ -14,6 +14,7 @@ function AdminUser() {
     email: '',
     password: '',
     role: '',
+    userId: '',
   });
 
   useEffect(() => {
@@ -50,6 +51,7 @@ function AdminUser() {
                 id={user.id}
                 valueForm={valueForm}
                 setValueForm={setValueForm}
+                setEdit={setEdit}
               />
             ))}
           </tbody>
