@@ -21,7 +21,8 @@ function NavBar() {
       showCancelButton: true,
       confirmButtonColor: '#ff7272',
       cancelButtonColor: '#8c8787',
-      confirmButtonText: 'Si, cerrar sesión!',
+      confirmButtonText: '¡Si, cerrar sesión!',
+      cancelButtonText: 'Cancelar',
       customClass: {
         popup: 'delete-user-alert',
       },

@@ -49,6 +49,8 @@ function AdminUser() {
         <Modal
           isOpen={isOpenFormAdminUsers}
           closeModal={closeFormAdminUsersModal}
+          setEdit={setEdit}
+          setValueForm={setValueForm}
         >
           <FormAdminUsers
             edit={edit}

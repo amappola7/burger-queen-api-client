@@ -3,12 +3,12 @@
 .form-admin-users {
   @include globals.flex(center, center, column);
   color: globals.$dark-color;
-  padding-top: 2.1rem;
   text-align: center;
   width: 100%;
   h3 {
+    margin-bottom: 1.5rem;
     font-family: globals.$main-font;
-    font-size: 2rem;
+    font-size: 2.1rem;
     font-weight: 700; 
   }
   form {

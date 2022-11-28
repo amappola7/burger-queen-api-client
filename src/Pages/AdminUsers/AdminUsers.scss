@@ -57,3 +57,28 @@
     }
   }
 }
+
+@media (min-width: 1000px) {
+  .admin-users {
+    padding-top: 12rem;
+  }
+  .admin-user__container {
+    flex-direction: row;
+    padding: 4rem;
+    gap: 5rem;
+    .generic-button {
+      display: none;
+    }
+
+    .admin-user__users-table {
+      min-height: 40rem;
+    }
+    .admin-user__form-create-user {
+      display: flex;
+      min-height: 40rem;
+      width: 38%;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 2.5rem;
+    }
+  }
+}

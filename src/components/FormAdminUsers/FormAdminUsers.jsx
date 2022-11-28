@@ -49,7 +49,7 @@ function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
 
   return (
     <section className='form-admin-users'>
-      <h3>Crear Usuario</h3>
+      <h3>{edit ? 'Editar Usuario' : 'Crear Usuario'}</h3>
       <form onSubmit={(e) => sendForm(e)} action=''>
         <label htmlFor='email'>
           Email

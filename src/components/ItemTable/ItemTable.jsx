@@ -20,12 +20,12 @@ function ItemTable({
     const token = localStorage.getItem('token');
     MySwal.fire({
       title: '¿Estás seguro que deseas eliminar el usuario?',
-      text: 'No podrás deshacer esto!',
+      text: '¡No podrás deshacer esto!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#ff7272',
       cancelButtonColor: '#8c8787',
-      confirmButtonText: 'Si, elimínalo!',
+      confirmButtonText: '¡Si, elimínalo!',
       customClass: {
         popup: 'delete-user-alert',
       },
