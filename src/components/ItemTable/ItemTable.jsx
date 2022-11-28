@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { editUserRequest, deleteUserRequest } from '../../API/requestHTTP';
+import { deleteUserRequest } from '../../API/requestHTTP';
 import './ItemTable.scss';
 
-function ItemTable({ username, role, id, setEdit }) {
+function ItemTable({ username, userRole, id, setValueForm }) {
   const onDelete = () => {
     const token = localStorage.getItem('token');
     deleteUserRequest(token, id)
@@ -11,10 +11,14 @@ function ItemTable({ username, role, id, setEdit }) {
       .catch((error) => console.log(error));
   };
 
+  // On Edit Function
   const onEdit = () => {
-    setEdit(true);
-    const userEmail = localStorage.setItem('email', username);
-    const userRole = localStorage.setItem('role', role);
+    // setEdit(true);
+    setValueForm({
+      email: username,
+      password: '',
+      role: userRole,
+    });
   };
 
   return (
@@ -22,7 +26,7 @@ function ItemTable({ username, role, id, setEdit }) {
       <td>
         <div>
           <p>{username}</p>
-          <p>{role}</p>
+          <p>{userRole}</p>
         </div>
         <div>
           <button

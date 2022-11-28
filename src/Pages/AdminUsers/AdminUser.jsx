@@ -10,6 +10,11 @@ function AdminUser() {
 
   const [usersList, setUsersList] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [valueForm, setValueForm] = useState({
+    email: '',
+    password: '',
+    role: '',
+  });
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -41,15 +46,22 @@ function AdminUser() {
               <ItemTable
                 key={user.id}
                 username={user.email}
-                role={user.role}
+                userRole={user.role}
                 id={user.id}
                 setEdit={setEdit}
+                valueForm={valueForm}
+                setValueForm={setValueForm}
               />
             ))}
           </tbody>
         </table>
         <div className='admin-user__form-create-user'>
-          <FormAdminUsers edit={edit} setEdit={setEdit} />
+          <FormAdminUsers
+            edit={edit}
+            setEdit={setEdit}
+            valueForm={valueForm}
+            setValueForm={setValueForm}
+          />
         </div>
       </div>
     </section>

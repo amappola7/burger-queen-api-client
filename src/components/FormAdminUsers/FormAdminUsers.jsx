@@ -2,18 +2,7 @@
 import React, { useState } from 'react';
 import { createUserRequest } from '../../API/requestHTTP';
 
-function FormAdminUsers({ edit, setEdit }) {
-  // states
-  const [valueForm, setValueForm] = useState({
-    email: '',
-    password: '',
-    role: '',
-  });
-
-  // local storage
-  const userEmail = localStorage.getItem('email');
-  const userRole = localStorage.getItem('role');
-
+function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
@@ -31,7 +20,11 @@ function FormAdminUsers({ edit, setEdit }) {
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
 
-    ev.target.reset();
+    setValueForm({
+      email: '',
+      password: '',
+      role: '',
+    });
   };
 
   // Onchange function
