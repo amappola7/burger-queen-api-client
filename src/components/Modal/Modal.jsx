@@ -8,12 +8,12 @@ function Modal({ isOpen, closeModal, children, setEdit, setValueForm }) {
   const handleModalContentClick = (e) => {
     e.stopPropagation();
     setEdit(false);
-    setValueForm({
-      email: '',
-      password: '',
-      role: '',
-      userId: '',
-    });
+    // setValueForm({
+    //   email: '',
+    //   password: '',
+    //   role: '',
+    //   userId: '',
+    // });
   };
 
   const handleCloseModal = () => {

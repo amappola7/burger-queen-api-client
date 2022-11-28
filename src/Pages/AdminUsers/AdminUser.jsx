@@ -40,7 +40,7 @@ function AdminUser() {
       <NavBar />
       <div className='admin-user__container'>
         <button
-          className='generic-button'
+          className='generic-button create-user-button'
           type='button'
           onClick={openFormAdminUsersModal}
         >
