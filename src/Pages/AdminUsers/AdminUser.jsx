@@ -48,7 +48,6 @@ function AdminUser() {
                 username={user.email}
                 userRole={user.role}
                 id={user.id}
-                setEdit={setEdit}
                 valueForm={valueForm}
                 setValueForm={setValueForm}
               />
