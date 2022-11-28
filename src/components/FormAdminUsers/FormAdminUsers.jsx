@@ -35,14 +35,14 @@ function FormAdminUsers({
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
     }
-    setEdit(false);
-    closeModal();
     setValueForm({
       email: '',
       password: '',
       role: '',
       userId: '',
     });
+    setEdit(false);
+    closeModal();
   };
 
   // Onchange function
@@ -51,6 +51,16 @@ function FormAdminUsers({
       ...prevState,
       [ev.target.name]: ev.target.value,
     }));
+  };
+
+  const handleChangeToCreate = () => {
+    setEdit(false);
+    setValueForm({
+      email: '',
+      password: '',
+      role: '',
+      userId: '',
+    });
   };
 
   return (
@@ -96,6 +106,18 @@ function FormAdminUsers({
         <button type='submit' className='generic-button'>
           {edit ? 'Editar' : 'Crear'}
         </button>
+        {edit && (
+          <>
+            <p className='form-admin-users__text--options'>- o -</p>
+            <button
+              className='form-admin-users__button--options'
+              type='button'
+              onClick={handleChangeToCreate}
+            >
+              Crea un usuario
+            </button>
+          </>
+        )}
       </form>
     </section>
   );

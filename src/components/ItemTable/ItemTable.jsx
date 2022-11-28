@@ -38,6 +38,9 @@ function ItemTable({
           title: 'Usuario eliminado!',
           icon: 'success',
           confirmButtonColor: '#fdad4e',
+          customClass: {
+            popup: 'delete-user-alert',
+          },
         });
       }
     });
