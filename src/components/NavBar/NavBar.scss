@@ -35,7 +35,13 @@
       }
     }
     .exit{
-      margin-left: 6rem;
+      margin-left: 5rem;
+      background-color: transparent;
+      border: none;
+      font-family: globals.$main-font;
+      cursor: pointer;
+      font-size: 1.6rem;
+      font-weight: 600;
     }
     .exit:hover {
       color: globals.$secondary-color;

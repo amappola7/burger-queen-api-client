@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { NavLink } from 'react-router-dom';
 import BurguerButton from '../BurguerButton/BurguerButton';
 import './NavBar.scss';
@@ -8,6 +10,26 @@ function NavBar() {
 
   const handleClick = () => {
     setClicked(!clicked);
+  };
+
+  const closeSesion = () => {
+    const MySwal = withReactContent(Swal);
+
+    MySwal.fire({
+      title: '¿Estás seguro que deseas cerrar sesión?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#ff7272',
+      cancelButtonColor: '#8c8787',
+      confirmButtonText: 'Si, cerrar sesión!',
+      customClass: {
+        popup: 'delete-user-alert',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        //
+      }
+    });
   };
 
   return (
@@ -30,10 +52,14 @@ function NavBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/' className='navbar__item exit'>
+          <button
+            type='button'
+            className='navbar__item exit'
+            onClick={closeSesion}
+          >
             Cerrar Sesión
             <i className='fa-solid fa-person-walking-arrow-right icon' />
-          </NavLink>
+          </button>
         </li>
       </ul>
       <div className='burguer-icon'>
