@@ -3,7 +3,13 @@ import React from 'react';
 import { createUserRequest, editUserRequest } from '../../API/requestHTTP';
 import './FormAdminUsers.scss';
 
-function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
+function FormAdminUsers({
+  edit,
+  setEdit,
+  valueForm,
+  setValueForm,
+  closeModal,
+}) {
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
@@ -29,8 +35,8 @@ function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
     }
-
     setEdit(false);
+    closeModal();
     setValueForm({
       email: '',
       password: '',
@@ -56,7 +62,6 @@ function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
           <input
             onChange={(ev) => handleOnChange(ev)}
             type='email'
-            id='email'
             autoComplete='email'
             name='email'
             value={valueForm.email}
@@ -68,7 +73,6 @@ function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
           <input
             onChange={(ev) => handleOnChange(ev)}
             type='password'
-            id='password'
             autoComplete='current-password'
             name='password'
             value={valueForm.password}
@@ -80,7 +84,6 @@ function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
           <select
             onChange={(ev) => handleOnChange(ev)}
             name='role'
-            id='role'
             value={valueForm.role}
             required
           >

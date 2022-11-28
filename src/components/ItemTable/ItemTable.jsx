@@ -25,7 +25,7 @@ function ItemTable({
       showCancelButton: true,
       confirmButtonColor: '#ff7272',
       cancelButtonColor: '#8c8787',
-      confirmButtonText: '¡Si, elimínalo!',
+      confirmButtonText: 'Si, elimínalo!',
       customClass: {
         popup: 'delete-user-alert',
       },
@@ -45,7 +45,7 @@ function ItemTable({
 
   // On Edit Function
   const onEdit = () => {
-    if (screen.width < 1000) {
+    if (window.innerWidth < 1000) {
       openModal();
     }
     setEdit(true);

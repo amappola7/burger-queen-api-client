@@ -23,6 +23,17 @@ function AdminUser() {
     userId: '',
   });
 
+  const openCreateUserModal = () => {
+    openFormAdminUsersModal();
+    setEdit(false);
+    setValueForm({
+      email: '',
+      password: '',
+      role: '',
+      userId: '',
+    });
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     usersListRequest(token)
@@ -42,7 +53,7 @@ function AdminUser() {
         <button
           className='generic-button create-user-button'
           type='button'
-          onClick={openFormAdminUsersModal}
+          onClick={openCreateUserModal}
         >
           Crear Usuario
         </button>
@@ -57,6 +68,7 @@ function AdminUser() {
             setEdit={setEdit}
             valueForm={valueForm}
             setValueForm={setValueForm}
+            closeModal={closeFormAdminUsersModal}
           />
         </Modal>
         <table className='admin-user__users-table'>
