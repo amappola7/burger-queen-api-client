@@ -36,10 +36,41 @@
       margin-bottom: 3rem;
       margin-top: 1rem;
       text-decoration: none;
+      @media(min-width: 800px) {
+        margin-bottom: 8rem;
+      } 
     }
 
     .generic-button:hover{
       @include globals.hover-button;
+    }
+  }
+}
+
+
+@media (min-width: 600px) {
+  .admin-index {
+    .logo{
+      width:15%;
+    }
+    i {
+      font-size:3.8rem;
+    }
+    &__menu {
+      i {
+        font-size:12rem;
+      }
+      img {
+        width:18%
+      }
+    }
+    .generic-button {
+      margin-bottom: 6rem;
+      width: 60%;
+      height:6rem;
+      font-size: 2.5rem;
+      font-weight: 900;
+      border-radius: 4rem;
     }
   }
 }
