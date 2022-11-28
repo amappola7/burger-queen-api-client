@@ -1,8 +1,12 @@
 @use '../../App/styles/globals';
 
-.admin-user__container {
-  @include globals.flex(center, center, column);
 
+.admin-users{
+  padding-top: 10rem;
+}
+.admin-user__container {
+  width: 100%;
+  @include globals.flex(center, center, column);
   .generic-button {
     margin-bottom: 3.5rem;
     @include globals.generic-button(90%);
@@ -11,8 +15,6 @@
       @include globals.hover-button;
     }
   }
-
-
   .admin-user__users-table {
     width: 90%;
     border-radius: 2.5rem;
@@ -29,5 +31,6 @@
 
   .admin-user__form-create-user {
     display: block;
+    width: 100%;
   }
 }

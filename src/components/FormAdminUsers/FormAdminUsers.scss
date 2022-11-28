@@ -1,0 +1,55 @@
+@use '../../App/styles/globals';
+
+.form-admin-users {
+  @include globals.flex(center, center, column);
+  color: globals.$dark-color;
+  padding-top: 2.1rem;
+  text-align: center;
+  width: 100%;
+  h3 {
+    font-family: globals.$main-font;
+    font-size: 2rem;
+    font-weight: 700; 
+  }
+  form {
+    width: 80%;
+    label{
+      @include globals.flex(center, flex-start, column);
+      margin-bottom: 1.5rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.9rem;
+      font-family: globals.$main-font;
+      font-weight: 800;
+    }
+
+    input, select {
+      padding: 0 2rem;
+      width: 100%;
+      height: 4.4rem;
+      background-color: #eeeeee;
+      border: none;
+      border-radius: 2rem;
+      font-family: globals.$main-font;
+      font-size: 1.7rem;
+      font-weight: 600;
+      outline: none;
+      box-shadow: globals.$box-shadow;
+      &:focus {
+        outline: globals.$main-color 0.1rem solid;
+      }
+
+      &::placeholder {
+        color: #acabab;
+      }
+    }
+
+    select{
+      border-right: 2rem solid transparent;
+    }
+    .generic-button {
+      @include globals.generic-button(100%);
+    }
+  }
+}

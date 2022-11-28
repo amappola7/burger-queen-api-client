@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { createUserRequest, editUserRequest } from '../../API/requestHTTP';
+import './FormAdminUsers.scss';
 
 function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
   // onsubmit function
@@ -89,7 +90,9 @@ function FormAdminUsers({ edit, setEdit, valueForm, setValueForm }) {
             <option value='waiter'>Mesero</option>
           </select>
         </label>
-        <button type='submit'>{edit ? 'Editar' : 'Crear'}</button>
+        <button type='submit' className='generic-button'>
+          {edit ? 'Editar' : 'Crear'}
+        </button>
       </form>
     </section>
   );
