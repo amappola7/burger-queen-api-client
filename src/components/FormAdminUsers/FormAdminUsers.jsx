@@ -5,9 +5,9 @@ import { createUserRequest } from '../../API/requestHTTP';
 function FormAdminUsers({ edit, setEdit }) {
   // states
   const [valueForm, setValueForm] = useState({
-    valueEmail: '',
-    valuePassword: '',
-    valueRole: '',
+    email: '',
+    password: '',
+    role: '',
   });
 
   // local storage
@@ -23,15 +23,23 @@ function FormAdminUsers({ edit, setEdit }) {
     const token = localStorage.getItem('token');
 
     createUserRequest(
-      valueForm.valueEmail,
-      valueForm.valuePassword,
-      valueForm.valueRole,
+      valueForm.email,
+      valueForm.password,
+      valueForm.role,
       token
     )
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
 
     ev.target.reset();
+  };
+
+  // Onchange function
+  const handleOnChange = (ev) => {
+    setValueForm((prevState) => ({
+      ...prevState,
+      [ev.target.name]: ev.target.value,
+    }));
   };
 
   return (
@@ -41,51 +49,34 @@ function FormAdminUsers({ edit, setEdit }) {
         <label htmlFor='email'>
           Email
           <input
-            onChange={(ev) => {
-              setValueForm((prevState) => ({
-                ...prevState,
-                valueEmail: ev.target.value,
-              }));
-            }}
+            onChange={(ev) => handleOnChange(ev)}
             type='email'
             id='email'
             autoComplete='email'
-            value={
-              edit
-                ? setValueForm({ valueEmail: userEmail })
-                : valueForm.valueEmail
-            }
+            name='email'
+            value={valueForm.email}
             required
           />
         </label>
         <label htmlFor='password'>
           Contraseña
           <input
-            onChange={(ev) => {
-              setValueForm((prevState) => ({
-                ...prevState,
-                valuePassword: ev.target.value,
-              }));
-            }}
+            onChange={(ev) => handleOnChange(ev)}
             type='password'
             id='password'
             autoComplete='current-password'
-            value={valueForm.valuePassword}
+            name='password'
+            value={valueForm.password}
             required
           />
         </label>
         <label htmlFor='role'>
           Rol
           <select
-            onChange={(ev) => {
-              setValueForm((prevState) => ({
-                ...prevState,
-                valueRole: ev.target.value,
-              }));
-            }}
+            onChange={(ev) => handleOnChange(ev)}
             name='role'
             id='role'
-            value={valueForm.valueRole}
+            value={valueForm.role}
             required
           >
             <option value='role'>-- Rol --</option>
