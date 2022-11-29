@@ -6,11 +6,14 @@
   text-align: center;
   width: 100%;
   h3 {
+    margin-bottom: 1.5rem;
     width: 100%;
     font-family: globals.$main-font;
     font-size: 2.1rem;
     font-weight: 700;
-    border-bottom: globals.$gray-color solid 0.3rem;
+    @media (min-width: 1000px) {
+      border-bottom: globals.$gray-color solid 0.3rem;
+    }
   }
   form {
     width: 80%;

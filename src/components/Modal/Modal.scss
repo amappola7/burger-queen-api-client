@@ -13,13 +13,15 @@
   align-items: center;
 
   .modal-content {
+    // @include globals.flex(center, center, column);
     text-align: right;
     background-color: white;
     overflow: scroll;
     width: 90%;
-    height: 75%;
+    height: fit-content;
+    padding-bottom:3rem;
     border-radius: 2.5rem;
-    
+
     &__close-button {
       margin-right: 2rem;
       margin-top: 2rem;
