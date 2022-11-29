@@ -51,6 +51,20 @@
       border-right: 2rem solid transparent;
       cursor: pointer;
     }
+
+    .edit-create__message-error {
+      @include globals.flex(center, center, row);
+      i {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+        color: globals.$secondary-color;
+      }
+      font-family: globals.$main-font;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: globals.$secondary-color;
+    }
+
     .generic-button {
       @include globals.generic-button(100%);
       margin-bottom: 0;

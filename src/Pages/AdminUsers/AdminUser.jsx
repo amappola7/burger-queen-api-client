@@ -22,6 +22,9 @@ function AdminUser() {
     role: '',
     userId: '',
   });
+  const [apiError, setApiError] = useState({
+    error: '',
+  });
 
   const openCreateUserModal = () => {
     openFormAdminUsersModal();
@@ -69,6 +72,8 @@ function AdminUser() {
             valueForm={valueForm}
             setValueForm={setValueForm}
             closeModal={closeFormAdminUsersModal}
+            apiError={apiError}
+            setApiError={setApiError}
           />
         </Modal>
         <table className='admin-user__users-table'>
@@ -88,6 +93,7 @@ function AdminUser() {
                 setValueForm={setValueForm}
                 setEdit={setEdit}
                 openModal={openFormAdminUsersModal}
+                setApiError={setApiError}
               />
             ))}
           </tbody>
@@ -98,6 +104,8 @@ function AdminUser() {
             setEdit={setEdit}
             valueForm={valueForm}
             setValueForm={setValueForm}
+            apiError={apiError}
+            setApiError={setApiError}
           />
         </div>
       </div>

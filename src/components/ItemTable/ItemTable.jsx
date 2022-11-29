@@ -13,6 +13,7 @@ function ItemTable({
   setValueForm,
   setEdit,
   openModal,
+  setApiError,
 }) {
   const MySwal = withReactContent(Swal);
 
@@ -48,6 +49,9 @@ function ItemTable({
 
   // On Edit Function
   const onEdit = () => {
+    setApiError({
+      error: '',
+    });
     if (window.innerWidth < 1000) {
       openModal();
     }

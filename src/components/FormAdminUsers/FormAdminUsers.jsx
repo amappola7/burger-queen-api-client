@@ -9,6 +9,8 @@ function FormAdminUsers({
   valueForm,
   setValueForm,
   closeModal,
+  apiError,
+  setApiError,
 }) {
   // onsubmit function
   const sendForm = (ev) => {
@@ -22,8 +24,37 @@ function FormAdminUsers({
         valueForm.role,
         token
       )
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error));
+        .then(() => {
+          setApiError({
+            error: '',
+          });
+          setValueForm({
+            email: '',
+            password: '',
+            role: '',
+            userId: '',
+          });
+          setEdit(false);
+          closeModal();
+        })
+        .catch((error) => {
+          switch (error.response.data) {
+            case 'Email already exists':
+              console.log('Creando mal un usuario - API Error', apiError);
+              setApiError({
+                error: 'El correo ya está en uso',
+              });
+              break;
+            case 'Password is too short':
+              setApiError({
+                error: 'La contraseña es muy corta',
+              });
+              break;
+            default:
+              break;
+          }
+          console.log(error);
+        });
     } else {
       editUserRequest(
         valueForm.email,
@@ -32,17 +63,38 @@ function FormAdminUsers({
         token,
         valueForm.userId
       )
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error));
+        .then(() => {
+          // console.log(apiError);
+          setApiError({
+            error: '',
+          });
+          setValueForm({
+            email: '',
+            password: '',
+            role: '',
+            userId: '',
+          });
+          setEdit(false);
+          closeModal();
+        })
+        .catch((error) => {
+          console.log(error);
+          switch (error.response.data) {
+            case 'Email already exists':
+              setApiError({
+                error: 'El correo ya está en uso',
+              });
+              break;
+            case 'Password is too short':
+              setApiError({
+                error: 'La contraseña es muy corta',
+              });
+              break;
+            default:
+              break;
+          }
+        });
     }
-    setValueForm({
-      email: '',
-      password: '',
-      role: '',
-      userId: '',
-    });
-    setEdit(false);
-    closeModal();
   };
 
   // Onchange function
@@ -54,6 +106,9 @@ function FormAdminUsers({
   };
 
   const handleChangeToCreate = () => {
+    setApiError({
+      error: '',
+    });
     setEdit(false);
     setValueForm({
       email: '',
@@ -103,6 +158,12 @@ function FormAdminUsers({
             <option value='waiter'>Mesero</option>
           </select>
         </label>
+        {apiError.error && (
+          <span className='edit-create__message-error'>
+            <i className='fa-solid fa-triangle-exclamation' />
+            {apiError.error}
+          </span>
+        )}
         <button type='submit' className='generic-button'>
           {edit ? 'Editar' : 'Crear'}
         </button>
