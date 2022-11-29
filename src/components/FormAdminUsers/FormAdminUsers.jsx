@@ -12,12 +12,20 @@ function FormAdminUsers({
   apiError,
   setApiError,
 }) {
-  // onsubmit function
-  const sendForm = (ev) => {
-    ev.preventDefault();
-    const token = localStorage.getItem('token');
+  // Handle errors function
+  const handleErrors = (token) => {
+    const emailRegExp =
+      /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
-    if (!edit) {
+    if (!valueForm.role || valueForm.role === 'role') {
+      setApiError({
+        error: 'Elija un rol válido',
+      });
+    } else if (!valueForm.email.match(emailRegExp)) {
+      setApiError({
+        error: 'Ingrese un correo válido',
+      });
+    } else if (!edit) {
       createUserRequest(
         valueForm.email,
         valueForm.password,
@@ -53,7 +61,6 @@ function FormAdminUsers({
             default:
               break;
           }
-          console.log(error);
         });
     } else {
       editUserRequest(
@@ -78,7 +85,6 @@ function FormAdminUsers({
           closeModal();
         })
         .catch((error) => {
-          console.log(error);
           switch (error.response.data) {
             case 'Email already exists':
               setApiError({
@@ -95,6 +101,13 @@ function FormAdminUsers({
           }
         });
     }
+  };
+
+  // onsubmit function
+  const sendForm = (ev) => {
+    ev.preventDefault();
+    const token = localStorage.getItem('token');
+    handleErrors(token);
   };
 
   // Onchange function
