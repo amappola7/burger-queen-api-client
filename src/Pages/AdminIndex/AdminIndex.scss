@@ -15,13 +15,18 @@
     i {
       font-size: 2rem;
     }
-  }  
+  }
   &__menu {
     padding-bottom: 2rem;
     width: 100%;
     height: 100%;
     flex: 1;
     @include globals.flex(center, center, column);
+
+    .admin-index__category {
+      @include globals.flex(center, center, column);
+      width: 100%;
+    }
     img {
       width: 25%;
     }
@@ -29,7 +34,7 @@
     i {
       font-size: 8rem
     }
-    
+
     .generic-button {
       @include globals.generic-button(70%);
       @include globals.flex(center, center, unset);
@@ -38,7 +43,7 @@
       text-decoration: none;
       @media(min-width: 800px) {
         margin-bottom: 8rem;
-      } 
+      }
     }
 
     .generic-button:hover{
@@ -73,4 +78,35 @@
       border-radius: 4rem;
     }
   }
+}
+
+@media (min-width: 1000px) {
+  .admin-index__header {
+    height: 16vh;
+    width: 100%;
+    padding: 1rem 3rem 0 2rem;
+
+    & .logo {
+      height: 95%;
+      width: auto;
+    }
+  }
+
+  .admin-index__menu {
+    @include globals.flex(center, center, row);
+
+    .admin-index__category {
+      width: 30%;
+    }
+
+    img {
+      width: 14.5rem;
+    }
+
+    .generic-button {
+      width: 80%;
+    }
+  }
+
+
 }
