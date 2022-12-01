@@ -1,9 +1,9 @@
 @use '../../App/styles/globals';
 
-.admin-users {
+.admin-products {
   padding-top: 11rem;
 }
-.admin-user__container {
+.admin-products__container {
   width: 100%;
   @include globals.flex(center, center, column);
   .generic-button {
@@ -14,7 +14,7 @@
       @include globals.hover-button;
     }
   }
-  .admin-user__users-table {
+  .admin-products__products-table {
     width: 90%;
     border-radius: 2.5rem;
     margin-bottom: 4rem;
@@ -29,17 +29,17 @@
     }
   }
 
-  .admin-user__form-create-user {
+  .admin-products__form-create-product {
     display: none;
     width: 100%;
   }
 }
 
 @media (min-width: 600px) {
-  .admin-users {
+  .admin-products {
     padding-top: 13rem;
   }
-  .admin-user__container {
+  .admin-products__container {
     .generic-button {
       width: 70%;
       height: 6rem;
@@ -48,7 +48,7 @@
       font-weight: 700;
     }
 
-    .admin-user__users-table {
+    .admin-products__products-table {
       width: 80%;
       font-size: 2.4rem;
 
@@ -60,19 +60,19 @@
 }
 
 @media (min-width: 1000px) {
-  .admin-users {
+  .admin-products {
     padding-top: 9rem;
   }
-  .admin-user__container {
+  .admin-products__container {
     flex-direction: row;
     align-items: flex-start;
     padding: 4rem;
     padding-bottom: 1rem;
     gap: 5rem;
-    .create-user-button {
+    .create-products-button {
       display: none;
     }
-    .admin-user__users-table {
+    .admin-products__products-table {
       min-height: 40rem;
       font-size: 1.9rem;
       margin-bottom: 0;
@@ -85,7 +85,7 @@
         overflow: scroll;
       }
     }
-    .admin-user__form-create-user {
+    .admin-products__form-create-products {
       display: flex;
       min-height: 40rem;
       width: 38%;
@@ -97,8 +97,8 @@
 }
 
 @media (min-width: 1300px) {
-  .admin-user__container {
-    .admin-user__users-table {
+  .admin-products__container {
+    .admin-products__products-table {
       tbody {
         max-height: 68vh;
         overflow: scroll;
