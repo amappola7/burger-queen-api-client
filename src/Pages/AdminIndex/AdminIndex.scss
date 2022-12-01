@@ -107,6 +107,39 @@
       width: 80%;
     }
   }
+}
 
+@media (min-width: 1200px) {
+  .admin-index__header {
+    height: 14vh;
+    width: 100%;
+    padding: 1rem 3rem 0 2rem;
 
+    & .logo {
+      height: 95%;
+      width: auto;
+    }
+
+    i {
+      font-size: 3rem;
+    }
+  }
+
+  .admin-index__menu {
+    .admin-index__category {
+      width: 30%;
+    }
+
+    img {
+      width: 11.5rem;
+    }
+
+    i {
+      font-size: 9.5rem;
+    }
+
+    .generic-button {
+      width: 70%;
+    }
+  }
 }
