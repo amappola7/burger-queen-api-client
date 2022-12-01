@@ -7,8 +7,17 @@
     @include globals.flex(space-between, flex-start, row);
   }
 
+  &__user-email-role {
+    width: 78%;
+    max-width: 78%;
+  }
+
   p {
+    width: 95%;
     font-size: 2rem;
+    overflow-wrap: break-word;
+    // overflow: scroll;
+    // white-space:nowrap;
   }
 
   button {

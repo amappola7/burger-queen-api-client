@@ -67,7 +67,7 @@ function ItemTable({
   return (
     <tr className='item-table'>
       <td>
-        <div>
+        <div className='item-table__user-email-role'>
           <p>{username}</p>
           <p>{userRole}</p>
         </div>

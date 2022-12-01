@@ -17,6 +17,7 @@
   .admin-user__users-table {
     width: 90%;
     border-radius: 2.5rem;
+    margin-bottom: 4rem;
     font-family: globals.$main-font;
     font-size: 2.1rem;
     color: globals.$dark-color;
@@ -91,5 +92,16 @@
       border-radius: 2.5rem;
     }
 
+  }
+}
+
+@media (min-width: 1300px) {
+  .admin-user__container {
+    .admin-user__users-table {
+      tbody {
+        max-height: 68vh;
+        overflow: scroll;
+      }
+    }
   }
 }
