@@ -99,6 +99,7 @@
 @media (min-width: 1000px) {
   .form-admin-users {
     h3 {
+      font-size: 1.9rem;
       @include globals.flex(center, center, unset);
       height: 6rem;
       margin-bottom: 1.5rem;

@@ -101,3 +101,15 @@
     }
   }
 } 
+
+@media(min-width: 1000px) {
+  .navbar {
+    height: 10rem;
+    &__logo {
+      height: 70%;
+    }
+    &__options, .exit {
+      font-size: 1.4rem;
+    }
+  }
+} 

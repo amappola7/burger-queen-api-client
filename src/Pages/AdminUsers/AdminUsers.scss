@@ -60,24 +60,26 @@
 
 @media (min-width: 1000px) {
   .admin-users {
-    padding-top: 12rem;
+    padding-top: 9rem;
   }
   .admin-user__container {
     flex-direction: row;
     align-items: flex-start;
     padding: 4rem;
+    padding-bottom: 1rem;
     gap: 5rem;
     .create-user-button {
       display: none;
     }
     .admin-user__users-table {
       min-height: 40rem;
+      font-size: 1.9rem;
       tbody {
         @include globals.flex(flex-start, unset, column)
       }
 
       tbody {
-        max-height: 65vh;
+        max-height: 60vh;
         overflow: scroll;
       }
     }
@@ -91,17 +93,3 @@
 
   }
 }
-
-// @media (min-width: 1200px) {
-//   .admin-users {
-//     padding-top: 12rem;
-//   }
-//   .admin-user__container {
-//     .admin-user__users-table {
-//       tbody {
-//         max-height: 47rem;
-//         overflow: scroll;
-//       }
-//     }
-//   }
-// }
