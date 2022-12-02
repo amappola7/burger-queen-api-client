@@ -13,6 +13,7 @@ function FormAdminUsers({
   closeModal,
   apiError,
   setApiError,
+  isOpenFormAdminUsers
 }) {
   const MySwal = withReactContent(Swal);
 
@@ -49,14 +50,14 @@ function FormAdminUsers({
           setEdit(false);
           MySwal.fire({
             icon: 'success',
-            title: 'El usuario ha sido creado con exito',
+            title: 'El usuario ha sido creado con éxito',
             showConfirmButton: false,
             timer: 1600,
             customClass: {
               popup: 'user-alert',
             },
           });
-          closeModal();
+          if (isOpenFormAdminUsers) closeModal();
         })
         .catch((error) => {
           switch (error.response.data) {
@@ -97,14 +98,14 @@ function FormAdminUsers({
           setEdit(false);
           MySwal.fire({
             icon: 'success',
-            title: 'El usuario ha sido editado con exito',
+            title: 'El usuario ha sido editado con éxito',
             showConfirmButton: false,
             timer: 1600,
             customClass: {
               popup: 'user-alert',
             },
           });
-          closeModal();
+          if (isOpenFormAdminUsers) closeModal();
         })
         .catch((error) => {
           switch (error.response.data) {

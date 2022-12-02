@@ -20,6 +20,7 @@ function AdminProducts() {
     price: '',
     type: '',
     image: '',
+    productId: '',
   });
   const [apiError, setApiError] = useState({
     error: '',
@@ -32,6 +33,7 @@ function AdminProducts() {
       price: '',
       type: '',
       image: '',
+      productId: '',
     });
   };
   useEffect(() => {
@@ -53,18 +55,27 @@ function AdminProducts() {
         <button
           className='generic-button create-products-button'
           type='button'
-          // onClick={openCreateUserModal}
+          onClick={openCreateProductsModal}
         >
           Crear Productos
         </button>
-        {/* <Modal
+        <Modal
           isOpen={isOpenFormAdminProducts}
           closeModal={closeFormAdminProductsModal}
           setEdit={setEdit}
-          setValueForm={setValueForm}
+          setValueForm={setValueProductsForm}
         >
-          <FormAdminProducts />
-        </Modal> */}
+          <FormAdminProducts
+            edit={edit}
+            setEdit={setEdit}
+            valueForm={valueProductsForm}
+            setValueForm={setValueProductsForm}
+            apiError={apiError}
+            setApiError={setApiError}
+            isOpenFormAdminProducts={isOpenFormAdminProducts}
+            closeModal={closeFormAdminProductsModal}
+          />
+        </Modal>
         <table className='admin-products__products-table'>
           <thead>
             <tr>
@@ -79,8 +90,8 @@ function AdminProducts() {
                 productName={product.name}
                 productPrice={product.price}
                 productCategory={product.type}
-                // valueForm={valueForm}
-                // setValueForm={setValueForm}
+                valueForm={valueProductsForm}
+                setValueForm={setValueProductsForm}
                 setEdit={setEdit}
                 openModal={openFormAdminProductsModal}
                 setApiError={setApiError}
@@ -88,7 +99,16 @@ function AdminProducts() {
             ))}
           </tbody>
         </table>
-        <div className='admin-products__form-create-products' />
+        <div className='admin-products__form-create-products'>
+          <FormAdminProducts
+            edit={edit}
+            setEdit={setEdit}
+            valueForm={valueProductsForm}
+            setValueForm={setValueProductsForm}
+            apiError={apiError}
+            setApiError={setApiError}
+          />
+        </div>
       </div>
     </section>
   );

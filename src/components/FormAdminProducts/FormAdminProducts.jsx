@@ -1,7 +1,170 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import {
+  createProductsRequest,
+  editProductsRequest,
+} from '../../API/productsRequestHTTP';
 import './FormAdminProducts.scss';
 
-function FormAdminProducts({ closeModal }) {
+function FormAdminProducts({
+  edit,
+  setEdit,
+  valueForm,
+  setValueForm,
+  closeModal,
+  apiError,
+  setApiError,
+  isOpenFormAdminProducts,
+}) {
+  const MySwal = withReactContent(Swal);
+
+  // Handle errors function
+  const handleErrors = (token) => {
+    // if (!valueForm.role || valueForm.role === 'role') {
+    //   setApiError({
+    //     error: 'Elija un rol válido',
+    //   });
+    // } else if (!valueForm.email.match(emailRegExp)) {
+    //   setApiError({
+    //     error: 'Ingrese un correo válido',
+    //   });
+    // }
+    if (!edit) {
+      console.log('IMAGEN:', valueForm.image);
+      createProductsRequest(
+        valueForm.name,
+        valueForm.price,
+        valueForm.image,
+        valueForm.type,
+        token
+      )
+        .then(() => {
+          setApiError({
+            error: '',
+          });
+          setValueForm({
+            name: '',
+            price: '',
+            type: '',
+            image: '',
+            productId: '',
+          });
+          setEdit(false);
+          MySwal.fire({
+            icon: 'success',
+            title: 'El producto ha sido creado con éxito',
+            showConfirmButton: false,
+            timer: 1600,
+            customClass: {
+              popup: 'user-alert',
+            },
+          });
+
+          if (isOpenFormAdminProducts) closeModal();
+        })
+        .catch((error) => {
+          console.log('ERROR AL CREAR UN PRODUCTO:', error);
+          // switch (error.response.data) {
+          //   case 'Email already exists':
+          //     console.log('Creando mal un usuario - API Error', apiError);
+          //     setApiError({
+          //       error: 'El correo ya está en uso',
+          //     });
+          //     break;
+          //   case 'Password is too short':
+          //     setApiError({
+          //       error: 'La contraseña es muy corta',
+          //     });
+          //     break;
+          //   default:
+          //     break;
+          // }
+        });
+    } else {
+      editProductsRequest(
+        valueForm.name,
+        valueForm.price,
+        valueForm.image,
+        valueForm.type,
+        token,
+        valueForm.productId
+      )
+        .then(() => {
+          // console.log(apiError);
+          setApiError({
+            error: '',
+          });
+          setValueForm({
+            name: '',
+            price: '',
+            type: '',
+            image: '',
+            productId: '',
+          });
+          setEdit(false);
+          MySwal.fire({
+            icon: 'success',
+            title: 'El producto ha sido editado con ´éxito',
+            showConfirmButton: false,
+            timer: 1600,
+            customClass: {
+              popup: 'user-alert',
+            },
+          });
+
+          if (isOpenFormAdminProducts) closeModal();
+        })
+        .catch((error) => {
+          console.log('ERROR AL EDITAR UN PRODUCTO:', error);
+          // switch (error.response.data) {
+          //   case 'Email already exists':
+          //     setApiError({
+          //       error: 'El correo ya está en uso',
+          //     });
+          //     break;
+          //   case 'Password is too short':
+          //     setApiError({
+          //       error: 'La contraseña es muy corta',
+          //     });
+          //     break;
+          //   default:
+          //     break;
+          // }
+        });
+    }
+  };
+
+  // onsubmit function
+  const sendForm = (ev) => {
+    ev.preventDefault();
+    const token = localStorage.getItem('token');
+    handleErrors(token);
+  };
+
+  // Onchange function
+  const handleOnChange = (ev) => {
+    setValueForm((prevState) => ({
+      ...prevState,
+      [ev.target.name]: ev.target.value,
+    }));
+  };
+
+  const handleChangeToCreate = () => {
+    setApiError({
+      error: '',
+    });
+    setEdit(false);
+    setValueForm({
+      name: '',
+      price: '',
+      type: '',
+      image: '',
+      productId: '',
+    });
+  };
+
   return (
     <section className='form-admin-products'>
       <h3>{edit ? 'Editar Producto' : 'Crear Producto'}</h3>
@@ -42,17 +205,21 @@ function FormAdminProducts({ closeModal }) {
         <label htmlFor='image'>
           Cargar Imágen
           <input
-            type='file'
-            accept='image/png, image/jpeg, image/jpg'
-            name='product-image'
+            onChange={(ev) => handleOnChange(ev)}
+            type='url'
+            placeholder='Ingresa la URL'
+            // accept='image/png, image/jpeg, image/jpg'
+            name='image'
+            value={valueForm.image}
+            required
           />
         </label>
-        {/* {apiError.error && (
+        {apiError.error && (
           <span className='edit-create__message-error'>
             <i className='fa-solid fa-triangle-exclamation' />
             {apiError.error}
           </span>
-        )} */}
+        )}
         <button type='submit' className='generic-button'>
           {edit ? 'Editar' : 'Crear'}
         </button>

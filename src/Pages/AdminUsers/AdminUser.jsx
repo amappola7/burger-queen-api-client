@@ -74,6 +74,8 @@ function AdminUser() {
             closeModal={closeFormAdminUsersModal}
             apiError={apiError}
             setApiError={setApiError}
+            openFormAdminUsersModal={openFormAdminUsersModal}
+            isOpenFormAdminUsers={isOpenFormAdminUsers}
           />
         </Modal>
         <table className='admin-user__users-table'>
