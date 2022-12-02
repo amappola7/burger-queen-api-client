@@ -17,8 +17,22 @@ function Login() {
     authLoginRequest(email, password)
       .then((response) => {
         localStorage.setItem('token', response.data.accessToken);
+        localStorage.setItem('role', response.data.user.role);
+        const userRole = localStorage.getItem('role');
         setError('');
-        navigate('/admin-index');
+        switch (userRole) {
+          case 'admin':
+            navigate('/admin-index');
+            break;
+          case 'chef':
+            navigate('/orders-status');
+            break;
+          case 'waiter':
+            navigate('/take-orders');
+            break;
+          default:
+            break;
+        }
       })
       .catch((err) => {
         switch (err.response.data) {
