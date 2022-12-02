@@ -22,7 +22,7 @@ function AdminIndex({ username }) {
         </div>
 
         <div className='admin-index__category'>
-          <img src='src/assets/icons/products.png' alt='Icono Productos' />
+        <i className='fa-solid fa-burger' />
           <NavLink className='generic-button' exact='true' to='/admin-products'>
             Productos
           </NavLink>

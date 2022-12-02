@@ -20,7 +20,7 @@ body {
   box-sizing: border-box;
 }
 
-.delete-user-alert {
+.delete-user-alert, .user-alert {
   font-size: 1.5rem ;
   font-family: $main-font;
 }
@@ -49,7 +49,7 @@ body {
 
 @mixin hover-button {
   color: white;
-  background-color: $secondary-color;
+  background-color: #D87306;
   transition: all 0.3s;
 }
 

@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { createUserRequest, editUserRequest } from '../../API/requestHTTP';
 import './FormAdminUsers.scss';
 
@@ -12,6 +14,8 @@ function FormAdminUsers({
   apiError,
   setApiError,
 }) {
+  const MySwal = withReactContent(Swal);
+
   // Handle errors function
   const handleErrors = (token) => {
     const emailRegExp =
@@ -43,6 +47,15 @@ function FormAdminUsers({
             userId: '',
           });
           setEdit(false);
+          MySwal.fire({
+            icon: 'success',
+            title: 'El usuario ha sido creado con exito',
+            showConfirmButton: false,
+            timer: 1600,
+            customClass: {
+              popup: 'user-alert',
+            },
+          });
           closeModal();
         })
         .catch((error) => {
@@ -82,6 +95,15 @@ function FormAdminUsers({
             userId: '',
           });
           setEdit(false);
+          MySwal.fire({
+            icon: 'success',
+            title: 'El usuario ha sido editado con exito',
+            showConfirmButton: false,
+            timer: 1600,
+            customClass: {
+              popup: 'user-alert',
+            },
+          });
           closeModal();
         })
         .catch((error) => {

@@ -39,16 +39,19 @@ function NavBar() {
       <ul className={`navbar__options${clicked ? '--active' : ''}`}>
         <li>
           <NavLink exact='true' to='/admin-users' className='navbar__item'>
+            <i className='fa-solid fa-users' />
             Usuarios
           </NavLink>
         </li>
         <li>
           <NavLink exact='true' to='/admin-products' className='navbar__item'>
+            <i className='fa-solid fa-burger' />
             Productos
           </NavLink>
         </li>
         <li>
           <NavLink exact='true' to='/admin-orders' className='navbar__item'>
+            <i className='fa-solid fa-basket-shopping' />
             Pedidos
           </NavLink>
         </li>
@@ -58,8 +61,8 @@ function NavBar() {
             className='navbar__item exit'
             onClick={closeSesion}
           >
-            Cerrar Sesión
             <i className='fa-solid fa-person-walking-arrow-right icon' />
+            Cerrar Sesión
           </button>
         </li>
       </ul>
