@@ -20,10 +20,23 @@ const createProductsRequest = (name, price, image, type, token) => {
 const editProductsRequest = (name, price, image, type, token, id) => {
   return axios({
     method: 'patch',
-    url: `http://localhost:8080/users/${id}`,
+    url: `http://localhost:8080/products/${id}`,
     data: { name, price, image, type },
     headers: { authorization: `Bearer ${token}` },
   });
 };
 
-export { productsListRequest, createProductsRequest, editProductsRequest };
+const deleteProductsRequest = (token, id) => {
+  return axios({
+    method: 'delete',
+    url: `http://localhost:8080/products/${id}`,
+    headers: { authorization: `Bearer ${token}` },
+  });
+};
+
+export {
+  productsListRequest,
+  createProductsRequest,
+  editProductsRequest,
+  deleteProductsRequest,
+};

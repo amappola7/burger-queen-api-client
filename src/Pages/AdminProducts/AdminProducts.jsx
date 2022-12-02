@@ -86,6 +86,7 @@ function AdminProducts() {
             {productsList.map((product) => (
               <ItemProductTable
                 key={product.id}
+                id={product.id}
                 productImage={product.image}
                 productName={product.name}
                 productPrice={product.price}
