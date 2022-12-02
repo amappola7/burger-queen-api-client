@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authLoginRequest } from '../../API/requestHTTP';
+import { authLoginRequest } from '../../API/usersRequestHTTP';
 import './styles/Login.scss';
 
 function Login() {

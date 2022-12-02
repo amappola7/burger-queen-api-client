@@ -87,7 +87,13 @@ function AdminUser() {
               <ItemTable
                 key={user.id}
                 username={user.email}
-                userRole={user.role}
+                userRole={
+                  /* switch(user.role) {
+                  case 'waiter':
+                    break;
+                } */
+                  user.role
+                }
                 id={user.id}
                 valueForm={valueForm}
                 setValueForm={setValueForm}

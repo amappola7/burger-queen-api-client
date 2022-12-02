@@ -2,7 +2,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { createUserRequest, editUserRequest } from '../../API/requestHTTP';
+import { createUserRequest, editUserRequest } from '../../API/usersRequestHTTP';
 import './FormAdminUsers.scss';
 
 function FormAdminUsers({
