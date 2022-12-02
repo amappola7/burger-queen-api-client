@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import ItemTable from '../../components/ItemTable/ItemUserTable';
-import { usersListRequest } from '../../API/requestHTTP';
+import { usersListRequest } from '../../API/usersRequestHTTP';
 import FormAdminUsers from '../../components/FormAdminUsers/FormAdminUsers';
 import './AdminUsers.scss';
 import useModal from '../../hooks/useModal';
