@@ -22,16 +22,11 @@ function FormAdminProducts({
 
   // Handle errors function
   const handleErrors = (token) => {
-    // if (!valueForm.role || valueForm.role === 'role') {
-    //   setApiError({
-    //     error: 'Elija un rol válido',
-    //   });
-    // } else if (!valueForm.email.match(emailRegExp)) {
-    //   setApiError({
-    //     error: 'Ingrese un correo válido',
-    //   });
-    // }
-    if (!edit) {
+    if (!valueForm.type || valueForm.type === 'type') {
+      setApiError({
+        error: 'Elija una categoría válida',
+      });
+    } else if (!edit) {
       console.log('IMAGEN:', valueForm.image);
       createProductsRequest(
         valueForm.name,
@@ -176,6 +171,7 @@ function FormAdminProducts({
             type='text'
             name='name'
             value={valueForm.name}
+            maxLength='20'
             required
           />
         </label>
@@ -186,6 +182,8 @@ function FormAdminProducts({
             type='number'
             name='price'
             value={valueForm.price}
+            max='1000000'
+            min='100'
             required
           />
         </label>
