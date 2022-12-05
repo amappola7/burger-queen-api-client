@@ -30,11 +30,6 @@
     border: none;
     font-size: 2rem;
     cursor: pointer;
-
-    &:hover {
-      font-size: 2.3rem;
-      transition: all 0.3s;
-    }
   }
 
   .icon-button-minus {
@@ -44,6 +39,10 @@
   .icon-button-plus {
     margin-left: 1.5rem;
     color: globals.$main-color;
+  }
+
+  .counter-products {
+    @include globals.flex(center, center, row);
   }
 }
 

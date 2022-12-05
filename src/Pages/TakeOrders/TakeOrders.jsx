@@ -14,6 +14,7 @@ function TakeOrders() {
     image: '',
     productId: '',
   });
+  const [orders, setOrders] = useState([]);
   const [apiError, setApiError] = useState({
     error: '',
   });
@@ -22,12 +23,18 @@ function TakeOrders() {
     const token = localStorage.getItem('token');
     productsListRequest(token)
       .then((response) => {
-        setProductsList(response.data);
+        const products = response.data.map((product) => ({
+          ...product,
+          qty: 0,
+        }));
+        setProductsList(products);
       })
       .catch((err) => {
         console.error('ADMIN USER:', err);
       });
-  }, [productsList]);
+  }, []);
+
+  useEffect(() => console.log(orders), [orders]);
 
   return (
     <section className='take-orders'>
@@ -47,14 +54,16 @@ function TakeOrders() {
       </NavBar>
       <div className='take-orders__container'>
         <div className='take-orders__container-products'>
-          <button type='button'>
-            <i className='fa-solid fa-mug-hot' />
-            Desayuno
-          </button>
-          <button type='button'>
-            <i className='fa-solid fa-burger' />
-            Almuerzo
-          </button>
+          <div className='take-orders__container-category'>
+            <button type='button'>
+              <i className='fa-solid fa-mug-hot' />
+              Desayuno
+            </button>
+            <button type='button'>
+              <i className='fa-solid fa-burger' />
+              Almuerzo
+            </button>
+          </div>
           <table className='take-orders__products-table'>
             <thead>
               <tr>
@@ -69,11 +78,16 @@ function TakeOrders() {
                   productImage={product.image}
                   productName={product.name}
                   productPrice={product.price}
+                  setOrders={setOrders}
+                  orders={orders}
+                  productsList={productsList}
+                  setProductsList={setProductsList}
+                  quantity={product.qty}
                 />
               ))}
             </tbody>
           </table>
-          <button className='generic-button' type='button'>
+          <button className='generic-button create-order-button' type='button'>
             Crear Órden
           </button>
         </div>

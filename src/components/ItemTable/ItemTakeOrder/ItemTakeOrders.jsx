@@ -1,8 +1,41 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useEffect } from 'react';
 import './ItemTakeOrders.scss';
 
-function ItemTakeOrders({ productImage, productName, productPrice }) {
+function ItemTakeOrders({
+  productImage,
+  productName,
+  productPrice,
+  setOrders,
+  orders,
+  quantity,
+  productsList,
+  setProductsList,
+}) {
+  // event click buttons
+  const onRemoveProduct = () => {
+    const newProducts = [...productsList].map((product) => {
+      if (product.name === productName && product.qty > 0) {
+        product.qty -= 1;
+      }
+      return product;
+    });
+
+    setProductsList(newProducts);
+  };
+
+  const onAddProduct = () => {
+    const newProducts = [...productsList].map((product) => {
+      if (product.name === productName) {
+        product.qty += 1;
+      }
+      return product;
+    });
+
+    setProductsList(newProducts);
+  };
+
   return (
     <tr className='item-table'>
       <td>
@@ -11,17 +44,18 @@ function ItemTakeOrders({ productImage, productName, productPrice }) {
           <p>{productName}</p>
           <p>{productPrice}</p>
         </div>
-        <div>
+        <div className='counter-products'>
           <button
-            /* onClick={onDelete} */
+            onClick={onRemoveProduct}
             type='button'
             className='icon-button-minus'
           >
             <i className='fa-solid fa-minus' />
           </button>
-          <p>0</p>
+          <p>{quantity}</p>
           <button
-            /* onClick={onEdit} */ type='button'
+            onClick={onAddProduct}
+            type='button'
             className='icon-button-plus'
           >
             <i className='fa-solid fa-plus' />

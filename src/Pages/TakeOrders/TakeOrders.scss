@@ -6,14 +6,23 @@
 .take-orders__container {
   width: 100%;
   @include globals.flex(center, center, column);
+  .take-orders__container-category {
+    @include globals.flex(space-around, center, row);
+    margin-bottom: 3rem;
+    width: 100%;
+    button {
+      border: none;
+      background-color: transparent;
+    }
+  }
   .take-orders__container-products {
     @include globals.flex(center, center, column);
     width: 100%;
-    
+
     .generic-button {
       margin-bottom: 3.5rem;
       @include globals.generic-button(90%);
-  
+
       &:hover {
         @include globals.hover-button;
       }
@@ -31,14 +40,13 @@
         height: 4.6rem;
         border-bottom: solid 0.3rem globals.$gray-color;
       }
-  }
+    }
 
     .take-orders__form-order-products {
       width: 100%;
     }
   }
 }
-
 
 @media (min-width: 600px) {
   .take-orders {
@@ -89,6 +97,9 @@
         max-height: 60vh;
         overflow: scroll;
       }
+    }
+    .create-order-button {
+      display: none;
     }
     .take-orders__form-order-products {
       display: flex;
