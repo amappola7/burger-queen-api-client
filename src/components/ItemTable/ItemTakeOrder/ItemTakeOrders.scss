@@ -1,0 +1,75 @@
+@use '../../../App/styles/globals';
+
+
+.item-table {
+  td {
+    width: 100%;
+    padding: 1rem 1.3rem;
+    @include globals.flex(space-between, flex-start, row);
+  }
+
+  &__product-data {
+    width: 78%;
+    max-width: 78%;
+  }
+
+  img {
+    width: 5rem;
+  }
+
+  p {
+    width: 95%;
+    font-size: 2rem;
+    overflow-wrap: break-word;
+    // overflow: scroll;
+    // white-space:nowrap;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 2.3rem;
+      transition: all 0.3s;
+    }
+  }
+
+  .icon-button-minus {
+    color: globals.$secondary-color;
+  }
+
+  .icon-button-plus {
+    margin-left: 1.5rem;
+    color: globals.$main-color;
+  }
+}
+
+@media (min-width: 600px) {
+  .item-table {
+    td {
+      padding: 1.8rem 3.2rem;
+    }
+    p {
+      font-size: 2.2rem;
+    }
+    i {
+      font-size: 2.3rem;
+      margin-left: 2.2rem;
+    }
+  }
+}
+
+
+@media (min-width: 1000px) {
+  .item-table {
+    p {
+      font-size: 1.8rem;
+    }
+    i {
+      font-size: 2.1rem;
+    }
+  }
+}

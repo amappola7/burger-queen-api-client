@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { NavLink } from 'react-router-dom';
 import BurguerButton from '../BurguerButton/BurguerButton';
 import './NavBar.scss';
 
-function NavBar() {
+function NavBar({ children }) {
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
@@ -37,24 +37,7 @@ function NavBar() {
     <nav className='navbar'>
       <img src='src/assets/logo.webp' alt='Logo' className='navbar__logo' />
       <ul className={`navbar__options${clicked ? '--active' : ''}`}>
-        <li>
-          <NavLink exact='true' to='/admin-users' className='navbar__item'>
-            <i className='fa-solid fa-users' />
-            Usuarios
-          </NavLink>
-        </li>
-        <li>
-          <NavLink exact='true' to='/admin-products' className='navbar__item'>
-            <i className='fa-solid fa-burger' />
-            Productos
-          </NavLink>
-        </li>
-        <li>
-          <NavLink exact='true' to='/admin-orders' className='navbar__item'>
-            <i className='fa-solid fa-basket-shopping' />
-            Pedidos
-          </NavLink>
-        </li>
+        {children}
         <li>
           <button
             type='button'

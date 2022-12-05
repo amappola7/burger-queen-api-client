@@ -2,7 +2,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { deleteProductsRequest } from '../../API/productsRequestHTTP';
+import { deleteProductsRequest } from '../../../API/productsRequestHTTP';
 import './ItemProductTable.scss';
 
 function ItemProductTable({

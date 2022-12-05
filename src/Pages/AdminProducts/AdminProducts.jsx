@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import './AdminProducts.scss';
-import ItemProductTable from '../../components/ItemTable/ItemProductTable';
+import ItemProductTable from '../../components/ItemTable/ItemProducts/ItemProductTable';
 import Modal from '../../components/Modal/Modal';
 import useModal from '../../hooks/useModal';
 import FormAdminProducts from '../../components/FormAdminProducts/FormAdminProducts';
@@ -50,7 +51,26 @@ function AdminProducts() {
 
   return (
     <section className='admin-products'>
-      <NavBar />
+      <NavBar>
+        <li>
+          <NavLink exact='true' to='/admin-users' className='navbar__item'>
+            <i className='fa-solid fa-users' />
+            Usuarios
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact='true' to='/admin-products' className='navbar__item'>
+            <i className='fa-solid fa-burger' />
+            Productos
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact='true' to='/admin-orders' className='navbar__item'>
+            <i className='fa-solid fa-basket-shopping' />
+            Pedidos
+          </NavLink>
+        </li>
+      </NavBar>
       <div className='admin-products__container'>
         <button
           className='generic-button create-products-button'

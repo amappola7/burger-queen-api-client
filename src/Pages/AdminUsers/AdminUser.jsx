@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
-import ItemTable from '../../components/ItemTable/ItemUserTable';
+import ItemTable from '../../components/ItemTable/ItemUser/ItemUserTable';
 import { usersListRequest } from '../../API/usersRequestHTTP';
 import FormAdminUsers from '../../components/FormAdminUsers/FormAdminUsers';
 import './AdminUsers.scss';
@@ -51,7 +52,26 @@ function AdminUser() {
 
   return (
     <section className='admin-users'>
-      <NavBar />
+      <NavBar>
+        <li>
+          <NavLink exact='true' to='/admin-users' className='navbar__item'>
+            <i className='fa-solid fa-users' />
+            Usuarios
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact='true' to='/admin-products' className='navbar__item'>
+            <i className='fa-solid fa-burger' />
+            Productos
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact='true' to='/admin-orders' className='navbar__item'>
+            <i className='fa-solid fa-basket-shopping' />
+            Pedidos
+          </NavLink>
+        </li>
+      </NavBar>
       <div className='admin-user__container'>
         <button
           className='generic-button create-user-button'

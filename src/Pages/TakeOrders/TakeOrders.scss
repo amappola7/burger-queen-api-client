@@ -1,0 +1,112 @@
+@use '../../App/styles/globals';
+
+.take-orders {
+  padding-top: 11rem;
+}
+.take-orders__container {
+  width: 100%;
+  @include globals.flex(center, center, column);
+  .take-orders__container-products {
+    @include globals.flex(center, center, column);
+    width: 100%;
+    
+    .generic-button {
+      margin-bottom: 3.5rem;
+      @include globals.generic-button(90%);
+  
+      &:hover {
+        @include globals.hover-button;
+      }
+    }
+    .take-orders__products-table {
+      width: 90%;
+      border-radius: 2.5rem;
+      margin-bottom: 4rem;
+      font-family: globals.$main-font;
+      font-size: 2.1rem;
+      color: globals.$dark-color;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
+      thead th {
+        height: 4.6rem;
+        border-bottom: solid 0.3rem globals.$gray-color;
+      }
+  }
+
+    .take-orders__form-order-products {
+      width: 100%;
+    }
+  }
+}
+
+
+@media (min-width: 600px) {
+  .take-orders {
+    padding-top: 13rem;
+  }
+  .take-orders__container {
+    .generic-button {
+      width: 70%;
+      height: 6rem;
+      border-radius: 4rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .take-orders__products-table {
+      width: 80%;
+      font-size: 2.4rem;
+
+      thead th {
+        height: 6rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .take-orders {
+    padding-top: 9rem;
+  }
+  .take-orders__container {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4rem;
+    padding-bottom: 1rem;
+    gap: 5rem;
+    .create-products-button {
+      display: none;
+    }
+    .take-orders__products-table {
+      min-height: 40rem;
+      font-size: 1.9rem;
+      margin-bottom: 0;
+      tbody {
+        @include globals.flex(flex-start, unset, column);
+      }
+
+      tbody {
+        max-height: 60vh;
+        overflow: scroll;
+      }
+    }
+    .take-orders__form-order-products {
+      display: flex;
+      min-height: 40rem;
+      width: 38%;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 2.5rem;
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .take-orders__container {
+    .take-orders__products-table {
+      tbody {
+        max-height: 68vh;
+        overflow: scroll;
+      }
+    }
+  }
+}

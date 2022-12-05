@@ -13,7 +13,7 @@ function FormAdminUsers({
   closeModal,
   apiError,
   setApiError,
-  isOpenFormAdminUsers
+  isOpenFormAdminUsers,
 }) {
   const MySwal = withReactContent(Swal);
 
