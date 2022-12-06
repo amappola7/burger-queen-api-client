@@ -37,7 +37,7 @@ function TakeOrders() {
         <li>
           <NavLink exact='true' to='/admin-products' className='navbar__item'>
             <i className='fa-solid fa-clipboard-list' />
-            Tomar Órden
+            Tomar Orden
           </NavLink>
         </li>
         <li>

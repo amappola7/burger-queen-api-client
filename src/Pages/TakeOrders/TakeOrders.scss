@@ -6,8 +6,6 @@
 
 .take-orders__container {
   width: 100%;
-  // @include globals.flex(center, center, column);
-
 
   .take-orders__container-products {
     @include globals.flex(flex-start, center, column);
@@ -73,68 +71,94 @@
   }
 }
 
-// @media (min-width: 600px) {
-//   .take-orders {
-//     padding-top: 13rem;
-//   }
-//   .take-orders__container {
-//     .generic-button {
-//       width: 70%;
-//       height: 6rem;
-//       border-radius: 4rem;
-//       font-size: 2.2rem;
-//       font-weight: 700;
-//     }
+@media (min-width: 600px) {
+  .take-orders {
+    padding-top: 13rem;
+  }
 
-//     .take-orders__products-table {
-//       width: 80%;
-//       font-size: 2.4rem;
+  .take-orders__container {
 
-//       thead th {
-//         height: 6rem;
-//       }
-//     }
-//   }
-// }
+    .take-orders__container-products {
 
-// @media (min-width: 1000px) {
-//   .take-orders {
-//     padding-top: 9rem;
-//   }
-//   .take-orders__container {
-//     flex-direction: row;
-//     align-items: flex-start;
-//     padding: 4rem;
-//     padding-bottom: 1rem;
-//     gap: 5rem;
-//     .create-products-button {
-//       display: none;
-//     }
-//     .take-orders__products-table {
-//       min-height: 40rem;
-//       font-size: 1.9rem;
-//       margin-bottom: 0;
-//       tbody {
-//         @include globals.flex(flex-start, unset, column);
-//       }
+      .take-orders__container-category {
+          gap: 5rem;
+          margin: 2rem 0;
 
-//       tbody {
-//         max-height: 60vh;
-//         overflow: scroll;
-//       }
-//     }
-//     .create-order-button {
-//       display: none;
-//     }
-//     .take-orders__form-order-products {
-//       display: flex;
-//       min-height: 40rem;
-//       width: 38%;
-//       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-//       border-radius: 2.5rem;
-//     }
-//   }
-// }
+          button {
+            font-size: 2.1rem;
+          }
+
+          i {
+            margin-right: 0.8rem;
+          }
+        }
+
+        .take-orders__products-table {
+          width: 80%;
+          margin-bottom: 2rem;
+          // NO FUNCIONA EL SCROLL
+          tbody {
+            height: 40rem;
+            max-height: 8rem;
+            overflow: hidden;
+          }
+        }
+
+        .generic-button {
+          margin: 0;
+          margin-bottom: 5rem;
+          @include globals.generic-button(80%);
+        }
+    }
+
+    .take-orders__form-order-products {
+      width: 100%;
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .take-orders {
+    padding-top: 10rem;
+  }
+
+  .take-orders__container {
+    @include globals.flex(center, flex-start, row);
+    gap: 5rem;
+    padding: 0 5rem 2rem;
+
+    .take-orders__container-products {
+        .take-orders__products-table {
+          width: 100%;
+          margin-bottom: 2rem;
+          // NO FUNCIONA EL SCROLL
+          // tbody {
+          //   height: 40rem;
+          //   max-height: 8rem;
+          //   overflow: hidden;
+          // }
+        }
+    }
+
+    .take-orders__products-table {
+      width: 100%;
+    }
+
+    .create-order-button {
+      display: none;
+    }
+
+    .take-orders__form-order-products {
+      display: flex;
+      min-height: 40rem;
+      width: 48%;
+      margin-top: 6.8rem;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 2.5rem;
+    }
+  }
+}
 
 // @media (min-width: 1300px) {
 //   .take-orders__container {

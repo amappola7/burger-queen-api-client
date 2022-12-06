@@ -7,7 +7,7 @@
     height: 10rem;
     padding: 0 1.3rem;
     margin: 0.6rem 0;
-    @include globals.flex(space-between, flex-start, row);
+    @include globals.flex(space-around, flex-start, row);
     position: relative;
   }
 
@@ -67,14 +67,12 @@
       margin: 0 0.8rem;
     }
   }
-
-
 }
 
 @media (min-width: 600px) {
   .item-table {
     td {
-      padding: 1.8rem 3.2rem;
+      padding: 0 2.8rem;
     }
     p {
       font-size: 2.2rem;
@@ -83,17 +81,41 @@
       font-size: 2.3rem;
       margin-left: 2.2rem;
     }
+
+    .down-row {
+      width: 100%;
+    }
+
+    .counter-products {
+      button {
+        width: 3rem;
+        height: 3rem;
+        @include globals.flex(center, center, unset);
+
+        i {
+          margin: 0;
+          font-size: 2rem;
+        }
+      }
+    }
   }
 }
-
 
 @media (min-width: 1000px) {
   .item-table {
     p {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
-    i {
-      font-size: 2.1rem;
+
+    .counter-products {
+      button {
+        width: 2.5rem;
+        height: 2.5rem;
+
+        i {
+          font-size: 1.7rem;
+        }
+      }
     }
   }
 }
