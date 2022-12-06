@@ -81,7 +81,7 @@ function TakeOrders() {
             </tbody>
           </table>
           <button className='generic-button create-order-button' type='button'>
-            Crear Órden
+            Crear Orden
           </button>
         </div>
         <div className='take-orders__form-order-products'>

@@ -66,7 +66,7 @@ function FormTakeOrders({
 
   return (
     <section className='form-take-orders'>
-      <h3>Resumen Órden</h3>
+      <h3>Resumen Orden</h3>
       <form onSubmit={(e) => sendForm(e)} action=''>
         <label htmlFor='client'>
           Cliente
@@ -105,7 +105,7 @@ function FormTakeOrders({
         )} */}
         <p>Total {total}</p>
         <button type='submit' className='generic-button'>
-          Enviar Órden
+          Enviar Orden
         </button>
       </form>
     </section>

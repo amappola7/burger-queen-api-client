@@ -41,27 +41,29 @@ function ItemTakeOrders({
   return (
     <tr className='item-table'>
       <td>
+        <img src={productImage} alt='product' />
         <div className='item-table__product-data'>
-          <img src={productImage} alt='product' />
           <p>{productName}</p>
-          <p>{productPrice}</p>
-        </div>
-        <div className='counter-products'>
-          <button
-            onClick={onRemoveProduct}
-            type='button'
-            className='icon-button-minus'
-          >
-            <i className='fa-solid fa-minus' />
-          </button>
-          <p>{quantity}</p>
-          <button
-            onClick={onAddProduct}
-            type='button'
-            className='icon-button-plus'
-          >
-            <i className='fa-solid fa-plus' />
-          </button>
+          <div className='down-row'>
+            <p>{`$${productPrice}`}</p>
+            <div className='counter-products'>
+              <button
+                onClick={onRemoveProduct}
+                type='button'
+                className='icon-button-minus'
+              >
+                <i className='fa-solid fa-minus' />
+              </button>
+              <p>{quantity}</p>
+              <button
+                onClick={onAddProduct}
+                type='button'
+                className='icon-button-plus'
+              >
+                <i className='fa-solid fa-plus' />
+              </button>
+            </div>
+          </div>
         </div>
       </td>
     </tr>
