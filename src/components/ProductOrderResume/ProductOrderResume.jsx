@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './ProductOrderResume.scss';
@@ -33,6 +34,17 @@ function ProductOrderResume({
     setProductsList(newProducts);
   };
 
+  const onDeleteProductOrder = () => {
+    const newProducts = [...productsList].map((product) => {
+      if (product.name === productName) {
+        product.qty = 0;
+      }
+      return product;
+    });
+
+    setProductsList(newProducts);
+  };
+
   return (
     <div className='product-order'>
       <img src={productImage} alt='Product' />
@@ -55,7 +67,7 @@ function ProductOrderResume({
           >
             <i className='fa-solid fa-plus' />
           </button>
-          <button type='button'>
+          <button onClick={onDeleteProductOrder} type='button'>
             <i className='fa-solid fa-trash' />
           </button>
         </div>
