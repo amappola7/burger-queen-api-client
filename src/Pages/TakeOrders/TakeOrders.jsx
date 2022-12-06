@@ -9,10 +9,7 @@ import './TakeOrders.scss';
 function TakeOrders() {
   const [productsList, setProductsList] = useState([]);
   const [valueProductsForm, setValueProductsForm] = useState({
-    name: '',
-    price: '',
-    image: '',
-    productId: '',
+    nameClient: '',
   });
 
   const [apiError, setApiError] = useState({

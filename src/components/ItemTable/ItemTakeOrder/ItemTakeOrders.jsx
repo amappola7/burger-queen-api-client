@@ -14,12 +14,15 @@ function ItemTakeOrders({
   // event click buttons
   const onRemoveProduct = () => {
     const newProducts = [...productsList].map((product) => {
+      if (product.qty === 1) product.dataEntry = '';
       if (product.name === productName && product.qty > 0) {
         product.qty -= 1;
       }
+
       return product;
     });
 
+    console.log('ELIMINANDO', newProducts);
     setProductsList(newProducts);
   };
 
@@ -31,6 +34,7 @@ function ItemTakeOrders({
       return product;
     });
 
+    console.log('AÑADIENDO', newProducts);
     setProductsList(newProducts);
   };
 

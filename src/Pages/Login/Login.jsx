@@ -18,6 +18,7 @@ function Login() {
       .then((response) => {
         localStorage.setItem('token', response.data.accessToken);
         localStorage.setItem('role', response.data.user.role);
+        localStorage.setItem('userID', response.data.user.id);
         const userRole = localStorage.getItem('role');
         setError('');
         switch (userRole) {

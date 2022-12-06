@@ -1,5 +1,8 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React from 'react';
+import { createOrderRequest } from '../../API/ordersRequestHTTP';
 import ProductOrderResume from '../ProductOrderResume/ProductOrderResume';
 import './FormTakeOrders.scss';
 
@@ -11,12 +14,45 @@ function FormTakeOrders({
   productsList,
   setProductsList,
 }) {
-  useEffect(() => {}, [productsList]);
+  let total = 0;
 
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
-    //   const token = localStorage.getItem('token');
+    const date = new Date();
+    const token = localStorage.getItem('token');
+    const userID = localStorage.getItem('userID');
+    const data = {
+      userId: userID,
+      client: valueForm.nameClient,
+      products: productsList.filter((product) => {
+        if (product.qty > 0) {
+          const newProduct = {
+            qty: product.qty,
+            product: {
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              image: product.image,
+              type: product.type,
+              dataEntry: product.dataEntry,
+            },
+          };
+          return newProduct;
+        }
+      }),
+
+      status: 'pending',
+      dataEntry: date.toLocaleString().replaceAll('/', '-'),
+    };
+
+    createOrderRequest(data, token)
+      .then((response) => {
+        console.log('ORDEN CREADA', response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     //   handleErrors(token);
   };
 
@@ -37,15 +73,16 @@ function FormTakeOrders({
           <input
             onChange={(ev) => handleOnChange(ev)}
             type='text'
-            name='client'
-            value={valueForm.email}
+            name='nameClient'
+            value={valueForm.nameClient}
             required
           />
         </label>
         <p>Productos</p>
         <section>
           {productsList.map((product) => {
-            if (product.qty !== 0)
+            if (product.qty !== 0) {
+              total += parseInt(product.price, 10);
               return (
                 <ProductOrderResume
                   key={product.id}
@@ -57,6 +94,7 @@ function FormTakeOrders({
                   setProductsList={setProductsList}
                 />
               );
+            }
           })}
         </section>
         {/* {apiError.error && (
@@ -65,7 +103,7 @@ function FormTakeOrders({
             {apiError.error}
           </span>
         )} */}
-        <p>Total</p>
+        <p>Total {total}</p>
         <button type='submit' className='generic-button'>
           Enviar Órden
         </button>

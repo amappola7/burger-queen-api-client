@@ -22,17 +22,18 @@ function FormAdminProducts({
 
   // Handle errors function
   const handleErrors = (token) => {
+    const date = new Date();
     if (!valueForm.type || valueForm.type === 'type') {
       setApiError({
         error: 'Elija una categoría válida',
       });
     } else if (!edit) {
-      console.log('IMAGEN:', valueForm.image);
       createProductsRequest(
         valueForm.name,
         valueForm.price,
         valueForm.image,
         valueForm.type,
+        date.toLocaleString().replaceAll('/', '-'),
         token
       )
         .then(() => {
@@ -83,6 +84,7 @@ function FormAdminProducts({
         valueForm.price,
         valueForm.image,
         valueForm.type,
+        date.toLocaleString().replaceAll('/', '-'),
         token,
         valueForm.productId
       )
