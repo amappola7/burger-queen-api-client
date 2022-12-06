@@ -1,9 +1,8 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import './ItemTakeOrders.scss';
+import './ProductOrderResume.scss';
 
-function ItemTakeOrders({
+function ProductOrderResume({
   productImage,
   productName,
   productPrice,
@@ -35,13 +34,11 @@ function ItemTakeOrders({
   };
 
   return (
-    <tr className='item-table'>
-      <td>
-        <div className='item-table__product-data'>
-          <img src={productImage} alt='product' />
-          <p>{productName}</p>
-          <p>{productPrice}</p>
-        </div>
+    <div className='product-order'>
+      <img src={productImage} alt='Product' />
+      <div>
+        <p>{productName}</p>
+        <p>{`$${productPrice}`}</p>
         <div className='counter-products'>
           <button
             onClick={onRemoveProduct}
@@ -58,10 +55,13 @@ function ItemTakeOrders({
           >
             <i className='fa-solid fa-plus' />
           </button>
+          <button type='button'>
+            <i className='fa-solid fa-trash' />
+          </button>
         </div>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 }
 
-export default ItemTakeOrders;
+export default ProductOrderResume;

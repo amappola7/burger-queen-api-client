@@ -14,7 +14,7 @@ function TakeOrders() {
     image: '',
     productId: '',
   });
-  const [orders, setOrders] = useState([]);
+
   const [apiError, setApiError] = useState({
     error: '',
   });
@@ -33,8 +33,6 @@ function TakeOrders() {
         console.error('ADMIN USER:', err);
       });
   }, []);
-
-  useEffect(() => console.log(orders), [orders]);
 
   return (
     <section className='take-orders'>
@@ -78,8 +76,6 @@ function TakeOrders() {
                   productImage={product.image}
                   productName={product.name}
                   productPrice={product.price}
-                  setOrders={setOrders}
-                  orders={orders}
                   productsList={productsList}
                   setProductsList={setProductsList}
                   quantity={product.qty}
@@ -97,6 +93,8 @@ function TakeOrders() {
             setValueForm={setValueProductsForm}
             apiError={apiError}
             setApiError={setApiError}
+            productsList={productsList}
+            setProductsList={setProductsList}
           />
         </div>
       </div>

@@ -1,8 +1,18 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
+import ProductOrderResume from '../ProductOrderResume/ProductOrderResume';
 import './FormTakeOrders.scss';
 
-function FormTakeOrders({ valueForm, setValueForm, apiError, setApiError }) {
+function FormTakeOrders({
+  valueForm,
+  setValueForm,
+  apiError,
+  setApiError,
+  productsList,
+  setProductsList,
+}) {
+  useEffect(() => {}, [productsList]);
+
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
@@ -33,6 +43,22 @@ function FormTakeOrders({ valueForm, setValueForm, apiError, setApiError }) {
           />
         </label>
         <p>Productos</p>
+        <section>
+          {productsList.map((product) => {
+            if (product.qty !== 0)
+              return (
+                <ProductOrderResume
+                  key={product.id}
+                  productImage={product.image}
+                  productName={product.name}
+                  productPrice={product.price}
+                  quantity={product.qty}
+                  productsList={productsList}
+                  setProductsList={setProductsList}
+                />
+              );
+          })}
+        </section>
         {/* {apiError.error && (
           <span className='edit-create__message-error'>
             <i className='fa-solid fa-triangle-exclamation' />
