@@ -68,45 +68,52 @@ function FormTakeOrders({
     <section className='form-take-orders'>
       <h3>Resumen Orden</h3>
       <form onSubmit={(e) => sendForm(e)} action=''>
-        <label htmlFor='client'>
-          Cliente
-          <input
-            onChange={(ev) => handleOnChange(ev)}
-            type='text'
-            name='nameClient'
-            value={valueForm.nameClient}
-            required
-          />
-        </label>
-        <p>Productos</p>
-        <section>
-          {productsList.map((product) => {
-            if (product.qty !== 0) {
-              total += parseInt(product.price, 10);
-              return (
-                <ProductOrderResume
-                  key={product.id}
-                  productImage={product.image}
-                  productName={product.name}
-                  productPrice={product.price}
-                  quantity={product.qty}
-                  productsList={productsList}
-                  setProductsList={setProductsList}
-                />
-              );
-            }
-          })}
-        </section>
-        {/* {apiError.error && (
+        <div className='form-top'>
+          <label htmlFor='client'>
+            Cliente
+            <input
+              onChange={(ev) => handleOnChange(ev)}
+              type='text'
+              name='nameClient'
+              value={valueForm.nameClient}
+              required
+            />
+          </label>
+          <p>Productos</p>
+          <section className='form-take-orders__products'>
+            {productsList.map((product) => {
+              if (product.qty !== 0) {
+                total += parseInt(product.price, 10);
+                return (
+                  <ProductOrderResume
+                    key={product.id}
+                    productImage={product.image}
+                    productName={product.name}
+                    productPrice={product.price}
+                    quantity={product.qty}
+                    productsList={productsList}
+                    setProductsList={setProductsList}
+                  />
+                );
+              }
+            })}
+          </section>
+        </div>
+        <div className='form-bottom'>
+          {/* {apiError.error && (
           <span className='edit-create__message-error'>
             <i className='fa-solid fa-triangle-exclamation' />
             {apiError.error}
           </span>
         )} */}
-        <p>Total {total}</p>
-        <button type='submit' className='generic-button'>
-          Enviar Orden
-        </button>
+          <div className='total-order'>
+            <p className='p-total'>Total</p>
+            <p className='p-total'>{total}</p>
+          </div>
+          <button type='submit' className='generic-button'>
+            Enviar Orden
+          </button>
+        </div>
       </form>
     </section>
   );

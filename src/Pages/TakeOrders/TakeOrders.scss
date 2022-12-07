@@ -134,9 +134,8 @@
           margin-bottom: 2rem;
           // NO FUNCIONA EL SCROLL
           // tbody {
-          //   height: 40rem;
-          //   max-height: 8rem;
-          //   overflow: hidden;
+          //   max-height: 10vh;
+          //   overflow: scroll;
           // }
         }
     }
@@ -164,7 +163,7 @@
 //   .take-orders__container {
 //     .take-orders__products-table {
 //       tbody {
-//         max-height: 68vh;
+//         max-height: 28vh;
 //         overflow: scroll;
 //       }
 //     }

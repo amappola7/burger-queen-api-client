@@ -48,26 +48,32 @@ function ProductOrderResume({
   return (
     <div className='product-order'>
       <img src={productImage} alt='Product' />
-      <div>
+      <div className='product-order__info'>
         <p>{productName}</p>
         <p>{`$${productPrice}`}</p>
-        <div className='counter-products'>
+        <div className='down-row'>
+          <div className='counter-products'>
+            <button
+              onClick={onRemoveProduct}
+              type='button'
+              className='icon-button-minus'
+            >
+              <i className='fa-solid fa-minus' />
+            </button>
+            <p>{quantity}</p>
+            <button
+              onClick={onAddProduct}
+              type='button'
+              className='icon-button-plus'
+            >
+              <i className='fa-solid fa-plus' />
+            </button>
+          </div>
           <button
-            onClick={onRemoveProduct}
+            onClick={onDeleteProductOrder}
             type='button'
-            className='icon-button-minus'
+            className='trash'
           >
-            <i className='fa-solid fa-minus' />
-          </button>
-          <p>{quantity}</p>
-          <button
-            onClick={onAddProduct}
-            type='button'
-            className='icon-button-plus'
-          >
-            <i className='fa-solid fa-plus' />
-          </button>
-          <button onClick={onDeleteProductOrder} type='button'>
             <i className='fa-solid fa-trash' />
           </button>
         </div>
