@@ -1,70 +1,119 @@
 @use '../../../App/styles/globals';
 
-.item-table {
+.item-table-products {
   td {
     width: 100%;
     padding: 1rem 1.3rem;
-    @include globals.flex(space-between, flex-start, row);
+    @include globals.flex(space-between, center, row);
   }
 
-  &__product-data {
+  .item-table__product-data {
     width: 78%;
     max-width: 78%;
+    @include globals.flex(flex-start, center, row);
+    flex-wrap: nowrap;
   }
 
-  p {
-    width: 95%;
-    font-size: 2rem;
-    overflow-wrap: break-word;
-    // overflow: scroll;
-    // white-space:nowrap;
+  img {
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 50%;
+    margin-right: 2rem;
   }
 
-  button {
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-
-    &:hover {
-      font-size: 2.3rem;
-      transition: all 0.3s;
+  .item-table__productInfo-container {
+    width: 100%;
+    p {
+      width: 95%;
+      font-size: 2rem;
+      overflow-wrap: break-word;
+    }
+    p:nth-child(1) {
+      font-weight: 700;
+    }
+    p:nth-child(2) {
+      font-weight: 600;
+    }
+    p:nth-child(3) {
+      font-style: italic;
     }
   }
 
-  .icon-button-delete {
-    color: globals.$secondary-color;
-  }
+  .item-table__button-container {
+    @include globals.flex(flex-start, center, row);
+    width: 20%;
+    button {
+      margin: 0;
+      background-color: transparent;
+      border: none;
+      font-size: 2.2rem;
+      cursor: pointer;
 
-  .icon-button-edit {
-    margin-left: 1.5rem;
-    color: globals.$main-color;
+      &:hover {
+        font-size: 2.3rem;
+        transition: all 0.3s;
+      }
+    }
+    .icon-button-delete {
+      color: globals.$secondary-color;
+    }
+
+    .icon-button-edit {
+      margin-left: 1.5rem;
+      color: globals.$main-color;
+    }
   }
 }
 
 @media (min-width: 600px) {
-  .item-table {
+  .item-table-products {
     td {
       padding: 1.8rem 3.2rem;
     }
-    p {
-      font-size: 2.2rem;
+    .item-table__product-data {
+      .item-table__productInfo-container {
+        p {
+          font-size: 2.3rem;
+        }
+      }
     }
-    i {
-      font-size: 2.3rem;
-      margin-left: 2.2rem;
+    .item-table__button-container {
+      @include globals.flex(flex-end, center, row);
+      i {
+        font-size: 3rem;
+      }
     }
   }
 }
 
-
 @media (min-width: 1000px) {
-  .item-table {
-    p {
-      font-size: 1.8rem;
+  .item-table-products {
+    .item-table__product-data {
+      .item-table__productInfo-container {
+        @include globals.flex(center, center, row);
+        p {
+          font-size: 1.8rem;
+        }
+        p:nth-child(1) {
+          width: 100%;
+          margin-right: 2rem;
+        }
+        p:nth-child(2) {
+          font-weight: 600;
+          text-align: center;
+        }
+        p:nth-child(3) {
+          font-style: italic;
+          text-align: center;
+        }
+      }
     }
-    i {
-      font-size: 2.1rem;
+    .item-table__button-container {
+      @include globals.flex(flex-end, center, row);
+      i {
+        font-size: 2rem;
+        margin-right: 2rem;
+      }
     }
   }
 }

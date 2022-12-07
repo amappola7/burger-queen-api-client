@@ -5,6 +5,7 @@
   color: globals.$dark-color;
   text-align: center;
   width: 100%;
+  padding-bottom: 3rem;
   h3 {
     margin-bottom: 1.5rem;
     width: 100%;
@@ -70,7 +71,7 @@
 
     .generic-button {
       @include globals.generic-button(100%);
-      margin-bottom: 0;
+      margin-bottom: 0rem;
     }
   }
   .form-admin-products__text--options {
@@ -80,7 +81,6 @@
     color: #757575;
   }
   .form-admin-products__button--options {
-    margin-bottom: 2rem;
     border: none;
     font-size: 1.5rem;
     font-family: globals.$main-font;
@@ -97,7 +97,7 @@
 }
 
 @media (min-width: 1000px) {
-  .form-admin-users {
+  .form-admin-products {
     h3 {
       font-size: 1.9rem;
       @include globals.flex(center, center, unset);
@@ -109,7 +109,7 @@
         font-size: 1.6rem;
         input,
         select {
-          height: 4rem;
+          height: 3.5rem;
         }
       }
       .generic-button {

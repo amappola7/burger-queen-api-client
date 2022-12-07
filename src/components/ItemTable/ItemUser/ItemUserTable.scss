@@ -1,6 +1,6 @@
 @use '../../../App/styles/globals';
 
-.item-table {
+.item-table-user {
   td {
     width: 100%;
     padding: 1rem 1.3rem;
@@ -43,11 +43,12 @@
 }
 
 @media (min-width: 600px) {
-  .item-table {
+  .item-table-user {
     td {
       padding: 1.8rem 3.2rem;
     }
     p {
+      width: 100%;
       font-size: 2.2rem;
     }
     i {
@@ -59,12 +60,24 @@
 
 
 @media (min-width: 1000px) {
-  .item-table {
-    p {
-      font-size: 1.8rem;
+  .item-table-user {
+    .item-table__user-email-role{
+      width: 80%;
+      @include globals.flex(space-between, flex-start, row);
+      p {
+        font-size: 2rem;
+      }
+      p:nth-child(1) {
+        width: 100%;
+        margin-right: 2rem;
+      }
     }
-    i {
-      font-size: 2.1rem;
+    .button {
+      @include globals.flex(flex-end, flex-end, row);
+      width: 40%;
+      i {
+        font-size: 2.1rem;
+      }
     }
   }
 }

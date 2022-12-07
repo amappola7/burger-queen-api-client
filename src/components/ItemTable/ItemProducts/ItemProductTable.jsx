@@ -67,15 +67,17 @@ function ItemProductTable({
   };
 
   return (
-    <tr className='item-table'>
+    <tr className='item-table-products'>
       <td>
         <div className='item-table__product-data'>
-          <img src={productImage} alt='product' />
-          <p>{productName}</p>
-          <p>{productPrice}</p>
-          <p>{productCategory}</p>
+          <img className='image' src={productImage} alt='product' />
+          <div className='item-table__productInfo-container'>
+            <p>{productName}</p>
+            <p>${productPrice}</p>
+            <p>{productCategory}</p>
+          </div>
         </div>
-        <div>
+        <div className='item-table__button-container'>
           <button
             onClick={onDelete}
             type='button'

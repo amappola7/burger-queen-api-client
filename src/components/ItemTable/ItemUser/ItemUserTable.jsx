@@ -65,13 +65,13 @@ function ItemTable({
   };
 
   return (
-    <tr className='item-table'>
+    <tr className='item-table-user'>
       <td>
         <div className='item-table__user-email-role'>
           <p>{username}</p>
           <p>{userRole}</p>
         </div>
-        <div>
+        <div className='button'>
           <button
             onClick={onDelete}
             type='button'

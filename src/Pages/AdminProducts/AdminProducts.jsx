@@ -102,7 +102,7 @@ function AdminProducts() {
               <th>Productos</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='tbody'>
             {productsList.map((product) => (
               <ItemProductTable
                 key={product.id}
