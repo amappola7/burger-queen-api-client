@@ -33,6 +33,10 @@
     display: none;
     width: 100%;
   }
+  
+}
+.admin-user__container--closed {
+  display: none;
 }
 
 @media (min-width: 600px) {

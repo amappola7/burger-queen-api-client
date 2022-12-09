@@ -27,6 +27,8 @@ function AdminUser() {
     error: '',
   });
 
+  const navbarState = JSON.parse(localStorage.getItem('navbar'));
+
   const openCreateUserModal = () => {
     openFormAdminUsersModal();
     setEdit(false);
@@ -72,7 +74,13 @@ function AdminUser() {
           </NavLink>
         </li>
       </NavBar>
-      <div className='admin-user__container'>
+      <div
+        className={
+          navbarState === true
+            ? 'admin-user__container--closed'
+            : 'admin-user__container'
+        }
+      >
         <button
           className='generic-button create-user-button'
           type='button'

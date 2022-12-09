@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
@@ -11,6 +12,12 @@ function NavBar({ children }) {
   const handleClick = () => {
     setClicked(!clicked);
   };
+
+  if (clicked) {
+    localStorage.setItem('navbar', 'true');
+  } else {
+    localStorage.setItem('navbar', 'false');
+  }
 
   const closeSesion = () => {
     const MySwal = withReactContent(Swal);

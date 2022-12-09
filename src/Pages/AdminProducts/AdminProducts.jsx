@@ -37,6 +37,9 @@ function AdminProducts() {
       productId: '',
     });
   };
+
+  const navbarState = JSON.parse(localStorage.getItem('navbar'));
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     productsListRequest(token)
@@ -71,7 +74,13 @@ function AdminProducts() {
           </NavLink>
         </li>
       </NavBar>
-      <div className='admin-products__container'>
+      <div
+        className={
+          navbarState === true
+            ? 'admin-products__container--closed'
+            : 'admin-products__container'
+        }
+      >
         <button
           className='generic-button create-products-button'
           type='button'
