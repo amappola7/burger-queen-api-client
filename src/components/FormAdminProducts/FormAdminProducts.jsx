@@ -31,7 +31,7 @@ function FormAdminProducts({
       createProductsRequest(
         valueForm.name,
         valueForm.price,
-        valueForm.image,
+        URL.createObjectURL(valueForm.image),
         valueForm.type,
         date.toLocaleString().replaceAll('/', '-'),
         token
@@ -213,6 +213,7 @@ function FormAdminProducts({
             value={valueForm.image}
             required
           />
+          <img src={valueForm.image} alt='producto' />
         </label>
         {apiError.error && (
           <span className='edit-create__message-error'>
