@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
@@ -15,6 +17,12 @@ function TakeOrders() {
   const [apiError, setApiError] = useState({
     error: '',
   });
+
+  const [typeFood, setTypeFood] = useState('');
+
+  const onFilterProducts = (type) => {
+    setTypeFood(type);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -50,11 +58,30 @@ function TakeOrders() {
       <div className='take-orders__container'>
         <div className='take-orders__container-products'>
           <div className='take-orders__container-category'>
-            <button type='button'>
+            <button
+              type='button'
+              onClick={() => {
+                onFilterProducts('');
+              }}
+            >
+              <i className='fa-solid fa-mug-hot' />
+              Todos los productos
+            </button>
+            <button
+              type='button'
+              onClick={() => {
+                onFilterProducts('Desayuno');
+              }}
+            >
               <i className='fa-solid fa-mug-hot' />
               Desayuno
             </button>
-            <button type='button'>
+            <button
+              type='button'
+              onClick={() => {
+                onFilterProducts('Almuerzo');
+              }}
+            >
               <i className='fa-solid fa-burger' />
               Almuerzo
             </button>
@@ -66,18 +93,36 @@ function TakeOrders() {
               </tr>
             </thead>
             <tbody>
-              {productsList.map((product) => (
-                <ItemTakeOrders
-                  key={product.id}
-                  id={product.id}
-                  productImage={product.image}
-                  productName={product.name}
-                  productPrice={product.price}
-                  productsList={productsList}
-                  setProductsList={setProductsList}
-                  quantity={product.qty}
-                />
-              ))}
+              {productsList.map((product) => {
+                if (typeFood === product.type) {
+                  return (
+                    <ItemTakeOrders
+                      key={product.id}
+                      id={product.id}
+                      productImage={product.image}
+                      productName={product.name}
+                      productPrice={product.price}
+                      productsList={productsList}
+                      setProductsList={setProductsList}
+                      quantity={product.qty}
+                    />
+                  );
+                }
+                if (typeFood === '') {
+                  return (
+                    <ItemTakeOrders
+                      key={product.id}
+                      id={product.id}
+                      productImage={product.image}
+                      productName={product.name}
+                      productPrice={product.price}
+                      productsList={productsList}
+                      setProductsList={setProductsList}
+                      quantity={product.qty}
+                    />
+                  );
+                }
+              })}
             </tbody>
           </table>
           <button className='generic-button create-order-button' type='button'>
