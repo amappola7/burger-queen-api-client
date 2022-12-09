@@ -64,12 +64,30 @@ function ItemTable({
     });
   };
 
+  const spanishRole = (role) => {
+    let roleUser;
+    switch (role) {
+      case 'waiter':
+        roleUser = 'Mesero';
+        break;
+      case 'chef':
+        roleUser = 'Chef';
+        break;
+      case 'admin':
+        roleUser = 'Administrador';
+        break;
+      default:
+        break;
+    }
+    return roleUser;
+  };
+
   return (
     <tr className='item-table-user'>
       <td>
         <div className='item-table__user-email-role'>
           <p>{username}</p>
-          <p>{userRole}</p>
+          <p>{spanishRole(userRole)}</p>
         </div>
         <div className='button'>
           <button
