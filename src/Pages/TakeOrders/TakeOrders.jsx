@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import ItemTakeOrders from '../../components/ItemTable/ItemTakeOrder/ItemTakeOrders';
 import FormTakeOrders from '../../components/FormTakeOrders/FormTakeOrders';
@@ -125,9 +125,12 @@ function TakeOrders() {
               })}
             </tbody>
           </table>
-          <button className='generic-button create-order-button' type='button'>
+          <Link
+            to='/resume-order'
+            className='generic-button create-order-button'
+          >
             Crear Orden
-          </button>
+          </Link>
         </div>
         <div className='take-orders__form-order-products'>
           <FormTakeOrders
