@@ -1,7 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../../context/User/UserProvider';
 import { createOrderRequest } from '../../API/ordersRequestHTTP';
 import ProductOrderResume from '../ProductOrderResume/ProductOrderResume';
 import './FormTakeOrders.scss';
@@ -14,13 +15,14 @@ function FormTakeOrders({
   productsList,
   setProductsList,
 }) {
+  const { user } = useContext(UserContext);
+
   let total = 0;
 
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
     const date = new Date();
-    const token = localStorage.getItem('token');
     const userID = localStorage.getItem('userID');
     const data = {
       userId: userID,
@@ -46,7 +48,7 @@ function FormTakeOrders({
       dataEntry: date.toLocaleString().replaceAll('/', '-'),
     };
 
-    createOrderRequest(data, token)
+    createOrderRequest(data, user.token)
       .then((response) => {
         console.log('ORDEN CREADA', response);
       })

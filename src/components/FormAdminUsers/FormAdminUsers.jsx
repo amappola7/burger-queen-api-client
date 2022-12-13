@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import UserContext from '../../../context/User/UserProvider';
 import { createUserRequest, editUserRequest } from '../../API/usersRequestHTTP';
 import './FormAdminUsers.scss';
 
@@ -15,6 +16,7 @@ function FormAdminUsers({
   setApiError,
   isOpenFormAdminUsers,
 }) {
+  const { user } = useContext(UserContext);
   const MySwal = withReactContent(Swal);
 
   // Handle errors function
@@ -129,8 +131,7 @@ function FormAdminUsers({
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
-    const token = localStorage.getItem('token');
-    handleErrors(token);
+    handleErrors(user.token);
   };
 
   // Onchange function

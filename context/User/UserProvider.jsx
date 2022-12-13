@@ -14,7 +14,7 @@ function UserProvider({ children }) {
     setUser('');
   };
 
-  const data = { user, saveUser, cleanUser };
+  const data = { user, setUser, saveUser, cleanUser };
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 }
 

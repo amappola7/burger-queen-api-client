@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import UserContext from '../../../../context/User/UserProvider';
 import { deleteProductsRequest } from '../../../API/productsRequestHTTP';
 import './ItemProductTable.scss';
 
@@ -16,10 +17,11 @@ function ItemProductTable({
   openModal,
   id,
 }) {
+  const { user } = useContext(UserContext);
+
   const MySwal = withReactContent(Swal);
 
   const onDelete = () => {
-    const token = localStorage.getItem('token');
     MySwal.fire({
       title: '¿Estás seguro que deseas eliminar el producto?',
       text: '¡No podrás deshacer esto!',
@@ -33,7 +35,7 @@ function ItemProductTable({
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteProductsRequest(token, id)
+        deleteProductsRequest(user.token, id)
           .then((response) => console.log(response))
           .catch((error) => console.log(error));
         Swal.fire({

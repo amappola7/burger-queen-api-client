@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import './AdminProducts.scss';
@@ -7,8 +7,11 @@ import Modal from '../../components/Modal/Modal';
 import useModal from '../../hooks/useModal';
 import FormAdminProducts from '../../components/FormAdminProducts/FormAdminProducts';
 import { productsListRequest } from '../../API/productsRequestHTTP';
+import UserContext from '../../../context/User/UserProvider';
 
 function AdminProducts() {
+  const { user } = useContext(UserContext);
+
   const [
     isOpenFormAdminProducts,
     openFormAdminProductsModal,
@@ -41,8 +44,7 @@ function AdminProducts() {
   const navbarState = JSON.parse(localStorage.getItem('navbar'));
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    productsListRequest(token)
+    productsListRequest(user.token)
       .then((response) => {
         setProductsList(response.data);
         // console.log(response);
@@ -50,7 +52,7 @@ function AdminProducts() {
       .catch((err) => {
         console.error('ADMIN USER:', err);
       });
-  }, [productsList]);
+  }, [productsList, user]);
 
   return (
     <section className='admin-products'>
@@ -68,7 +70,7 @@ function AdminProducts() {
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/admin-orders' className='navbar__item'>
+          <NavLink exact='true' to='/orders-status' className='navbar__item'>
             <i className='fa-solid fa-basket-shopping' />
             Pedidos
           </NavLink>

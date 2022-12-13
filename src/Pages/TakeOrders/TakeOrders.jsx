@@ -1,14 +1,16 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import ItemTakeOrders from '../../components/ItemTable/ItemTakeOrder/ItemTakeOrders';
 import FormTakeOrders from '../../components/FormTakeOrders/FormTakeOrders';
 import { productsListRequest } from '../../API/productsRequestHTTP';
+import UserContext from '../../../context/User/UserProvider';
 import './TakeOrders.scss';
 
 function TakeOrders() {
+  const { user } = useContext(UserContext);
   const [productsList, setProductsList] = useState([]);
   const [valueProductsForm, setValueProductsForm] = useState({
     nameClient: '',
@@ -19,14 +21,12 @@ function TakeOrders() {
   });
 
   const [typeFood, setTypeFood] = useState('');
-
   const onFilterProducts = (type) => {
     setTypeFood(type);
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    productsListRequest(token)
+    productsListRequest(user.token)
       .then((response) => {
         const products = response.data.map((product) => ({
           ...product,
@@ -37,7 +37,7 @@ function TakeOrders() {
       .catch((err) => {
         console.error('ADMIN USER:', err);
       });
-  }, []);
+  }, [user]);
 
   return (
     <section className='take-orders'>
@@ -49,7 +49,7 @@ function TakeOrders() {
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/admin-orders' className='navbar__item'>
+          <NavLink exact='true' to='/orders-status' className='navbar__item'>
             <i className='fa-solid fa-basket-shopping' />
             Pedidos
           </NavLink>

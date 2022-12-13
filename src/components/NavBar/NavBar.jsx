@@ -11,6 +11,7 @@ function NavBar({ children }) {
   const [clicked, setClicked] = useState(false);
 
   const { cleanUser, user } = useContext(UserContext);
+
   const handleClick = () => {
     setClicked(!clicked);
   };

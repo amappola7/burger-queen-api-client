@@ -1,8 +1,9 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import UserContext from '../../../../context/User/UserProvider';
 import { deleteUserRequest } from '../../../API/usersRequestHTTP';
 import './ItemUserTable.scss';
 
@@ -15,10 +16,11 @@ function ItemTable({
   openModal,
   setApiError,
 }) {
+  const { user } = useContext(UserContext);
+
   const MySwal = withReactContent(Swal);
 
   const onDelete = () => {
-    const token = localStorage.getItem('token');
     MySwal.fire({
       title: '¿Estás seguro que deseas eliminar el usuario?',
       text: '¡No podrás deshacer esto!',
@@ -32,7 +34,7 @@ function ItemTable({
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteUserRequest(token, id)
+        deleteUserRequest(user.token, id)
           .then((response) => console.log(response))
           .catch((error) => console.log(error));
         Swal.fire({

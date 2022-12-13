@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import UserContext from '../../../context/User/UserProvider';
 import {
   createProductsRequest,
   editProductsRequest,
@@ -18,6 +19,8 @@ function FormAdminProducts({
   setApiError,
   isOpenFormAdminProducts,
 }) {
+  const { user } = useContext(UserContext);
+
   const MySwal = withReactContent(Swal);
 
   // Handle errors function
@@ -31,7 +34,7 @@ function FormAdminProducts({
       createProductsRequest(
         valueForm.name,
         valueForm.price,
-        URL.createObjectURL(valueForm.image),
+        valueForm.image,
         valueForm.type,
         date.toLocaleString().replaceAll('/', '-'),
         token
@@ -136,8 +139,7 @@ function FormAdminProducts({
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
-    const token = localStorage.getItem('token');
-    handleErrors(token);
+    handleErrors(user.token);
   };
 
   // Onchange function

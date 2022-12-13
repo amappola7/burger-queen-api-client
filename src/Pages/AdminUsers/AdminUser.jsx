@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import ItemTable from '../../components/ItemTable/ItemUser/ItemUserTable';
@@ -6,10 +6,12 @@ import { usersListRequest } from '../../API/usersRequestHTTP';
 import FormAdminUsers from '../../components/FormAdminUsers/FormAdminUsers';
 import './AdminUsers.scss';
 import useModal from '../../hooks/useModal';
+import UserContext from '../../../context/User/UserProvider';
 import Modal from '../../components/Modal/Modal';
 
 function AdminUser() {
-  // const AuthToken = useContext(AuthTokenContext);
+  const { user } = useContext(UserContext);
+
   const [
     isOpenFormAdminUsers,
     openFormAdminUsersModal,
@@ -41,8 +43,7 @@ function AdminUser() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    usersListRequest(token)
+    usersListRequest(user.token)
       .then((response) => {
         setUsersList(response.data);
         // console.log(response);
@@ -50,7 +51,7 @@ function AdminUser() {
       .catch((err) => {
         console.error('ADMIN USER:', err);
       });
-  }, [usersList]);
+  }, [usersList, user]);
 
   return (
     <section className='admin-users'>
@@ -68,7 +69,7 @@ function AdminUser() {
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/admin-orders' className='navbar__item'>
+          <NavLink exact='true' to='/orders-status' className='navbar__item'>
             <i className='fa-solid fa-basket-shopping' />
             Pedidos
           </NavLink>
@@ -113,12 +114,12 @@ function AdminUser() {
             </tr>
           </thead>
           <tbody>
-            {usersList.map((user) => (
+            {usersList.map((individualUser) => (
               <ItemTable
-                key={user.id}
-                username={user.email}
-                userRole={user.role}
-                id={user.id}
+                key={individualUser.id}
+                username={individualUser.email}
+                userRole={individualUser.role}
+                id={individualUser.id}
                 valueForm={valueForm}
                 setValueForm={setValueForm}
                 setEdit={setEdit}

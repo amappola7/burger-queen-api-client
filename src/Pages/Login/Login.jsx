@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { saveUser, user } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate(); // Router
 
   // get credentials and make request
@@ -23,11 +23,9 @@ function Login() {
           id: response.data.user.id,
           role: response.data.user.role,
         };
-        saveUser(infoUser);
-        const userRole = user.role;
-        console.log(user.role);
+        setUser(infoUser);
         setError('');
-        switch (userRole) {
+        switch (infoUser.role) {
           case 'admin':
             navigate('/admin-index');
             break;
