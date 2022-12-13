@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import UserContext from '../../../context/User/UserProvider';
 import BurguerButton from '../BurguerButton/BurguerButton';
 import './NavBar.scss';
 
 function NavBar({ children }) {
   const [clicked, setClicked] = useState(false);
 
+  const { cleanUser, user } = useContext(UserContext);
   const handleClick = () => {
     setClicked(!clicked);
   };
@@ -35,7 +37,8 @@ function NavBar({ children }) {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        //
+        cleanUser();
+        console.log(user.role);
       }
     });
   };

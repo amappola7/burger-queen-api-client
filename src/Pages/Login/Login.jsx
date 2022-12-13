@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../../../context/User/UserProvider';
 import { authLoginRequest } from '../../API/usersRequestHTTP';
 import './styles/Login.scss';
 
@@ -9,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const { saveUser, user } = useContext(UserContext);
   const navigate = useNavigate(); // Router
 
   // get credentials and make request
@@ -16,10 +18,14 @@ function Login() {
     ev.preventDefault();
     authLoginRequest(email, password)
       .then((response) => {
-        localStorage.setItem('token', response.data.accessToken);
-        localStorage.setItem('role', response.data.user.role);
-        localStorage.setItem('userID', response.data.user.id);
-        const userRole = localStorage.getItem('role');
+        const infoUser = {
+          token: response.data.accessToken,
+          id: response.data.user.id,
+          role: response.data.user.role,
+        };
+        saveUser(infoUser);
+        const userRole = user.role;
+        console.log(user.role);
         setError('');
         switch (userRole) {
           case 'admin':

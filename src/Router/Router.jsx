@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AdminIndex from '../Pages/AdminIndex/AdminIndex';
 import AdminProducts from '../Pages/AdminProducts/AdminProducts';
@@ -7,9 +7,11 @@ import Login from '../Pages/Login/Login';
 import TakeOrders from '../Pages/TakeOrders/TakeOrders';
 import OrdersStatus from '../Pages/OrdersStatus/OrdersStatus';
 import ResumeOrder from '../Pages/ResumeOrder/ResumeOrder';
+import UserContext from '../../context/User/UserProvider';
 
 function Router() {
-  const userRole = localStorage.getItem('role');
+  const { user } = useContext(UserContext);
+  const userRole = user.role;
 
   const defaultRoutes = (role) => {
     let route;
