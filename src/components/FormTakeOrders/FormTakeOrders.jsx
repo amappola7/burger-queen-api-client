@@ -83,7 +83,7 @@ function FormTakeOrders({
           <section className='form-take-orders__products'>
             {productsList.map((product) => {
               if (product.qty !== 0) {
-                total += parseInt(product.price, 10);
+                total += parseInt(product.price, 10) * product.qty;
                 return (
                   <ProductOrderResume
                     key={product.id}
