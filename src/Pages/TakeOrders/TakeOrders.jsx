@@ -32,8 +32,8 @@ function TakeOrders() {
         }));
         setProductsList(products);
       })
-      .catch((err) => {
-        console.error('ADMIN USER:', err);
+      .catch((error) => {
+        console.error('ERROR AL TRAER LA LISTA DE PRODUCTOS', error);
       });
   }, [user]);
 
