@@ -64,7 +64,6 @@ function FormAdminUsers({
         .catch((error) => {
           switch (error.response.data) {
             case 'Email already exists':
-              console.log('Creando mal un usuario - API Error', apiError);
               setApiError({
                 error: 'El correo ya está en uso',
               });

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
@@ -17,6 +18,8 @@ function FormTakeOrders({
   setApiError,
   productsList,
   setProductsList,
+  closeFormTakeOrder,
+  isOpenFormTakeOrder,
 }) {
   const { user } = useContext(UserContext);
   const MySwal = withReactContent(Swal);
@@ -72,6 +75,8 @@ function FormTakeOrders({
           });
 
           setProductsList(newProducts);
+
+          if (isOpenFormTakeOrder) closeFormTakeOrder();
         })
         .catch((error) => {
           console.log('ERROR AL CREAR UNA ORDEN', error);

@@ -1,13 +1,15 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import ItemTakeOrders from '../../components/ItemTable/ItemTakeOrder/ItemTakeOrders';
 import FormTakeOrders from '../../components/FormTakeOrders/FormTakeOrders';
 import { productsListRequest } from '../../API/productsRequestHTTP';
 import UserContext from '../../../context/User/UserProvider';
+import Modal from '../../components/Modal/Modal';
 import './TakeOrders.scss';
+import useModal from '../../hooks/useModal';
 
 function TakeOrders() {
   const { user, navBarContext } = useContext(UserContext);
@@ -19,6 +21,8 @@ function TakeOrders() {
   const [apiError, setApiError] = useState('');
 
   const [typeFood, setTypeFood] = useState('');
+  const [isOpenFormTakeOrder, openFormTakeOrder, closeFormTakeOrder] =
+    useModal();
   const onFilterProducts = (type) => {
     setTypeFood(type);
   };
@@ -33,6 +37,7 @@ function TakeOrders() {
         setProductsList(products);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error('ERROR AL TRAER LA LISTA DE PRODUCTOS', error);
       });
   }, [user]);
@@ -131,12 +136,29 @@ function TakeOrders() {
               })}
             </tbody>
           </table>
-          <Link
-            to='/resume-order'
+          <button
+            type='button'
             className='generic-button create-order-button'
+            onClick={openFormTakeOrder}
           >
             Crear Orden
-          </Link>
+          </button>
+          <Modal
+            className='take-orders__form-order-products--modal'
+            isOpen={isOpenFormTakeOrder}
+            closeModal={closeFormTakeOrder}
+          >
+            <FormTakeOrders
+              valueForm={valueProductsForm}
+              setValueForm={setValueProductsForm}
+              apiError={apiError}
+              setApiError={setApiError}
+              productsList={productsList}
+              setProductsList={setProductsList}
+              closeFormTakeOrder={closeFormTakeOrder}
+              isOpenFormTakeOrder={isOpenFormTakeOrder}
+            />
+          </Modal>
         </div>
         <div className='take-orders__form-order-products'>
           <FormTakeOrders
