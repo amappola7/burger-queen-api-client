@@ -2,6 +2,8 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import UserContext from '../../../context/User/UserProvider';
 import { createOrderRequest } from '../../API/ordersRequestHTTP';
 import ProductOrderResume from '../ProductOrderResume/ProductOrderResume';
@@ -16,7 +18,7 @@ function FormTakeOrders({
   setProductsList,
 }) {
   const { user } = useContext(UserContext);
-
+  const MySwal = withReactContent(Swal);
   let total = 0;
 
   // onsubmit function
@@ -49,13 +51,27 @@ function FormTakeOrders({
     };
 
     createOrderRequest(data, user.token)
-      .then((response) => {
-        console.log('ORDEN CREADA', response);
+      .then(() => {
+        MySwal.fire({
+          icon: 'success',
+          title: 'La orden ha sido creada  con éxito',
+          showConfirmButton: false,
+          timer: 1600,
+          customClass: {
+            popup: 'user-alert',
+          },
+        });
+        setValueForm({ nameClient: '' });
+        const newProducts = [...productsList].map((product) => {
+          product.qty = 0;
+          return product;
+        });
+
+        setProductsList(newProducts);
       })
       .catch((error) => {
         console.log(error);
       });
-    //   handleErrors(token);
   };
 
   // Onchange function

@@ -22,7 +22,6 @@ function ItemTakeOrders({
       return product;
     });
 
-    console.log('ELIMINANDO', newProducts);
     setProductsList(newProducts);
   };
 
