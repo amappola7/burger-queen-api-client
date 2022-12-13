@@ -10,7 +10,7 @@ import './NavBar.scss';
 function NavBar({ children }) {
   const [clicked, setClicked] = useState(false);
 
-  const { cleanUser, user, setNavBarContext } = useContext(UserContext);
+  const { cleanUser, setNavBarContext } = useContext(UserContext);
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -35,7 +35,6 @@ function NavBar({ children }) {
       if (result.isConfirmed) {
         setNavBarContext(false);
         cleanUser();
-        console.log(user.role);
       }
     });
   };
