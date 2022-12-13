@@ -65,21 +65,21 @@ function FormAdminProducts({
         })
         .catch((error) => {
           console.log('ERROR AL CREAR UN PRODUCTO:', error);
-          // switch (error.response.data) {
-          //   case 'Email already exists':
-          //     console.log('Creando mal un usuario - API Error', apiError);
-          //     setApiError({
-          //       error: 'El correo ya está en uso',
-          //     });
-          //     break;
-          //   case 'Password is too short':
-          //     setApiError({
-          //       error: 'La contraseña es muy corta',
-          //     });
-          //     break;
-          //   default:
-          //     break;
-          // }
+          switch (error.response.data) {
+            case 'Email already exists':
+              console.log('Creando mal un usuario - API Error', apiError);
+              setApiError({
+                error: 'El correo ya está en uso',
+              });
+              break;
+            case 'Password is too short':
+              setApiError({
+                error: 'La contraseña es muy corta',
+              });
+              break;
+            default:
+              break;
+          }
         });
     } else {
       editProductsRequest(
@@ -92,7 +92,6 @@ function FormAdminProducts({
         valueForm.productId
       )
         .then(() => {
-          // console.log(apiError);
           setApiError({
             error: '',
           });
@@ -118,20 +117,6 @@ function FormAdminProducts({
         })
         .catch((error) => {
           console.log('ERROR AL EDITAR UN PRODUCTO:', error);
-          // switch (error.response.data) {
-          //   case 'Email already exists':
-          //     setApiError({
-          //       error: 'El correo ya está en uso',
-          //     });
-          //     break;
-          //   case 'Password is too short':
-          //     setApiError({
-          //       error: 'La contraseña es muy corta',
-          //     });
-          //     break;
-          //   default:
-          //     break;
-          // }
         });
     }
   };
@@ -210,7 +195,6 @@ function FormAdminProducts({
             onChange={(ev) => handleOnChange(ev)}
             type='url'
             placeholder='Ingresa la URL'
-            // accept='image/png, image/jpeg, image/jpg'
             name='image'
             value={valueForm.image}
             required
