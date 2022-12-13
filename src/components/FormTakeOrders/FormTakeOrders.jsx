@@ -51,28 +51,32 @@ function FormTakeOrders({
       dataEntry: date.toLocaleString().replaceAll('/', '-'),
     };
 
-    createOrderRequest(data, user.token)
-      .then(() => {
-        MySwal.fire({
-          icon: 'success',
-          title: 'La orden ha sido creada  con éxito',
-          showConfirmButton: false,
-          timer: 1600,
-          customClass: {
-            popup: 'user-alert',
-          },
-        });
-        setValueForm({ nameClient: '' });
-        const newProducts = [...productsList].map((product) => {
-          product.qty = 0;
-          return product;
-        });
+    if (total === 0) {
+      setApiError('Agregue algún producto para realizar la orden');
+    } else {
+      createOrderRequest(data, user.token)
+        .then(() => {
+          MySwal.fire({
+            icon: 'success',
+            title: 'La orden ha sido creada  con éxito',
+            showConfirmButton: false,
+            timer: 1600,
+            customClass: {
+              popup: 'user-alert',
+            },
+          });
+          setValueForm({ nameClient: '' });
+          const newProducts = [...productsList].map((product) => {
+            product.qty = 0;
+            return product;
+          });
 
-        setProductsList(newProducts);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          setProductsList(newProducts);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   // Onchange function
@@ -119,12 +123,12 @@ function FormTakeOrders({
           </section>
         </div>
         <div className='form-bottom'>
-          {/* {apiError.error && (
-          <span className='edit-create__message-error'>
-            <i className='fa-solid fa-triangle-exclamation' />
-            {apiError.error}
-          </span>
-        )} */}
+          {apiError && (
+            <span className='edit-create__message-error'>
+              <i className='fa-solid fa-triangle-exclamation' />
+              {apiError}
+            </span>
+          )}
           <div className='total-order'>
             <p className='p-total'>Total</p>
             <p className='p-total'>{total}</p>

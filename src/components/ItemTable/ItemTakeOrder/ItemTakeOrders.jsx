@@ -10,6 +10,7 @@ function ItemTakeOrders({
   quantity,
   productsList,
   setProductsList,
+  setApiError,
 }) {
   // event click buttons
   const onRemoveProduct = () => {
@@ -26,6 +27,7 @@ function ItemTakeOrders({
   };
 
   const onAddProduct = () => {
+    setApiError('');
     const newProducts = [...productsList].map((product) => {
       if (product.name === productName) {
         product.qty += 1;
@@ -33,7 +35,6 @@ function ItemTakeOrders({
       return product;
     });
 
-    console.log('AÑADIENDO', newProducts);
     setProductsList(newProducts);
   };
 

@@ -16,9 +16,7 @@ function TakeOrders() {
     nameClient: '',
   });
 
-  const [apiError, setApiError] = useState({
-    error: '',
-  });
+  const [apiError, setApiError] = useState('');
 
   const [typeFood, setTypeFood] = useState('');
   const onFilterProducts = (type) => {
@@ -111,6 +109,7 @@ function TakeOrders() {
                       productsList={productsList}
                       setProductsList={setProductsList}
                       quantity={product.qty}
+                      setApiError={setApiError}
                     />
                   );
                 }
@@ -125,6 +124,7 @@ function TakeOrders() {
                       productsList={productsList}
                       setProductsList={setProductsList}
                       quantity={product.qty}
+                      setApiError={setApiError}
                     />
                   );
                 }
