@@ -6,6 +6,7 @@ const UserContext = createContext();
 
 function UserProvider({ children }) {
   const [user, setUser] = useState({});
+  const [navBarContext, setNavBarContext] = useState(false);
   const saveUser = (info) => {
     setUser(info);
   };
@@ -14,7 +15,14 @@ function UserProvider({ children }) {
     setUser('');
   };
 
-  const data = { user, setUser, saveUser, cleanUser };
+  const data = {
+    user,
+    setUser,
+    saveUser,
+    cleanUser,
+    navBarContext,
+    setNavBarContext,
+  };
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 }
 

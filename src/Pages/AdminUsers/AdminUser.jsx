@@ -10,7 +10,7 @@ import UserContext from '../../../context/User/UserProvider';
 import Modal from '../../components/Modal/Modal';
 
 function AdminUser() {
-  const { user } = useContext(UserContext);
+  const { user, navBarContext } = useContext(UserContext);
 
   const [
     isOpenFormAdminUsers,
@@ -28,8 +28,6 @@ function AdminUser() {
   const [apiError, setApiError] = useState({
     error: '',
   });
-
-  const navbarState = JSON.parse(localStorage.getItem('navbar'));
 
   const openCreateUserModal = () => {
     openFormAdminUsersModal();
@@ -77,7 +75,7 @@ function AdminUser() {
       </NavBar>
       <div
         className={
-          navbarState === true
+          navBarContext === true
             ? 'admin-user__container--closed'
             : 'admin-user__container'
         }

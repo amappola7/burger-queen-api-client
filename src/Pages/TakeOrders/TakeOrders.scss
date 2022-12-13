@@ -71,6 +71,10 @@
   }
 }
 
+.take-orders__container--closed {
+  display: none;
+}
+
 @media (min-width: 600px) {
   .take-orders {
     padding-top: 13rem;

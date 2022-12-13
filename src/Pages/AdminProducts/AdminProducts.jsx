@@ -10,7 +10,7 @@ import { productsListRequest } from '../../API/productsRequestHTTP';
 import UserContext from '../../../context/User/UserProvider';
 
 function AdminProducts() {
-  const { user } = useContext(UserContext);
+  const { user, navBarContext } = useContext(UserContext);
 
   const [
     isOpenFormAdminProducts,
@@ -40,8 +40,6 @@ function AdminProducts() {
       productId: '',
     });
   };
-
-  const navbarState = JSON.parse(localStorage.getItem('navbar'));
 
   useEffect(() => {
     productsListRequest(user.token)
@@ -78,7 +76,7 @@ function AdminProducts() {
       </NavBar>
       <div
         className={
-          navbarState === true
+          navBarContext === true
             ? 'admin-products__container--closed'
             : 'admin-products__container'
         }

@@ -10,17 +10,12 @@ import './NavBar.scss';
 function NavBar({ children }) {
   const [clicked, setClicked] = useState(false);
 
-  const { cleanUser, user } = useContext(UserContext);
+  const { cleanUser, user, setNavBarContext } = useContext(UserContext);
 
   const handleClick = () => {
     setClicked(!clicked);
+    setNavBarContext(!clicked);
   };
-
-  if (clicked) {
-    localStorage.setItem('navbar', 'true');
-  } else {
-    localStorage.setItem('navbar', 'false');
-  }
 
   const closeSesion = () => {
     const MySwal = withReactContent(Swal);
@@ -38,6 +33,7 @@ function NavBar({ children }) {
       },
     }).then((result) => {
       if (result.isConfirmed) {
+        setNavBarContext(false);
         cleanUser();
         console.log(user.role);
       }

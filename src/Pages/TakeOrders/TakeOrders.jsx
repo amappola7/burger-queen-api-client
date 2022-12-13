@@ -10,7 +10,7 @@ import UserContext from '../../../context/User/UserProvider';
 import './TakeOrders.scss';
 
 function TakeOrders() {
-  const { user } = useContext(UserContext);
+  const { user, navBarContext } = useContext(UserContext);
   const [productsList, setProductsList] = useState([]);
   const [valueProductsForm, setValueProductsForm] = useState({
     nameClient: '',
@@ -55,7 +55,13 @@ function TakeOrders() {
           </NavLink>
         </li>
       </NavBar>
-      <div className='take-orders__container'>
+      <div
+        className={
+          navBarContext === true
+            ? 'take-orders__container--closed'
+            : 'take-orders__container'
+        }
+      >
         <div className='take-orders__container-products'>
           <div className='take-orders__container-category'>
             <button

@@ -36,6 +36,10 @@
   }
 }
 
+.admin-products__container--closed {
+  display: none;
+}
+
 @media (min-width: 600px) {
   .admin-products {
     padding-top: 13rem;
@@ -57,9 +61,6 @@
         height: 6rem;
       }
     }
-  }
-  .admin-products__container--closed {
-    display: none;
   }
 }
 
