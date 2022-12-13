@@ -46,7 +46,7 @@ function TakeOrders() {
     <section className='take-orders'>
       <NavBar>
         <li>
-          <NavLink exact='true' to='/admin-products' className='navbar__item'>
+          <NavLink exact='true' to='/take-orders' className='navbar__item'>
             <i className='fa-solid fa-clipboard-list' />
             Tomar Orden
           </NavLink>

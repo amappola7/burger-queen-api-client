@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import UserContext from '../../../context/User/UserProvider';
@@ -9,6 +10,7 @@ import './NavBar.scss';
 
 function NavBar({ children }) {
   const [clicked, setClicked] = useState(false);
+  const navigate = useNavigate();
 
   const { cleanUser, setNavBarContext } = useContext(UserContext);
 
@@ -35,6 +37,7 @@ function NavBar({ children }) {
       if (result.isConfirmed) {
         setNavBarContext(false);
         cleanUser();
+        navigate('/');
       }
     });
   };

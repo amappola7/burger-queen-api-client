@@ -6,7 +6,6 @@ import AdminUser from '../Pages/AdminUsers/AdminUser';
 import Login from '../Pages/Login/Login';
 import TakeOrders from '../Pages/TakeOrders/TakeOrders';
 import OrdersStatus from '../Pages/OrdersStatus/OrdersStatus';
-import ResumeOrder from '../Pages/ResumeOrder/ResumeOrder';
 import UserContext from '../../context/User/UserProvider';
 
 function Router() {
@@ -73,16 +72,6 @@ function Router() {
             element={
               userRole === 'waiter' ? (
                 <TakeOrders />
-              ) : (
-                <Navigate to={defaultRoutes(userRole)} />
-              )
-            }
-          />
-          <Route
-            path='/resume-order'
-            element={
-              userRole === 'waiter' ? (
-                <ResumeOrder />
               ) : (
                 <Navigate to={defaultRoutes(userRole)} />
               )
