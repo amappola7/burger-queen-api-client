@@ -10,4 +10,12 @@ const createOrderRequest = (data, token) => {
   });
 };
 
-export { createOrderRequest };
+const ordersListRequest = (token) => {
+  return axios({
+    method: 'get',
+    url: 'http://localhost:8080/orders',
+    headers: { authorization: `Bearer ${token}` },
+  });
+};
+
+export { createOrderRequest, ordersListRequest };

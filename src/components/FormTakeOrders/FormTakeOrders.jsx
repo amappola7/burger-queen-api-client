@@ -33,7 +33,9 @@ function FormTakeOrders({
     const data = {
       userId: userID,
       client: valueForm.nameClient,
-      products: productsList.filter((product) => {
+      status: 'pending',
+      dataEntry: date.toLocaleString().replaceAll('/', '-'),
+      products: productsList.map((product) => {
         if (product.qty > 0) {
           const newProduct = {
             qty: product.qty,
@@ -49,11 +51,9 @@ function FormTakeOrders({
           return newProduct;
         }
       }),
-
-      status: 'pending',
-      dataEntry: date.toLocaleString().replaceAll('/', '-'),
     };
 
+    console.log(data);
     if (total === 0) {
       setApiError('Agregue algún producto para realizar la orden');
     } else {

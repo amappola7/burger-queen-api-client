@@ -1,12 +1,18 @@
-import React, { useContext, useState } from 'react';
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
+import React, { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import UserContext from '../../../context/User/UserProvider';
 import NavBar from '../../components/NavBar/NavBar';
+import { ordersListRequest } from '../../API/ordersRequestHTTP';
+import ProductOrder from '../../components/ItemTable/ItemOrders/productOrder/ProductOrder';
+import ItemOrders from '../../components/ItemTable/ItemOrders/ItemOrders';
 import './OrdersStatus.scss';
 
 function OrdersStatus() {
   const { user, navBarContext } = useContext(UserContext);
   const [valueSelect, setValueSelect] = useState('pending');
+  const [orders, setOrders] = useState([]);
 
   const navBarOptions = (role) => {
     let component;
@@ -93,6 +99,18 @@ function OrdersStatus() {
     setValueSelect(ev.target.value);
   };
 
+  useEffect(() => {
+    ordersListRequest(user.token)
+      .then((response) => {
+        setOrders(response.data);
+        console.log('haciendo petición');
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('ERROR AL TRAER LA LISTA DE PRODUCTOS', error);
+      });
+  }, [user]);
+
   return (
     <section className='orders-status'>
       {navBarOptions(user.role)}
@@ -109,29 +127,113 @@ function OrdersStatus() {
           <option value='finished'>Terminadas</option>
           <option value='delivered'>Entregadas</option>
         </select>
-        <table className='orders-status__pending-orders'>
+        <table
+          className={
+            valueSelect === 'pending'
+              ? 'orders-status__pending-orders--active'
+              : 'orders-status__pending-orders'
+          }
+        >
           <thead>
             <tr>
               <th>Pendientes</th>
             </tr>
           </thead>
-          <tbody>Cuerpo de la tabla</tbody>
+          <tbody>
+            {orders.map((order) => {
+              if (valueSelect === 'pending' && order.status === 'pending') {
+                return (
+                  <ItemOrders
+                    key={order.id}
+                    clientName={order.client}
+                    orderDate={order.dataEntry}
+                  >
+                    {order.products.map((product) => {
+                      return (
+                        <ProductOrder
+                          key={order.id}
+                          productOrderName={product.product.name}
+                          productOrderQuantity={product.qty}
+                        />
+                      );
+                    })}
+                  </ItemOrders>
+                );
+              }
+            })}
+          </tbody>
         </table>
-        <table className='orders-status__finished-orders'>
+        <table
+          className={
+            valueSelect === 'finished'
+              ? 'orders-status__finished-orders--active'
+              : 'orders-status__finished-orders'
+          }
+        >
           <thead>
             <tr>
               <th>Terminadas</th>
             </tr>
           </thead>
-          <tbody>Cuerpo de la tabla</tbody>
+          <tbody>
+            {orders.map((order) => {
+              if (valueSelect === 'finished' && order.status === 'finished') {
+                return (
+                  <ItemOrders
+                    key={order.id}
+                    clientName={order.client}
+                    orderDate={order.dataEntry}
+                  >
+                    {order.products.map((product) => {
+                      return (
+                        <ProductOrder
+                          key={order.id}
+                          productOrderName={product.product.name}
+                          productOrderQuantity={product.qty}
+                        />
+                      );
+                    })}
+                  </ItemOrders>
+                );
+              }
+            })}
+          </tbody>
         </table>
-        <table className='orders-status__delivered-orders'>
+        <table
+          className={
+            valueSelect === 'delivered'
+              ? 'orders-status__delivered-orders--active'
+              : 'orders-status__delivered-orders'
+          }
+        >
           <thead>
             <tr>
               <th>Entregadas</th>
             </tr>
           </thead>
-          <tbody>Cuerpo de la tabla</tbody>
+          <tbody>
+            {orders.map((order) => {
+              if (valueSelect === 'delivered' && order.status === 'delivered') {
+                return (
+                  <ItemOrders
+                    key={order.id}
+                    clientName={order.client}
+                    orderDate={order.dataEntry}
+                  >
+                    {order.products.map((product) => {
+                      return (
+                        <ProductOrder
+                          key={order.id}
+                          productOrderName={product.product.name}
+                          productOrderQuantity={product.qty}
+                        />
+                      );
+                    })}
+                  </ItemOrders>
+                );
+              }
+            })}
+          </tbody>
         </table>
       </div>
     </section>

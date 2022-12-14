@@ -1,0 +1,41 @@
+.orders-status {
+  padding-top: 11rem;
+}
+.orders-status__container {
+  .orders-status__pending-orders {
+    display: none;
+  }
+  .orders-status__pending-orders--active {
+    display: flex;
+  }
+
+  .orders-status__finished-orders {
+    display: none;
+  }
+
+  .orders-status__finished-orders--active {
+    display: flex;
+  }
+
+  .orders-status__delivered-orders {
+    display: none;
+  }
+
+  .orders-status__delivered-orders--active {
+    display: flex;
+  }
+}
+
+@media (min-width: 1000px) {
+  .orders-status__container {
+    .orders-status__pending-orders {
+      display: flex;
+    }
+    .orders-status__finished-orders {
+      display: flex;
+    }
+    .orders-status__delivered-orders {
+      display: flex;
+    }
+  }
+}
