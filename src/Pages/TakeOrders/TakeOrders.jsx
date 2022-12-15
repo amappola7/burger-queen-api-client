@@ -12,6 +12,7 @@ import './TakeOrders.scss';
 import useModal from '../../hooks/useModal';
 
 function TakeOrders() {
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   const { user, navBarContext } = useContext(UserContext);
   const [productsList, setProductsList] = useState([]);
   const [valueProductsForm, setValueProductsForm] = useState({
@@ -28,7 +29,7 @@ function TakeOrders() {
   };
 
   useEffect(() => {
-    productsListRequest(user.token)
+    productsListRequest(userInfo.token)
       .then((response) => {
         const products = response.data.map((product) => ({
           ...product,
@@ -40,7 +41,7 @@ function TakeOrders() {
         // eslint-disable-next-line no-console
         console.error('ERROR AL TRAER LA LISTA DE PRODUCTOS', error);
       });
-  }, [user]);
+  }, [userInfo.token]);
 
   return (
     <section className='take-orders'>

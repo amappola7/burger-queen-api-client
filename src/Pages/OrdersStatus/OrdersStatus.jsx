@@ -10,6 +10,7 @@ import ItemOrders from '../../components/ItemTable/ItemOrders/ItemOrders';
 import './OrdersStatus.scss';
 
 function OrdersStatus() {
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   const { user, navBarContext } = useContext(UserContext);
   const [valueSelect, setValueSelect] = useState('pending');
   const [orders, setOrders] = useState([]);
@@ -100,7 +101,7 @@ function OrdersStatus() {
   };
 
   useEffect(() => {
-    ordersListRequest(user.token)
+    ordersListRequest(userInfo.token)
       .then((response) => {
         setOrders(response.data);
         console.log('haciendo petición');
@@ -109,11 +110,11 @@ function OrdersStatus() {
         // eslint-disable-next-line no-console
         console.error('ERROR AL TRAER LA LISTA DE PRODUCTOS', error);
       });
-  }, [user]);
+  }, [userInfo.token]);
 
   return (
     <section className='orders-status'>
-      {navBarOptions(user.role)}
+      {navBarOptions(userInfo.role)}
       <div
         className={
           navBarContext === true

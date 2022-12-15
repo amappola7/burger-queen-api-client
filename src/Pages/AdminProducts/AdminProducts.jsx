@@ -10,6 +10,7 @@ import { productsListRequest } from '../../API/productsRequestHTTP';
 import UserContext from '../../../context/User/UserProvider';
 
 function AdminProducts() {
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   const { user, navBarContext } = useContext(UserContext);
 
   const [
@@ -42,7 +43,7 @@ function AdminProducts() {
   };
 
   useEffect(() => {
-    productsListRequest(user.token)
+    productsListRequest(userInfo.token)
       .then((response) => {
         setProductsList(response.data);
         // console.log(response);
@@ -50,7 +51,7 @@ function AdminProducts() {
       .catch((err) => {
         console.error('ADMIN USER:', err);
       });
-  }, [productsList, user]);
+  }, [productsList, userInfo.token]);
 
   return (
     <section className='admin-products'>

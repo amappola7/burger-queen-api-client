@@ -24,6 +24,7 @@ function Login() {
           role: response.data.user.role,
         };
         setUser(infoUser);
+        localStorage.setItem('infoUser', JSON.stringify(infoUser));
         setError('');
         switch (infoUser.role) {
           case 'admin':

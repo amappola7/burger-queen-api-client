@@ -10,6 +10,7 @@ import UserContext from '../../../context/User/UserProvider';
 import Modal from '../../components/Modal/Modal';
 
 function AdminUser() {
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
   const { user, navBarContext } = useContext(UserContext);
 
   const [
@@ -41,7 +42,7 @@ function AdminUser() {
   };
 
   useEffect(() => {
-    usersListRequest(user.token)
+    usersListRequest(userInfo.token)
       .then((response) => {
         setUsersList(response.data);
         // console.log(response);
@@ -49,7 +50,7 @@ function AdminUser() {
       .catch((err) => {
         console.error('ADMIN USER:', err);
       });
-  }, [usersList, user]);
+  }, [usersList, userInfo.token]);
 
   return (
     <section className='admin-users'>

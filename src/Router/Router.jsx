@@ -9,8 +9,11 @@ import OrdersStatus from '../Pages/OrdersStatus/OrdersStatus';
 import UserContext from '../../context/User/UserProvider';
 
 function Router() {
-  const { user } = useContext(UserContext);
-  const userRole = user.role;
+  const userRole =
+    JSON.parse(localStorage.getItem('userInfo')).role === null
+      ? ''
+      : JSON.parse(localStorage.getItem('userInfo')).role;
+  // const userRole = userInfo.role === null ? '' : userInfo.role;
 
   const defaultRoutes = (role) => {
     let route;
