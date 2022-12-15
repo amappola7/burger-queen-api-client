@@ -19,7 +19,7 @@ const preparationTime = (dateEntry, dateProcessed) => {
     return `${hour} hrs. y ${minutes} mins.`;
   }
 
-  return `${preparation} mins.`;
+  return `${Math.floor(preparation)} mins.`;
 };
 
 export { formatDate, preparationTime };

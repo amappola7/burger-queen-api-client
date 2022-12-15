@@ -7,8 +7,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import { ordersListRequest } from '../../API/ordersRequestHTTP';
 import ProductOrder from '../../components/ItemTable/ItemOrders/productOrder/ProductOrder';
 import ItemOrders from '../../components/ItemTable/ItemOrders/ItemOrders';
-import './OrdersStatus.scss';
 import { preparationTime } from '../../utils/formatDate';
+import './OrdersStatus.scss';
 
 function OrdersStatus() {
   const { user, navBarContext } = useContext(UserContext);
@@ -135,8 +135,8 @@ function OrdersStatus() {
         <table
           className={
             valueSelect === 'pending'
-              ? 'orders-status__pending-orders--active'
-              : 'orders-status__pending-orders'
+              ? 'order-table orders-status__pending-orders--active'
+              : 'order-table orders-status__pending-orders'
           }
         >
           <thead>
@@ -176,8 +176,8 @@ function OrdersStatus() {
         <table
           className={
             valueSelect === 'finished'
-              ? 'orders-status__finished-orders--active'
-              : 'orders-status__finished-orders'
+              ? 'order-table orders-status__finished-orders--active'
+              : 'order-table orders-status__finished-orders'
           }
         >
           <thead>
@@ -220,8 +220,8 @@ function OrdersStatus() {
         <table
           className={
             valueSelect === 'delivered'
-              ? 'orders-status__delivered-orders--active'
-              : 'orders-status__delivered-orders'
+              ? 'order-table orders-status__delivered-orders--active'
+              : 'order-table orders-status__delivered-orders'
           }
         >
           <thead>

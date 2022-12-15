@@ -1,7 +1,52 @@
+@use '../../App/styles/globals';
+
 .orders-status {
   padding-top: 11rem;
 }
+
 .orders-status__container {
+  width: 100%;
+  @include globals.flex(center, center, column);
+
+  select {
+    padding: 0 2rem;
+    width: 90%;
+    height: 4.4rem;
+    background-color: #fff;
+    border: none;
+    border-radius: 2rem;
+    font-family: globals.$main-font;
+    font-size: 1.7rem;
+    font-weight: 600;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-right: 2rem solid transparent;
+    cursor: pointer;
+    &:focus {
+      outline: globals.$main-color 0.1rem solid;
+    }
+  }
+
+  .order-table {
+    width: 90%;
+    @include globals.flex(center, center, column);
+    border-radius: 2.5rem;
+    margin-bottom: 4rem;
+    font-family: globals.$main-font;
+    font-size: 2.1rem;
+    color: globals.$dark-color;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
+    thead th {
+      height: 4.6rem;
+      border-bottom: solid 0.3rem globals.$gray-color;
+    }
+
+    tbody {
+      width: 90%;
+    }
+  }
+
   .orders-status__pending-orders {
     display: none;
   }
