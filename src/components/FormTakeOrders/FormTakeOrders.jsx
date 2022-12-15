@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import UserContext from '../../../context/User/UserProvider';
 import { createOrderRequest } from '../../API/ordersRequestHTTP';
+import { formatDate } from '../../utils/formatDate';
 import ProductOrderResume from '../ProductOrderResume/ProductOrderResume';
 import './FormTakeOrders.scss';
 
@@ -28,13 +29,12 @@ function FormTakeOrders({
   // onsubmit function
   const sendForm = (ev) => {
     ev.preventDefault();
-    const date = new Date();
     const userID = user.id;
     const data = {
       userId: userID,
       client: valueForm.nameClient,
       status: 'pending',
-      dataEntry: date.toLocaleString().replaceAll('/', '-'),
+      dataEntry: formatDate(),
       products: productsList.map((product) => {
         const newProduct = {
           qty: product.qty,

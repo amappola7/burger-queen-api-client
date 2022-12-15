@@ -7,6 +7,7 @@ import {
   createProductsRequest,
   editProductsRequest,
 } from '../../API/productsRequestHTTP';
+import { formatDate } from '../../utils/formatDate';
 import './FormAdminProducts.scss';
 
 function FormAdminProducts({
@@ -25,7 +26,6 @@ function FormAdminProducts({
 
   // Handle errors function
   const handleErrors = (token) => {
-    const date = new Date();
     if (!valueForm.type || valueForm.type === 'type') {
       setApiError({
         error: 'Elija una categoría válida',
@@ -36,7 +36,7 @@ function FormAdminProducts({
         valueForm.price,
         valueForm.image,
         valueForm.type,
-        date.toLocaleString().replaceAll('/', '-'),
+        formatDate(),
         token
       )
         .then(() => {

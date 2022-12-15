@@ -192,7 +192,7 @@ function OrdersStatus() {
                     key={order.id}
                     id={order.id}
                     clientName={order.client}
-                    orderDate={order.dataEntry}
+                    orderDate={order.dateProcessed}
                     orderStatus={order.status}
                     user={user}
                   >

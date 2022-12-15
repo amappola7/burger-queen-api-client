@@ -7,6 +7,7 @@ import {
   modifyStatusOrderRequest,
   deleteOrderRequest,
 } from '../../../API/ordersRequestHTTP';
+import { formatDate } from '../../../utils/formatDate';
 
 function ItemOrders({
   id,
@@ -26,9 +27,18 @@ function ItemOrders({
       statusOrder = 'delivered';
     }
 
-    const dataRequest = {
-      status: statusOrder,
-    };
+    const date = new Date();
+    let dataRequest;
+    if (user.role === 'chef' && statusOrder === 'finished') {
+      dataRequest = {
+        status: statusOrder,
+        dateProcessed: formatDate(),
+      };
+    } else {
+      dataRequest = {
+        status: statusOrder,
+      };
+    }
 
     modifyStatusOrderRequest(id, dataRequest, user.token).catch(console.log());
   };
