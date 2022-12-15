@@ -3,6 +3,7 @@
 .orders-status {
   padding-top: 11rem;
 }
+
 .orders-status__container {
   width: 100%;
   @include globals.flex(center, center, column);
@@ -41,10 +42,11 @@
       border-bottom: solid 0.3rem globals.$gray-color;
     }
 
-    tbody tr {
-      gap: 1.5rem;
+    tbody {
+      width: 90%;
     }
   }
+
   .orders-status__pending-orders {
     display: none;
   }

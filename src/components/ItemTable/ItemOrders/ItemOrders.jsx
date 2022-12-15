@@ -92,7 +92,7 @@ function ItemOrders({
   return (
     <tr className='item-order'>
       <td>
-        <div>
+        <div className='item-order__content'>
           <p>Cliente: {clientName}</p>
           <p>Productos: </p>
           <div>{children} </div>

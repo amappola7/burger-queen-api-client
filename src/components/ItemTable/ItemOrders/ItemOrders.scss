@@ -1,10 +1,22 @@
 @use '../../../App/styles/globals';
 
 .item-order td {
+  width: 100%;
+  max-width: 100%;
   @include globals.flex(flex-start, center, column);
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
 
   .preparation-time {
     margin-bottom: 2rem;
+  }
+
+  .item-order__content {
+    @include globals.flex(flex-start, flex-start, column);
+    p {
+      width: 100%;
+      overflow-wrap: break-word;
+    }
   }
 
   .item-order__options {
