@@ -121,7 +121,12 @@ function OrdersStatus() {
             : 'orders-status__container'
         }
       >
-        <select name='' id='' onChange={(ev) => handleSelect(ev)}>
+        <select
+          name=''
+          id=''
+          onChange={(ev) => handleSelect(ev)}
+          className='orders-status__select-status'
+        >
           <option value='pending'>--Estado de la Órden--</option>
           <option value='pending'>Pendientes</option>
           <option value='finished'>Terminadas</option>

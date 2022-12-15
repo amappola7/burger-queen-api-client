@@ -28,6 +28,10 @@
 
 @media (min-width: 1000px) {
   .orders-status__container {
+    .orders-status__select-status {
+      display: none;
+    }
+
     .orders-status__pending-orders {
       display: flex;
     }
