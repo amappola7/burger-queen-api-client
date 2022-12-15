@@ -1,0 +1,13 @@
+@use '../../../App/styles/globals';
+
+.item-order td {
+  @include globals.flex(flex-start, center, column);
+
+  .preparation-time {
+    margin-bottom: 2rem;
+  }
+
+  .item-order__options {
+    @include globals.flex(space-around, space-around, row);
+  }
+}

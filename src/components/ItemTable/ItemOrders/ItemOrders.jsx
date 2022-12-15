@@ -9,6 +9,7 @@ import {
   deleteOrderRequest,
 } from '../../../API/ordersRequestHTTP';
 import { formatDate } from '../../../utils/formatDate';
+import './ItemOrders.scss';
 
 function ItemOrders({
   id,
@@ -73,29 +74,42 @@ function ItemOrders({
 
   const renderCheckBox = (role, statusOrder) => {
     if (role === 'chef' && statusOrder === 'pending') {
-      return <input type='checkbox' onClick={changeStatus} />;
+      return (
+        <button type='button' onClick={changeStatus}>
+          Completar
+        </button>
+      );
     }
     if (role === 'waiter' && statusOrder === 'finished') {
-      return <input type='checkbox' onClick={changeStatus} />;
+      return (
+        <button type='button' onClick={changeStatus}>
+          Entregar
+        </button>
+      );
     }
   };
 
   return (
-    <tr>
+    <tr className='item-order'>
       <td>
-        <p>Cliente: {clientName}</p>
-        <div>{children} </div>
-        <p>{`${
-          orderStatus !== 'pending' ? 'Tiempo de Preparación:' : 'Fecha:'
-        } ${orderDate}`}</p>
-        {renderCheckBox(user.role, orderStatus)}
-        {orderStatus === 'pending' && user.role !== 'admin' ? (
-          <button type='button' onClick={deletingOrder}>
-            <i className='fa-solid fa-trash' />
-          </button>
-        ) : (
-          ''
-        )}
+        <div>
+          <p>Cliente: {clientName}</p>
+          <p>Productos: </p>
+          <div>{children} </div>
+          <p className='preparation-time'>{`${
+            orderStatus !== 'pending' ? 'Tiempo de Preparación:' : 'Fecha:'
+          } ${orderDate}`}</p>
+        </div>
+        <div className='item-order__options'>
+          {renderCheckBox(user.role, orderStatus)}
+          {orderStatus === 'pending' && user.role !== 'admin' ? (
+            <button type='button' onClick={deletingOrder}>
+              <i className='fa-solid fa-trash' />
+            </button>
+          ) : (
+            ''
+          )}
+        </div>
       </td>
     </tr>
   );
