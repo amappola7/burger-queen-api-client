@@ -5,9 +5,9 @@ function ItemOrders({ clientName, children, orderDate }) {
   return (
     <tr>
       <td>
-        <p>{clientName}</p>
+        <p>Cliente: {clientName}</p>
         <div>{children} </div>
-        <p>{orderDate}</p>
+        <p>Fecha: {orderDate}</p>
       </td>
     </tr>
   );

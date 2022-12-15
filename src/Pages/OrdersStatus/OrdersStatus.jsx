@@ -151,7 +151,7 @@ function OrdersStatus() {
                     {order.products.map((product) => {
                       return (
                         <ProductOrder
-                          key={order.id}
+                          key={product.product.id}
                           productOrderName={product.product.name}
                           productOrderQuantity={product.qty}
                         />
@@ -187,7 +187,7 @@ function OrdersStatus() {
                     {order.products.map((product) => {
                       return (
                         <ProductOrder
-                          key={order.id}
+                          key={product.product.id}
                           productOrderName={product.product.name}
                           productOrderQuantity={product.qty}
                         />
@@ -223,7 +223,7 @@ function OrdersStatus() {
                     {order.products.map((product) => {
                       return (
                         <ProductOrder
-                          key={order.id}
+                          key={product.product.id}
                           productOrderName={product.product.name}
                           productOrderQuantity={product.qty}
                         />
