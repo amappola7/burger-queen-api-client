@@ -30,7 +30,7 @@ function AdminIndex({ username }) {
 
         <div className='admin-index__category'>
           <i className='fa-solid fa-basket-shopping' />
-          <NavLink className='generic-button' exact='true' to='/admin-orders'>
+          <NavLink className='generic-button' exact='true' to='/orders-status'>
             Pedidos
           </NavLink>
         </div>

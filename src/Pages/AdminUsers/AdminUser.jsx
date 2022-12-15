@@ -44,7 +44,6 @@ function AdminUser() {
     usersListRequest(user.token)
       .then((response) => {
         setUsersList(response.data);
-        // console.log(response);
       })
       .catch((err) => {
         console.error('ADMIN USER:', err);

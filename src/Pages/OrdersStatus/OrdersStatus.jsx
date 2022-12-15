@@ -103,13 +103,12 @@ function OrdersStatus() {
     ordersListRequest(user.token)
       .then((response) => {
         setOrders(response.data);
-        console.log('haciendo petición');
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.error('ERROR AL TRAER LA LISTA DE PRODUCTOS', error);
       });
-  }, [user]);
+  }, [user, orders]);
 
   return (
     <section className='orders-status'>
@@ -150,17 +149,22 @@ function OrdersStatus() {
                 return (
                   <ItemOrders
                     key={order.id}
+                    id={order.id}
                     clientName={order.client}
                     orderDate={order.dataEntry}
+                    orderStatus={order.status}
+                    user={user}
                   >
                     {order.products.map((product) => {
-                      return (
-                        <ProductOrder
-                          key={product.product.id}
-                          productOrderName={product.product.name}
-                          productOrderQuantity={product.qty}
-                        />
-                      );
+                      if (product.qty > 0) {
+                        return (
+                          <ProductOrder
+                            key={product.product.id}
+                            productOrderName={product.product.name}
+                            productOrderQuantity={product.qty}
+                          />
+                        );
+                      }
                     })}
                   </ItemOrders>
                 );
@@ -186,17 +190,22 @@ function OrdersStatus() {
                 return (
                   <ItemOrders
                     key={order.id}
+                    id={order.id}
                     clientName={order.client}
                     orderDate={order.dataEntry}
+                    orderStatus={order.status}
+                    user={user}
                   >
                     {order.products.map((product) => {
-                      return (
-                        <ProductOrder
-                          key={product.product.id}
-                          productOrderName={product.product.name}
-                          productOrderQuantity={product.qty}
-                        />
-                      );
+                      if (product.qty > 0) {
+                        return (
+                          <ProductOrder
+                            key={product.product.id}
+                            productOrderName={product.product.name}
+                            productOrderQuantity={product.qty}
+                          />
+                        );
+                      }
                     })}
                   </ItemOrders>
                 );
@@ -222,17 +231,22 @@ function OrdersStatus() {
                 return (
                   <ItemOrders
                     key={order.id}
+                    id={order.id}
                     clientName={order.client}
                     orderDate={order.dataEntry}
+                    orderStatus={order.status}
+                    user={user}
                   >
                     {order.products.map((product) => {
-                      return (
-                        <ProductOrder
-                          key={product.product.id}
-                          productOrderName={product.product.name}
-                          productOrderQuantity={product.qty}
-                        />
-                      );
+                      if (product.qty > 0) {
+                        return (
+                          <ProductOrder
+                            key={product.product.id}
+                            productOrderName={product.product.name}
+                            productOrderQuantity={product.qty}
+                          />
+                        );
+                      }
                     })}
                   </ItemOrders>
                 );

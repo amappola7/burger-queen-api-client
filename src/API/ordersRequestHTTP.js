@@ -18,4 +18,13 @@ const ordersListRequest = (token) => {
   });
 };
 
-export { createOrderRequest, ordersListRequest };
+const modifyStatusOrderRequest = (id, data, token) => {
+  return axios({
+    method: 'patch',
+    url: `http://localhost:8080/orders/${id}`,
+    data,
+    headers: { authorization: `Bearer ${token}` },
+  });
+};
+
+export { createOrderRequest, ordersListRequest, modifyStatusOrderRequest };

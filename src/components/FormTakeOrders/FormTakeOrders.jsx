@@ -29,27 +29,25 @@ function FormTakeOrders({
   const sendForm = (ev) => {
     ev.preventDefault();
     const date = new Date();
-    const userID = localStorage.getItem('userID');
+    const userID = user.id;
     const data = {
       userId: userID,
       client: valueForm.nameClient,
       status: 'pending',
       dataEntry: date.toLocaleString().replaceAll('/', '-'),
       products: productsList.map((product) => {
-        if (product.qty > 0) {
-          const newProduct = {
-            qty: product.qty,
-            product: {
-              id: product.id,
-              name: product.name,
-              price: product.price,
-              image: product.image,
-              type: product.type,
-              dataEntry: product.dataEntry,
-            },
-          };
-          return newProduct;
-        }
+        const newProduct = {
+          qty: product.qty,
+          product: {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            type: product.type,
+            dataEntry: product.dataEntry,
+          },
+        };
+        return newProduct;
       }),
     };
 
