@@ -27,4 +27,17 @@ const modifyStatusOrderRequest = (id, data, token) => {
   });
 };
 
-export { createOrderRequest, ordersListRequest, modifyStatusOrderRequest };
+const deleteOrderRequest = (id, token) => {
+  return axios({
+    method: 'delete',
+    url: `http://localhost:8080/orders/${id}`,
+    headers: { authorization: `Bearer ${token}` },
+  });
+};
+
+export {
+  createOrderRequest,
+  ordersListRequest,
+  modifyStatusOrderRequest,
+  deleteOrderRequest,
+};

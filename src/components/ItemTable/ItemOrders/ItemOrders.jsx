@@ -1,7 +1,12 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { modifyStatusOrderRequest } from '../../../API/ordersRequestHTTP';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import {
+  modifyStatusOrderRequest,
+  deleteOrderRequest,
+} from '../../../API/ordersRequestHTTP';
 
 function ItemOrders({
   id,
@@ -25,9 +30,35 @@ function ItemOrders({
       status: statusOrder,
     };
 
-    modifyStatusOrderRequest(id, dataRequest, user.token)
-      .then(console.log('PETICIÓN CAMBIAR ESTADO'))
-      .catch(console.log());
+    modifyStatusOrderRequest(id, dataRequest, user.token).catch(console.log());
+  };
+
+  const MySwal = withReactContent(Swal);
+  const deletingOrder = () => {
+    MySwal.fire({
+      title: '¿Estás seguro que deseas eliminar la órden?',
+      text: '¡No podrás deshacer esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ff7272',
+      cancelButtonColor: '#8c8787',
+      confirmButtonText: 'Si, elimínalo!',
+      customClass: {
+        popup: 'delete-user-alert',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteOrderRequest(id, user.token).catch(console.log());
+        Swal.fire({
+          title: 'Órden eliminada!',
+          icon: 'success',
+          confirmButtonColor: '#fdad4e',
+          customClass: {
+            popup: 'delete-user-alert',
+          },
+        });
+      }
+    });
   };
 
   const renderCheckBox = (role, statusOrder) => {
@@ -47,7 +78,7 @@ function ItemOrders({
         <p>Fecha: {orderDate}</p>
         {renderCheckBox(user.role, orderStatus)}
         {orderStatus === 'pending' && user.role !== 'admin' ? (
-          <button type='button'>
+          <button type='button' onClick={deletingOrder}>
             <i className='fa-solid fa-trash' />
           </button>
         ) : (
