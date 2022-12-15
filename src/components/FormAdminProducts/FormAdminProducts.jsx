@@ -87,7 +87,7 @@ function FormAdminProducts({
         valueForm.price,
         valueForm.image,
         valueForm.type,
-        date.toLocaleString().replaceAll('/', '-'),
+        formatDate(),
         token,
         valueForm.productId
       )

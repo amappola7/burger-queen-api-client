@@ -44,7 +44,7 @@ function FormTakeOrders({
             price: product.price,
             image: product.image,
             type: product.type,
-            dataEntry: product.dataEntry,
+            dateEntry: product.dateEntry,
           },
         };
         return newProduct;

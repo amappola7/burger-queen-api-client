@@ -8,11 +8,11 @@ const productsListRequest = (token) => {
   });
 };
 
-const createProductsRequest = (name, price, image, type, dataEntry, token) => {
+const createProductsRequest = (name, price, image, type, dateEntry, token) => {
   return axios({
     method: 'post',
     url: 'http://localhost:8080/products',
-    data: { name, price, image, type, dataEntry },
+    data: { name, price, image, type, dateEntry },
     headers: { authorization: `Bearer ${token}` },
   });
 };
@@ -22,14 +22,14 @@ const editProductsRequest = (
   price,
   image,
   type,
-  dataEntry,
+  dateEntry,
   token,
   id
 ) => {
   return axios({
     method: 'patch',
     url: `http://localhost:8080/products/${id}`,
-    data: { name, price, image, type, dataEntry },
+    data: { name, price, image, type, dateEntry },
     headers: { authorization: `Bearer ${token}` },
   });
 };

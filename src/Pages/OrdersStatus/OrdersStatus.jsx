@@ -8,6 +8,7 @@ import { ordersListRequest } from '../../API/ordersRequestHTTP';
 import ProductOrder from '../../components/ItemTable/ItemOrders/productOrder/ProductOrder';
 import ItemOrders from '../../components/ItemTable/ItemOrders/ItemOrders';
 import './OrdersStatus.scss';
+import { preparationTime } from '../../utils/formatDate';
 
 function OrdersStatus() {
   const { user, navBarContext } = useContext(UserContext);
@@ -192,7 +193,10 @@ function OrdersStatus() {
                     key={order.id}
                     id={order.id}
                     clientName={order.client}
-                    orderDate={order.dateProcessed}
+                    orderDate={preparationTime(
+                      order.dataEntry,
+                      order.dateProcessed
+                    )}
                     orderStatus={order.status}
                     user={user}
                   >
@@ -233,7 +237,10 @@ function OrdersStatus() {
                     key={order.id}
                     id={order.id}
                     clientName={order.client}
-                    orderDate={order.dataEntry}
+                    orderDate={preparationTime(
+                      order.dataEntry,
+                      order.dateProcessed
+                    )}
                     orderStatus={order.status}
                     user={user}
                   >

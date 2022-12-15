@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -27,7 +28,6 @@ function ItemOrders({
       statusOrder = 'delivered';
     }
 
-    const date = new Date();
     let dataRequest;
     if (user.role === 'chef' && statusOrder === 'finished') {
       dataRequest = {
@@ -85,7 +85,9 @@ function ItemOrders({
       <td>
         <p>Cliente: {clientName}</p>
         <div>{children} </div>
-        <p>Fecha: {orderDate}</p>
+        <p>{`${
+          orderStatus !== 'pending' ? 'Tiempo de Preparación:' : 'Fecha:'
+        } ${orderDate}`}</p>
         {renderCheckBox(user.role, orderStatus)}
         {orderStatus === 'pending' && user.role !== 'admin' ? (
           <button type='button' onClick={deletingOrder}>
