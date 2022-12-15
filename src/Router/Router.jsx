@@ -9,11 +9,15 @@ import OrdersStatus from '../Pages/OrdersStatus/OrdersStatus';
 import UserContext from '../../context/User/UserProvider';
 
 function Router() {
-  const userRole =
-    JSON.parse(localStorage.getItem('userInfo')).role === null
-      ? ''
-      : JSON.parse(localStorage.getItem('userInfo')).role;
-  // const userRole = userInfo.role === null ? '' : userInfo.role;
+  let userRole;
+  if (JSON.parse(localStorage.getItem('userInfo')) !== null) {
+    userRole = JSON.parse(localStorage.getItem('userInfo')).role;
+  }
+  // const userRole =
+  //   JSON.parse(localStorage.getItem('userInfo')) === null
+  //     ? ''
+  //     : JSON.parse(localStorage.getItem('userInfo')).role;
+  console.log(userRole);
 
   const defaultRoutes = (role) => {
     let route;
