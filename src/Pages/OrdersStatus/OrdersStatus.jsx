@@ -141,7 +141,7 @@ function OrdersStatus() {
           </thead>
           <tbody>
             {orders.map((order) => {
-              if (valueSelect === 'pending' && order.status === 'pending') {
+              if (order.status === 'pending') {
                 return (
                   <ItemOrders
                     key={order.id}
@@ -177,7 +177,7 @@ function OrdersStatus() {
           </thead>
           <tbody>
             {orders.map((order) => {
-              if (valueSelect === 'finished' && order.status === 'finished') {
+              if (order.status === 'finished') {
                 return (
                   <ItemOrders
                     key={order.id}
@@ -213,7 +213,7 @@ function OrdersStatus() {
           </thead>
           <tbody>
             {orders.map((order) => {
-              if (valueSelect === 'delivered' && order.status === 'delivered') {
+              if (order.status === 'delivered') {
                 return (
                   <ItemOrders
                     key={order.id}
