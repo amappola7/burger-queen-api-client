@@ -5,7 +5,13 @@ import React, { createContext, useState } from 'react';
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [user, setUser] = useState({});
+  const lsContext = JSON.parse(window.localStorage.getItem('lsInfoUser')) || '';
+  const [user, setUser] = useState({
+    id: lsContext.id,
+    token: lsContext.token,
+    role: lsContext.role,
+  });
+  const [clicked, setClicked] = useState(false);
   const [navBarContext, setNavBarContext] = useState(false);
   const saveUser = (info) => {
     setUser(info);
@@ -22,6 +28,8 @@ function UserProvider({ children }) {
     cleanUser,
     navBarContext,
     setNavBarContext,
+    clicked,
+    setClicked,
   };
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 }

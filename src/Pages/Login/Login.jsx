@@ -23,6 +23,7 @@ function Login() {
           id: response.data.user.id,
           role: response.data.user.role,
         };
+        window.localStorage.setItem('lsInfoUser', JSON.stringify(infoUser));
         setUser(infoUser);
         setError('');
         switch (infoUser.role) {

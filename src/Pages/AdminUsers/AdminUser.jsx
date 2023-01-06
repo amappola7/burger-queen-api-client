@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
@@ -10,7 +11,7 @@ import UserContext from '../../../context/User/UserProvider';
 import Modal from '../../components/Modal/Modal';
 
 function AdminUser() {
-  const { user, navBarContext } = useContext(UserContext);
+  const { user, navBarContext, setNavBarContext, setClicked } = useContext(UserContext);
 
   const [
     isOpenFormAdminUsers,
@@ -40,6 +41,11 @@ function AdminUser() {
     });
   };
 
+  const onClickNavBarOption = () => {
+    setNavBarContext(false);
+    setClicked(false);
+  };
+
   useEffect(() => {
     usersListRequest(user.token)
       .then((response) => {
@@ -54,19 +60,34 @@ function AdminUser() {
     <section className='admin-users'>
       <NavBar>
         <li>
-          <NavLink exact='true' to='/admin-users' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/admin-users'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-users' />
             Usuarios
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/admin-products' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/admin-products'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-burger' />
             Productos
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/orders-status' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/orders-status'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-basket-shopping' />
             Pedidos
           </NavLink>
