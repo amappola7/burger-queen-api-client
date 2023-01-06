@@ -11,9 +11,15 @@ import { preparationTime } from '../../utils/formatDate';
 import './OrdersStatus.scss';
 
 function OrdersStatus() {
-  const { user, navBarContext } = useContext(UserContext);
+  const { user, navBarContext, setNavBarContext, setClicked } =
+    useContext(UserContext);
   const [valueSelect, setValueSelect] = useState('pending');
   const [orders, setOrders] = useState([]);
+
+  const onClickNavBarOption = () => {
+    setNavBarContext(false);
+    setClicked(false);
+  };
 
   const navBarOptions = (role) => {
     let component;
@@ -22,7 +28,12 @@ function OrdersStatus() {
         component = (
           <NavBar>
             <li>
-              <NavLink exact='true' to='/admin-users' className='navbar__item'>
+              <NavLink
+                exact='true'
+                to='/admin-users'
+                className='navbar__item'
+                onClick={onClickNavBarOption}
+              >
                 <i className='fa-solid fa-users' />
                 Usuarios
               </NavLink>
@@ -32,6 +43,7 @@ function OrdersStatus() {
                 exact='true'
                 to='/admin-products'
                 className='navbar__item'
+                onClick={onClickNavBarOption}
               >
                 <i className='fa-solid fa-burger' />
                 Productos
@@ -42,6 +54,7 @@ function OrdersStatus() {
                 exact='true'
                 to='/orders-status'
                 className='navbar__item'
+                onClick={onClickNavBarOption}
               >
                 <i className='fa-solid fa-basket-shopping' />
                 Pedidos
@@ -58,6 +71,7 @@ function OrdersStatus() {
                 exact='true'
                 to='/orders-status'
                 className='navbar__item'
+                onClick={onClickNavBarOption}
               >
                 <i className='fa-solid fa-basket-shopping' />
                 Pedidos
@@ -70,7 +84,12 @@ function OrdersStatus() {
         component = (
           <NavBar>
             <li>
-              <NavLink exact='true' to='/take-orders' className='navbar__item'>
+              <NavLink
+                exact='true'
+                to='/take-orders'
+                className='navbar__item'
+                onClick={onClickNavBarOption}
+              >
                 <i className='fa-solid fa-clipboard-list' />
                 Tomar Orden
               </NavLink>
@@ -80,6 +99,7 @@ function OrdersStatus() {
                 exact='true'
                 to='/orders-status'
                 className='navbar__item'
+                onClick={onClickNavBarOption}
               >
                 <i className='fa-solid fa-basket-shopping' />
                 Pedidos

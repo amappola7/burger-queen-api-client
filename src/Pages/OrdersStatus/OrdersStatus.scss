@@ -71,6 +71,10 @@
   }
 }
 
+.orders-status__container--closed {
+  display: none;
+}
+
 @media (min-width: 1000px) {
   .orders-status__container {
     .orders-status__select-status {

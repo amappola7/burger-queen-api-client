@@ -11,6 +11,7 @@ function UserProvider({ children }) {
     token: lsContext.token,
     role: lsContext.role,
   });
+  const [clicked, setClicked] = useState(false);
   const [navBarContext, setNavBarContext] = useState(false);
   const saveUser = (info) => {
     setUser(info);
@@ -27,6 +28,8 @@ function UserProvider({ children }) {
     cleanUser,
     navBarContext,
     setNavBarContext,
+    clicked,
+    setClicked,
   };
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
 }

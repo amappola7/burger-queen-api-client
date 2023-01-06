@@ -12,7 +12,8 @@ import './TakeOrders.scss';
 import useModal from '../../hooks/useModal';
 
 function TakeOrders() {
-  const { user, navBarContext } = useContext(UserContext);
+  const { user, navBarContext, setNavBarContext, setClicked } =
+    useContext(UserContext);
   const [productsList, setProductsList] = useState([]);
   const [valueProductsForm, setValueProductsForm] = useState({
     nameClient: '',
@@ -25,6 +26,11 @@ function TakeOrders() {
     useModal();
   const onFilterProducts = (type) => {
     setTypeFood(type);
+  };
+
+  const onClickNavBarOption = () => {
+    setNavBarContext(false);
+    setClicked(false);
   };
 
   useEffect(() => {
@@ -46,13 +52,23 @@ function TakeOrders() {
     <section className='take-orders'>
       <NavBar>
         <li>
-          <NavLink exact='true' to='/take-orders' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/take-orders'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-clipboard-list' />
             Tomar Orden
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/orders-status' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/orders-status'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-basket-shopping' />
             Pedidos
           </NavLink>

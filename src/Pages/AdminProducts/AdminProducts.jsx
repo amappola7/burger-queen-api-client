@@ -10,7 +10,7 @@ import { productsListRequest } from '../../API/productsRequestHTTP';
 import UserContext from '../../../context/User/UserProvider';
 
 function AdminProducts() {
-  const { user, navBarContext } = useContext(UserContext);
+  const { user, navBarContext, setNavBarContext, setClicked } = useContext(UserContext);
 
   const [
     isOpenFormAdminProducts,
@@ -41,6 +41,11 @@ function AdminProducts() {
     });
   };
 
+  const onClickNavBarOption = () => {
+    setNavBarContext(false);
+    setClicked(false);
+  };
+
   useEffect(() => {
     productsListRequest(user.token)
       .then((response) => {
@@ -56,19 +61,34 @@ function AdminProducts() {
     <section className='admin-products'>
       <NavBar>
         <li>
-          <NavLink exact='true' to='/admin-users' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/admin-users'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-users' />
             Usuarios
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/admin-products' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/admin-products'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-burger' />
             Productos
           </NavLink>
         </li>
         <li>
-          <NavLink exact='true' to='/orders-status' className='navbar__item'>
+          <NavLink
+            exact='true'
+            to='/orders-status'
+            className='navbar__item'
+            onClick={onClickNavBarOption}
+          >
             <i className='fa-solid fa-basket-shopping' />
             Pedidos
           </NavLink>
