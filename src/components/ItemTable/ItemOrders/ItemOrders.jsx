@@ -75,14 +75,14 @@ function ItemOrders({
   const renderCheckBox = (role, statusOrder) => {
     if (role === 'chef' && statusOrder === 'pending') {
       return (
-        <button type='button' onClick={changeStatus}>
+        <button className='send-button' type='button' onClick={changeStatus}>
           Completar
         </button>
       );
     }
     if (role === 'waiter' && statusOrder === 'finished') {
       return (
-        <button type='button' onClick={changeStatus}>
+        <button className='send-button' type='button' onClick={changeStatus}>
           Entregar
         </button>
       );
@@ -93,17 +93,30 @@ function ItemOrders({
     <tr className='item-order'>
       <td>
         <div className='item-order__content'>
-          <p>Cliente: {clientName}</p>
-          <p>Productos: </p>
+          <p>
+            <b className='item-order__content-title'>Cliente:</b> {clientName}
+          </p>
+          <p>
+            <b className='item-order__content-title'>Productos:</b>
+          </p>
           <div>{children} </div>
-          <p className='preparation-time'>{`${
-            orderStatus !== 'pending' ? 'Tiempo de Preparación:' : 'Fecha:'
-          } ${orderDate}`}</p>
+          <p className='preparation-time item-order__content-title'>
+            <b>
+              {`${
+                orderStatus !== 'pending' ? 'Tiempo de Preparación:' : 'Fecha:'
+              } `}
+            </b>
+            {orderDate}
+          </p>
         </div>
         <div className='item-order__options'>
           {renderCheckBox(user.role, orderStatus)}
           {orderStatus === 'pending' && user.role !== 'admin' ? (
-            <button type='button' onClick={deletingOrder}>
+            <button
+              className='edit-button'
+              type='button'
+              onClick={deletingOrder}
+            >
               <i className='fa-solid fa-trash' />
             </button>
           ) : (

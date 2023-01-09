@@ -9,6 +9,7 @@
   @include globals.flex(center, center, column);
 
   select {
+    margin-top: 2rem;
     padding: 0 2rem;
     width: 90%;
     height: 4.4rem;
@@ -16,8 +17,9 @@
     border: none;
     border-radius: 2rem;
     font-family: globals.$main-font;
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-weight: 600;
+    text-align: center;
     outline: none;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     border-right: 2rem solid transparent;
@@ -28,23 +30,51 @@
   }
 
   .order-table {
+    margin-top: 4rem;
     width: 90%;
     @include globals.flex(center, center, column);
     border-radius: 2.5rem;
     margin-bottom: 4rem;
     font-family: globals.$main-font;
-    font-size: 2.1rem;
+    font-size: 2.4rem;
     color: globals.$dark-color;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 
     thead th {
       height: 4.6rem;
-      border-bottom: solid 0.3rem globals.$gray-color;
+      width: 100%;
     }
 
     tbody {
-      width: 90%;
+      display: flex;
+      overflow-y:scroll;
+      min-height: 55vh;
+      max-height: 55vh;
+      flex-direction: column;
+      width: 100%;
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+      .item-order {
+        display: flex;
+        @include globals.flex(center, center, column);
+        width: 100%;
+      }
     }
+
+    tbody::-webkit-scrollbar {
+      width: 12px;             /* width of the entire scrollbar */
+    }
+    
+    tbody::-webkit-scrollbar-track {
+      background: transparent;        /* color of the tracking area */
+    }
+    
+    tbody::-webkit-scrollbar-thumb {
+      background-color: #fdcb8e;    /* color of the scroll thumb */
+      border-radius: 20px;       /* roundness of the scroll thumb */
+      border: 3px solid white;  /* creates padding around scroll thumb */
+    }
+
   }
 
   .orders-status__pending-orders {
@@ -75,12 +105,32 @@
   display: none;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 600px) {
+  .orders-status {
+    padding-top: 13rem;
+  }
   .orders-status__container {
+    .order-table {
+      width: 80%;
+    }
+    .orders-status__select-status {
+      width: 80%;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .orders-status {
+    padding-top: 11rem;
+  }
+  .orders-status__container {
+    @include globals.flex(space-around, flex-start, row);
+    .order-table {
+      width: 28%;
+    }
     .orders-status__select-status {
       display: none;
     }
-
     .orders-status__pending-orders {
       display: flex;
     }

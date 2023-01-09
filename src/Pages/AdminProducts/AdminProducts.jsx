@@ -10,7 +10,8 @@ import { productsListRequest } from '../../API/productsRequestHTTP';
 import UserContext from '../../../context/User/UserProvider';
 
 function AdminProducts() {
-  const { user, navBarContext, setNavBarContext, setClicked } = useContext(UserContext);
+  const { user, navBarContext, setNavBarContext, setClicked } =
+    useContext(UserContext);
 
   const [
     isOpenFormAdminProducts,

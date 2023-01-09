@@ -169,6 +169,7 @@ function OrdersStatus() {
               if (order.status === 'pending') {
                 return (
                   <ItemOrders
+                    className='item-orders'
                     key={order.id}
                     id={order.id}
                     clientName={order.client}

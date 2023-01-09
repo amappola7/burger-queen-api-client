@@ -1,18 +1,20 @@
 @use '../../../App/styles/globals';
 
 .item-order td {
-  width: 100%;
+  margin-bottom: 1rem;
+  border-top: solid 0.3rem globals.$gray-color;
+  padding-top: 2rem;
+  width: 80%;
   max-width: 100%;
-  @include globals.flex(flex-start, center, column);
-  flex-wrap: wrap;
+  @include globals.flex(center, center, column);
   overflow-wrap: break-word;
-
+  flex:1;
   .preparation-time {
     margin-bottom: 2rem;
   }
 
   .item-order__content {
-    @include globals.flex(flex-start, flex-start, column);
+    width: 100%;
     p {
       width: 100%;
       overflow-wrap: break-word;
@@ -20,6 +22,34 @@
   }
 
   .item-order__options {
-    @include globals.flex(space-around, space-around, row);
+  width: 100%;
+  gap: 2rem;
+  @include globals.flex(center, center, row);
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .send-button {
+      width: 13rem;
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+      font-family: globals.$main-font;
+      color:globals.$dark-color;
+      font-weight: 700;
+      border-radius: 2rem;
+      background-color:globals.$main-color;
+    }
+    .edit-button {
+      color: globals.$secondary-color;
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .product-order-item{ 
+    font-size: 2rem;
   }
 }
